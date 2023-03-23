@@ -3,7 +3,9 @@
     <div class="add-input">
       <mat-form-field appearance="fill" style="width: 100%">
         <mat-label>Digite a nova tarefa</mat-label>
-        <input matInput formControlName="name" />
+        <input matInput #input formControlName="name" />
+        <mat-hint align="end">{{ input.value.length }}/75</mat-hint>
+        <mat-error>Campo Obrigatório</mat-error>
       </mat-form-field>
     </div>
     <div class="add-button">

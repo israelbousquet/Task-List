@@ -35,7 +35,7 @@ export class TaskDeleteComponent implements OnInit {
   }
 
   showToast() {
-    this.toast.success('Item excluído com sucesso', {
+    this.toast.success('Item deletado com sucesso', {
       position: 'bottom-center',
       style: {
         border: 'none',

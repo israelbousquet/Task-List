@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+
 import { TaskService } from '../../../services/task.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class TaskProgressComponent implements OnInit {
   constructor(private taskService: TaskService) {}
 
   progress: number = 0;
-  
+
   ngOnInit(): void {
     this.getProgressFromStorage();
     this.progressReactToChangeCheckbox();

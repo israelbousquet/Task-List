@@ -15,6 +15,12 @@
       color: $secondary-color;
     }
 
+    @media (max-width: 768px) {
+      .subtask {
+        width: 90%;
+      }
+    }
+
     .painel-open ul {
       display: flex;
       flex-direction: column;
@@ -26,6 +32,7 @@
       flex-direction: column;
       justify-content: center;
       gap: 30px;
+      margin-top: 25px;
     }
 
     .painel-open-delete {
