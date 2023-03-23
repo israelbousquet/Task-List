@@ -7,13 +7,15 @@
     </mat-form-field>
   </div>
   <div mat-dialog-actions class="dialog-edit-buttons">
-    <button mat-flat-button color="warn" (click)="close()">Deletar</button>
     <button
+      class="button-submit"
       mat-flat-button
       type="submit"
       (click)="save(form.get('editName')?.value)"
+      [disabled]="form.invalid"
     >
       Editar
     </button>
+    <button mat-flat-button color="warn" (click)="close()">Sair</button>
   </div>
 </form>

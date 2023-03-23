@@ -1,12 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TaskService } from '../../../services/task.service';
+import { MatDialog } from '@angular/material/dialog';
+import { HotToastService } from '@ngneat/hot-toast';
+
 import { Subtask } from '../../../interfaces/subtask';
 import { Task } from '../../../interfaces/task';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { TaskService } from '../../../services/task.service';
 import { EditDialogComponent } from '../../widgets/edit-dialog/edit-dialog.component';
 import { PopupConfirmComponent } from '../../widgets/popup-confirm/popup-confirm.component';
 
@@ -20,7 +18,11 @@ export class SubtaskItemComponent implements OnInit {
   @Input() task: Task;
   @Input() index: number;
 
-  constructor(private taskService: TaskService, public dialog: MatDialog) {}
+  constructor(
+    private taskService: TaskService,
+    public dialog: MatDialog,
+    private toast: HotToastService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -34,7 +36,7 @@ export class SubtaskItemComponent implements OnInit {
     dialogRef.afterClosed().subscribe((inputValue: string) => {
       if (inputValue) {
         this.taskService.editSubtask(this.task.id, subtask.id, inputValue);
-        this.showSucess();
+        this.showToast();
       }
     });
   }
@@ -42,6 +44,23 @@ export class SubtaskItemComponent implements OnInit {
   showSucess() {
     this.dialog.open(PopupConfirmComponent, {
       data: 'Item editado com sucesso',
+    });
+  }
+
+  showToast() {
+    this.toast.success('Item atualizado com sucesso', {
+      position: 'bottom-center',
+      style: {
+        border: 'none',
+        borderRadius: '10px',
+        padding: '16px 24px',
+        color: '#ffffff',
+        backgroundColor: '#2a282a',
+      },
+      iconTheme: {
+        primary: 'rgb(66, 233, 16)',
+        secondary: '#FFFAEE',
+      },
     });
   }
 }
