@@ -1,0 +1,32 @@
+:host {
+  // .mat-dialog-container {
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   top: 0;
+  //   bottom: 40px;
+  //   margin: auto;
+  //   width: 300px;
+  //   height: 150px;
+  // }
+
+  .mat-dialog-container {
+    display: block;
+    padding: 24px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: auto;
+    outline: 0;
+
+    min-height: inherit;
+    max-height: inherit;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 40px;
+    margin: auto;
+    width: 300px;
+    height: 150px;
+  }
+}

@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Digite a novo nome</mat-label>
+      <input matInput #input maxlength="75" formControlName="editName" />
+      <mat-hint align="end">{{ input.value.length }}/75</mat-hint>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="dialog-edit-buttons">
+    <button mat-flat-button color="warn" (click)="close()">Deletar</button>
+    <button
+      mat-flat-button
+      type="submit"
+      (click)="save(form.get('editName')?.value)"
+    >
+      Editar
+    </button>
+  </div>
+</form>

@@ -1,0 +1,23 @@
+@import "/src/scss/variables.scss";
+
+:host {
+  .add-task-container {
+    max-width: 100vw;
+
+    .add-task {
+      width: 70%;
+      background-color: $primary-color;
+      border-radius: 15px;
+
+      padding: 30px 40px;
+
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 30px;
+    }
+
+    .mat-form-field-wrapper {
+      padding-bottom: 0px;
+    }
+  }
+}

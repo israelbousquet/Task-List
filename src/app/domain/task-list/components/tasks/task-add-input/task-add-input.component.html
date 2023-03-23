@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+  <div class="add-task">
+    <div class="add-input">
+      <mat-form-field appearance="fill" style="width: 100%">
+        <mat-label>Digite a nova tarefa</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+    </div>
+    <div class="add-button">
+      <button
+        [disabled]="form.invalid"
+        style="cursor: pointer"
+        (click)="emitValue()"
+      >
+        <mat-icon>done</mat-icon>
+      </button>
+    </div>
+  </div>
+</form>

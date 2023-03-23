@@ -1,0 +1,11 @@
+<div class="subtask-item">
+  <mat-checkbox
+    [checked]="subtask.checked"
+    (change)="changeCheckbox(subtask.id)"
+  >
+    {{ subtask.name }}
+  </mat-checkbox>
+  <div>
+    <mat-icon (click)="editSubtask(subtask)">edit</mat-icon>
+  </div>
+</div>

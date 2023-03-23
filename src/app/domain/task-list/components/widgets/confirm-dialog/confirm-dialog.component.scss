@@ -1,0 +1,11 @@
+@import "/src/scss/variables.scss";
+
+:host {
+  .mat-dialog-container {
+    background: $primary-color;
+  }
+
+  .mat-dialog-content p {
+    color: $secondary-color;
+  }
+}

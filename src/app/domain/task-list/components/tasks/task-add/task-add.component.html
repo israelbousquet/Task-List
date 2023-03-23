@@ -1,0 +1,19 @@
+<section class="add-task-container">
+  <div class="add-task">
+    <app-task-add-input (valueChange)="addTask($event)"></app-task-add-input>
+  </div>
+
+  <div>
+    <ul class="subtask-lista">
+      <ng-container *ngIf="tasks$ | async as tasks; else loading">
+        <li *ngFor="let task of tasks; let i = index">
+          <app-subtask
+            [task]="task"
+            (subTaskChange)="addSubTask($event, i)"
+          ></app-subtask>
+        </li>
+      </ng-container>
+      <ng-template #loading> Carregando... </ng-template>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+@import "/src/scss/variables.scss";
+:host {
+  .task-progress-container {
+    .task-progress {
+      width: 500px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+
+      margin: 20px auto;
+      padding: 20px 40px;
+
+      border-radius: 15px;
+
+      span {
+        color: $secondary-color;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+      }
+      .task-progress-title {
+        font-weight: 800;
+        letter-spacing: initial;
+        font-size: 1.4rem;
+      }
+
+      .task-progress-bar {
+        width: 100%;
+        height: 10px;
+        background-color: $tertiary-color;
+        border-radius: 10px;
+      }
+
+      .task-progress-bar-fill {
+        height: 100%;
+        width: 0%;
+        background-color: $blue-primary-color;
+        box-shadow: 0px 0px 10px 5px $blue-secondary-color;
+        border-radius: 10px;
+        transition: width 0.5s ease;
+      }
+    }
+  }
+}

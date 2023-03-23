@@ -1,0 +1,29 @@
+@import "/src/scss/variables.scss";
+
+:host {
+  .painel-open-delete-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    span {
+      color: $secondary-color;
+    }
+  }
+
+  .mat-card {
+    padding: 5px 10px;
+    background-color: $red-secondary-color;
+  }
+
+  .mat-icon {
+    color: $red-primary-color;
+  }
+
+  &:hover {
+    .mat-card {
+      transition: 0.2s ease;
+      background-color: rgb(172, 45, 45);
+    }
+  }
+}
