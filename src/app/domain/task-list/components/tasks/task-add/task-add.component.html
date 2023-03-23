@@ -8,10 +8,11 @@
   <div>
     <ul class="subtask-lista">
       <ng-container *ngIf="tasks$ | async as tasks; else loading">
-        <li *ngFor="let task of tasks; let i = index">
+        <li *ngFor="let task of tasks; let index = index">
           <app-subtask
+            [taskIndex]="index"
             [task]="task"
-            (subTaskChange)="addSubTask($event, i)"
+            (subTaskChange)="addSubTask($event, index)"
           ></app-subtask>
         </li>
       </ng-container>

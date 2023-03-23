@@ -21,8 +21,9 @@
                 <section *ngIf="subtask.name !== ''">
                   <app-subtask-item
                     [subtask]="subtask"
+                    [taskIndex]="taskIndex"
                     [task]="task"
-                    [index]="i"
+                    [subtaskIndex]="i"
                   ></app-subtask-item>
                 </section>
               </mat-card>

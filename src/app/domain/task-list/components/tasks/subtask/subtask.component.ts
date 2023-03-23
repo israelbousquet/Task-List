@@ -10,6 +10,7 @@ import { TaskService } from '../../../services/task.service';
 })
 export class SubtaskComponent implements OnInit {
   @Input() task: Task;
+  @Input() taskIndex: number;
   @Output() subTaskChange = new EventEmitter<string>();
 
   panelOpenState = false;

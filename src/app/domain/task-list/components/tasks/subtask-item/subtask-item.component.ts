@@ -16,7 +16,8 @@ import { PopupConfirmComponent } from '../../widgets/popup-confirm/popup-confirm
 export class SubtaskItemComponent implements OnInit {
   @Input() subtask: Subtask;
   @Input() task: Task;
-  @Input() index: number;
+  @Input() taskIndex: number;
+  @Input() subtaskIndex: number;
 
   constructor(
     private taskService: TaskService,
@@ -35,7 +36,11 @@ export class SubtaskItemComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((inputValue: string) => {
       if (inputValue) {
-        this.taskService.editSubtask(this.task.id, subtask.id, inputValue);
+        this.taskService.editSubtask(
+          this.taskIndex,
+          this.subtaskIndex,
+          inputValue
+        );
         this.showToast();
       }
     });
