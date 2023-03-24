@@ -1,6 +1,7 @@
 <div class="subtask-item">
   <mat-checkbox
     [checked]="subtask.checked"
+    [ngClass]="{ 'text-checked': subtask.checked }"
     (change)="changeCheckbox(subtask.id)"
   >
     {{ subtask.name }}

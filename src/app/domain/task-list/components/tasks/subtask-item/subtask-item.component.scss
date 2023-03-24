@@ -5,20 +5,25 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  .mat-checkbox-layout .mat-checkbox-label {
-    color: $secondary-color;
-  }
 
-  .mat-checkbox {
-    color: $secondary-color;
-  }
-  .mat-checkbox-frame {
-    border-color: white;
-  }
+    .text-checked {
+      text-decoration: line-through;
+    }
 
-  .mat-icon {
-    color: $secondary-color;
-    cursor: pointer;
+    .mat-checkbox-layout .mat-checkbox-label {
+      color: $secondary-color;
+    }
+
+    .mat-checkbox {
+      color: $secondary-color;
+    }
+    .mat-checkbox-frame {
+      border-color: white;
+    }
+
+    .mat-icon {
+      color: $secondary-color;
+      cursor: pointer;
+    }
   }
 }
