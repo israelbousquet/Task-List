@@ -10,6 +10,7 @@ export class ToastService {
   showToastSucess(message: string) {
     this.toast.success(message, {
       position: 'bottom-center',
+      duration: 2000,
       style: {
         border: 'none',
         borderRadius: '10px',
@@ -27,6 +28,7 @@ export class ToastService {
 
   showGoodJob(message: string) {
     this.toast.show(message, {
+      duration: 2000,
       position: 'bottom-center',
       icon: '👏',
       style: {
