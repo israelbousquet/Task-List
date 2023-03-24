@@ -65,8 +65,8 @@ export class TaskService {
     this.checkboxChangedSource.next(0);
   }
 
-  editSubtask(taskId: number, subtaskIndex: number, subtaskNew: string) {
-    this.tasks[taskId].subtask[subtaskIndex].name = subtaskNew;
+  editSubtask(taskIndex: number, subtaskIndex: number, subtaskNew: string) {
+    this.tasks[taskIndex].subtask[subtaskIndex].name = subtaskNew;
     this.setStorage('tasks', this.tasks);
   }
 

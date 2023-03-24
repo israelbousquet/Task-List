@@ -5,6 +5,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { Subtask } from '../../../interfaces/subtask';
 import { Task } from '../../../interfaces/task';
 import { TaskService } from '../../../services/task.service';
+import { ConfirmDialogComponent } from '../../widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from '../../widgets/edit-dialog/edit-dialog.component';
 import { PopupConfirmComponent } from '../../widgets/popup-confirm/popup-confirm.component';
 
@@ -36,6 +37,18 @@ export class SubtaskItemComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((inputValue: string) => {
       if (inputValue) {
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+          data: 'Deseja realmente editar?',
+        });
+
+        this.confirmEdit(dialogRef, inputValue);
+      }
+    });
+  }
+
+  confirmEdit(dialogRef: any, inputValue: string) {
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
         this.taskService.editSubtask(
           this.taskIndex,
           this.subtaskIndex,
