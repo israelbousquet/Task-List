@@ -10,11 +10,6 @@ export class TaskAddInputComponent implements OnInit {
   form: FormGroup<{
     name: FormControl;
   }>;
-  // form: FormGroup<{
-  //   name: FormControl;
-  // }> = new FormGroup({
-  //   name: new FormControl('', Validators.required),
-  // });
 
   @Output() valueChange = new EventEmitter<string>();
 
