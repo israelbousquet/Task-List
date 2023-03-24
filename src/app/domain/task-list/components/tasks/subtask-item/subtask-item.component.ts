@@ -47,6 +47,19 @@ export class SubtaskItemComponent implements OnInit {
     });
   }
 
+  deleteSubtask(subtask: Subtask, taskIndex: number) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: 'Deseja excluir a Subtask?',
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.taskService.deleteSubTask(subtask.id, taskIndex);
+        this.toastService.showToastSucess('Subtask deletada com sucesso');
+      }
+    });
+  }
+
   confirmEdit(dialogRef: any, inputValue: string) {
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {

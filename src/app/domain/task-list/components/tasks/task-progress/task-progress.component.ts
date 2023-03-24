@@ -42,6 +42,7 @@ export class TaskProgressComponent implements OnInit {
 
   getProgressFromStorage() {
     const progressStorage = this.taskService.getStorage('totalCheck') ?? 0;
+    console.log(progressStorage);
     this.progress = progressStorage;
   }
 }

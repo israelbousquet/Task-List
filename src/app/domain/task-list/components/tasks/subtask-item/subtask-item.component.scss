@@ -22,8 +22,34 @@
     }
 
     .mat-icon {
-      color: $secondary-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      border-radius: 5px;
       cursor: pointer;
+
+      &:hover {
+        transition: color 0.2s ease;
+      }
+    }
+
+    .subtask-item-actions {
+      display: flex;
+      align-items: center;
+      color: $secondary-color;
+
+      .edit {
+        &:hover {
+          color: $blue-primary-color;
+        }
+      }
+
+      .delete {
+        &:hover {
+          color: $red-primary-color;
+        }
+      }
     }
   }
 }

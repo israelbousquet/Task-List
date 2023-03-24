@@ -40,7 +40,17 @@ export class TaskService {
     const findIndex = this.tasks.findIndex((task) => task.id === taskId);
     this.tasks.splice(findIndex, 1);
     this.setStorage('tasks', this.tasks);
-    this.removeTaskStorage(taskId);
+
+    this.checkboxChangedSource.next(0);
+  }
+
+  deleteSubTask(subtaskId: number, taskIndex: number) {
+    const findIndex = this.tasks[taskIndex].subtask.findIndex(
+      (task) => task.id === subtaskId
+    );
+    console.log(findIndex);
+    this.tasks[taskIndex].subtask.splice(findIndex, 1);
+    this.setStorage('tasks', this.tasks);
     this.checkboxChangedSource.next(0);
   }
 
@@ -84,13 +94,11 @@ export class TaskService {
 
   getCheckedSubTasks(): number {
     let count = 0;
-
     this.tasks.map(({ subtask }) =>
       subtask.map(({ checked }) => {
         if (checked) count++;
       })
     );
-
     return count;
   }
 
