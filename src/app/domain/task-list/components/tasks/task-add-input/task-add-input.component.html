@@ -10,7 +10,7 @@
     </div>
     <div class="add-button">
       <button
-        [disabled]="form.invalid"
+        [disabled]="form.invalid && input.value.length <= 0"
         style="cursor: pointer"
         (click)="emitValue()"
       >
