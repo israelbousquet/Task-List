@@ -20,7 +20,6 @@ import { TaskProgressComponent } from './components/tasks/task-progress/task-pro
 import { TaskTitleComponent } from './components/tasks/task-title/task-title.component';
 import { ConfirmDialogComponent } from './components/widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from './components/widgets/edit-dialog/edit-dialog.component';
-import { PopupConfirmComponent } from './components/widgets/popup-confirm/popup-confirm.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TaskListDomainRoutingModule } from './task-list-routing.module';
 
@@ -36,7 +35,6 @@ import { TaskListDomainRoutingModule } from './task-list-routing.module';
     ConfirmDialogComponent,
     TaskDeleteComponent,
     EditDialogComponent,
-    PopupConfirmComponent,
     ErrorMsgComponent,
   ],
   imports: [
