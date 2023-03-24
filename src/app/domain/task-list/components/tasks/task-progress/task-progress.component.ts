@@ -25,7 +25,6 @@ export class TaskProgressComponent implements OnInit {
   progressReactToChangeCheckbox() {
     this.taskService.checkboxChanged$.subscribe(() => {
       const progress = this.taskService.getPercentProgress();
-      console.log(progress);
       this.progress = progress;
       this.taskService.setStorage('totalCheck', this.progress);
     });

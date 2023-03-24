@@ -106,7 +106,9 @@ export class TaskService {
     const totalChecked = this.getCheckedSubTasks();
     const totalSubTasks = this.getTotalSubtasks();
     const total = (totalChecked * 100) / totalSubTasks;
-
+    if (isNaN(total)) {
+      return 0;
+    }
     return Math.floor(total);
   }
 

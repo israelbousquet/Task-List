@@ -1,8 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Validacoes } from '../../../validators/validacoes';
-
 @Component({
   selector: 'app-task-add-input',
   templateUrl: './task-add-input.component.html',
@@ -19,10 +17,7 @@ export class TaskAddInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl('', [
-        Validators.required,
-        Validacoes.validateInputLength,
-      ]),
+      name: new FormControl('', [Validators.required]),
     });
   }
 
