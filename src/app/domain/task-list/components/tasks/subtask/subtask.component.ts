@@ -3,6 +3,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Task } from '../../../interfaces/task';
 import { TaskService } from '../../../services/task.service';
 
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
+
 @Component({
   selector: 'app-subtask',
   templateUrl: './subtask.component.html',
