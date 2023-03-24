@@ -8,4 +8,14 @@
   .mat-dialog-content p {
     color: $secondary-color;
   }
+
+  .dialog-edit-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      flex: 1;
+    }
+  }
 }

@@ -23,11 +23,9 @@ export class TaskService {
   }
 
   addTask(taskNameValue: string) {
-    for (const task of this.tasks) {
-      if (task.id > this.lastId) {
-        this.lastId = task.id;
-      }
-    }
+    this.tasks.map(({ id }) => {
+      if (id > this.lastId) this.lastId = id;
+    });
 
     const newTask: Task = {
       id: ++this.lastId,
@@ -48,13 +46,13 @@ export class TaskService {
 
   addSubTask(subTaskValue: string, taskIndex: number) {
     this.lastSubtaskId = -1;
-    for (const task of this.tasks) {
-      for (const subtask of task.subtask) {
-        if (subtask.id > this.lastSubtaskId) {
-          this.lastSubtaskId = subtask.id;
-        }
-      }
-    }
+
+    this.tasks.map(({ subtask }) =>
+      subtask.map(({ id }) => {
+        if (id > this.lastSubtaskId) this.lastSubtaskId = id;
+      })
+    );
+
     const newSubTask: Subtask = {
       id: ++this.lastSubtaskId,
       name: subTaskValue,
@@ -86,13 +84,13 @@ export class TaskService {
 
   getCheckedSubTasks(): number {
     let count = 0;
-    for (const task of this.tasks) {
-      for (const subTask of task.subtask) {
-        if (subTask.checked) {
-          count++;
-        }
-      }
-    }
+
+    this.tasks.map(({ subtask }) =>
+      subtask.map(({ checked }) => {
+        if (checked) count++;
+      })
+    );
+
     return count;
   }
 
@@ -115,19 +113,22 @@ export class TaskService {
   private checkboxChangedSource = new Subject<number>();
   checkboxChanged$ = this.checkboxChangedSource.asObservable();
 
+  checkboxClickedToShowMessage$ = new Subject<boolean>();
+
   changeCheckbox(id: number) {
     if (this.tasks && this.tasks.length) {
-      for (const task of this.tasks) {
-        for (const subTask of task.subtask) {
-          if (subTask.id === id) {
-            subTask.checked = !subTask.checked;
+      this.tasks.map(({ subtask }) =>
+        subtask.map((subtask) => {
+          if (subtask.id === id) {
+            subtask.checked = !subtask.checked;
             this.getPercentProgress();
             this.setStorage('tasks', this.tasks);
             this.checkboxChangedSource.next(0);
+            this.checkboxClickedToShowMessage$.next(false);
             return;
           }
-        }
-      }
+        })
+      );
     }
   }
 }

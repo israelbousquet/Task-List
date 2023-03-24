@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HotToastService } from '@ngneat/hot-toast';
 
 import { TaskService } from '../../../services/task.service';
+import { ToastService } from '../../../services/toast.service';
 import { ConfirmDialogComponent } from '../../widgets/confirm-dialog/confirm-dialog.component';
 import { Task } from './../../../interfaces/task';
 
@@ -16,7 +17,8 @@ export class TaskDeleteComponent implements OnInit {
   constructor(
     private taskService: TaskService,
     public dialog: MatDialog,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {}
@@ -29,25 +31,8 @@ export class TaskDeleteComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
         this.taskService.deleteTask(id);
-        this.showToast();
+        this.toastService.showToastSucess('Item deletado com sucesso');
       }
-    });
-  }
-
-  showToast() {
-    this.toast.success('Item deletado com sucesso', {
-      position: 'bottom-center',
-      style: {
-        border: 'none',
-        borderRadius: '10px',
-        padding: '16px 24px',
-        color: '#ffffff',
-        backgroundColor: '#2a282a',
-      },
-      iconTheme: {
-        primary: 'rgb(66, 233, 16)',
-        secondary: '#FFFAEE',
-      },
     });
   }
 }

@@ -1,0 +1,41 @@
+.mat-dialog-container {
+  background: $primary-color;
+}
+
+.mat-hint {
+  color: $secondary-color;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: $blue-primary-color;
+}
+
+._mat-animation-noopable .mat-checkbox-frame {
+  border-color: white;
+}
+
+.mat-h2,
+.mat-title,
+.mat-typography h2,
+.mat-h3,
+.mat-subheading-2,
+.mat-typography h3 {
+  margin: 0;
+}
+
+[_nghost-qvp-c129] .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: $primary-color;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: $primary-color;
+}
+
+.mat-form-field._mat-animation-noopable .mat-form-field-label,
+.mat-form-field._mat-animation-noopable .mat-form-field-ripple {
+  color: $secondary-color;
+}
+.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+  color: $secondary-color;
+}

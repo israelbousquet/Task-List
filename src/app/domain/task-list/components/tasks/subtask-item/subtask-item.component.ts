@@ -5,9 +5,9 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { Subtask } from '../../../interfaces/subtask';
 import { Task } from '../../../interfaces/task';
 import { TaskService } from '../../../services/task.service';
+import { ToastService } from '../../../services/toast.service';
 import { ConfirmDialogComponent } from '../../widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from '../../widgets/edit-dialog/edit-dialog.component';
-import { PopupConfirmComponent } from '../../widgets/popup-confirm/popup-confirm.component';
 
 @Component({
   selector: 'app-subtask-item',
@@ -23,7 +23,8 @@ export class SubtaskItemComponent implements OnInit {
   constructor(
     private taskService: TaskService,
     public dialog: MatDialog,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {}
@@ -54,31 +55,8 @@ export class SubtaskItemComponent implements OnInit {
           this.subtaskIndex,
           inputValue
         );
-        this.showToast();
+        this.toastService.showToastSucess('Item editado com sucesso');
       }
-    });
-  }
-
-  showSucess() {
-    this.dialog.open(PopupConfirmComponent, {
-      data: 'Item editado com sucesso',
-    });
-  }
-
-  showToast() {
-    this.toast.success('Item atualizado com sucesso', {
-      position: 'bottom-center',
-      style: {
-        border: 'none',
-        borderRadius: '10px',
-        padding: '16px 24px',
-        color: '#ffffff',
-        backgroundColor: '#2a282a',
-      },
-      iconTheme: {
-        primary: 'rgb(66, 233, 16)',
-        secondary: '#FFFAEE',
-      },
     });
   }
 }
