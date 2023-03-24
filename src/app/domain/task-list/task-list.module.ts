@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
+import { ErrorMsgComponent } from './components/tasks/error-msg/error-msg.component';
 import { SubtaskItemComponent } from './components/tasks/subtask-item/subtask-item.component';
 import { SubtaskComponent } from './components/tasks/subtask/subtask.component';
 import { TaskAddInputComponent } from './components/tasks/task-add-input/task-add-input.component';
@@ -36,6 +37,7 @@ import { TaskListDomainRoutingModule } from './task-list-routing.module';
     TaskDeleteComponent,
     EditDialogComponent,
     PopupConfirmComponent,
+    ErrorMsgComponent,
   ],
   imports: [
     CommonModule,

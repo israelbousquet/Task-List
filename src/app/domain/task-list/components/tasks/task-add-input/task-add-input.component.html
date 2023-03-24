@@ -5,12 +5,17 @@
         <mat-label>Digite a nova tarefa</mat-label>
         <input matInput #input formControlName="name" />
         <mat-hint align="end">{{ input.value.length }}/75</mat-hint>
-        <mat-error>Campo Obrigatório</mat-error>
+        <mat-error
+          ><app-error-msg
+            [label]="'O nome'"
+            [control]="form.controls.name"
+          ></app-error-msg
+        ></mat-error>
       </mat-form-field>
     </div>
     <div class="add-button">
       <button
-        [disabled]="form.invalid && input.value.length <= 0"
+        [disabled]="form.invalid"
         style="cursor: pointer"
         (click)="emitValue()"
       >
