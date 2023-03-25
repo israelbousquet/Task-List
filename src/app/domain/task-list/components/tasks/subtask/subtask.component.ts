@@ -6,8 +6,8 @@ import { Subtask } from '../../../interfaces/subtask';
 import { Task } from '../../../interfaces/task';
 import { TaskService } from '../../../services/task.service';
 import { ToastService } from '../../../services/toast.service';
-import { ConfirmDialogComponent } from '../../widgets/confirm-dialog/confirm-dialog.component';
-import { EditDialogComponent } from '../../widgets/edit-dialog/edit-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/widgets/confirm-dialog/confirm-dialog.component';
+import { EditDialogComponent } from 'src/app/widgets/edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-subtask',

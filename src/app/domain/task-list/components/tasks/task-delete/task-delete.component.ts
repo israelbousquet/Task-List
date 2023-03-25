@@ -4,7 +4,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 
 import { TaskService } from '../../../services/task.service';
 import { ToastService } from '../../../services/toast.service';
-import { ConfirmDialogComponent } from '../../widgets/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/widgets/confirm-dialog/confirm-dialog.component';
 import { Task } from './../../../interfaces/task';
 
 @Component({

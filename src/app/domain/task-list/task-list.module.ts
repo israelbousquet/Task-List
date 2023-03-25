@@ -18,8 +18,6 @@ import { TaskDeleteComponent } from './components/tasks/task-delete/task-delete.
 import { TaskProgressComponent } from './components/tasks/task-progress/task-progress.component';
 import { TaskTitleComponent } from './components/tasks/task-title/task-title.component';
 import { TaskComponent } from './components/tasks/task/task.component';
-import { ConfirmDialogComponent } from './components/widgets/confirm-dialog/confirm-dialog.component';
-import { EditDialogComponent } from './components/widgets/edit-dialog/edit-dialog.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TaskListDomainRoutingModule } from './task-list-routing.module';
 
@@ -32,9 +30,7 @@ import { TaskListDomainRoutingModule } from './task-list-routing.module';
     TaskComponent,
     TaskAddInputComponent,
     SubtaskComponent,
-    ConfirmDialogComponent,
     TaskDeleteComponent,
-    EditDialogComponent,
     ErrorMsgComponent,
   ],
   imports: [
