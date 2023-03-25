@@ -14,9 +14,10 @@ export class TaskProgressComponent implements OnInit {
     private toastService: ToastService
   ) {}
 
-  progress: number = 0;
+  progress: number;
 
   ngOnInit(): void {
+    this.taskService.getTotalPercentProgress();
     this.progressBehavior();
     this.showMessageWhenProgressCompleted();
   }

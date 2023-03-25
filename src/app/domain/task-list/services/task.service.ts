@@ -37,7 +37,9 @@ export class TaskService {
   }
 
   deleteAllTasks() {
-    this.tasks = [];
+    this.tasks.splice(0, this.tasks.length, ...[]);
+    this.setStorage('tasks', []);
+    this.getTotalPercentProgress();
   }
 
   deleteTask(taskId: number) {
@@ -111,6 +113,7 @@ export class TaskService {
       }, 0) ?? 0;
 
     const total = Math.floor((subtaskCheckedLength * 100) / subtaskLength);
+    console.log(total);
     if (isNaN(total)) {
       return this.checkboxChanged.next(0);
     }
