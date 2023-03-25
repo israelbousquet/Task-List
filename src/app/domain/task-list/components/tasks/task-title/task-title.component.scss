@@ -43,11 +43,11 @@
   .mat-card {
     padding: 15px 20px;
     border-radius: 30px;
-    background-color: $bg-color;
+    background-color: $primary-color;
   }
 
   .mat-icon {
-    color: $tertiary-color;
+    color: $secondary-color;
   }
 
   &:hover {
