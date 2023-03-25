@@ -2,5 +2,11 @@
   <div class="title">
     <h2>Task</h2>
     <app-task-progress></app-task-progress>
+    <mat-card style="cursor: pointer" (click)="deleteAllTasks()">
+      <div class="painel-open-delete-button">
+        <span>Deletar todas as Tasks</span>
+        <mat-icon>delete</mat-icon>
+      </div>
+    </mat-card>
   </div>
 </header>

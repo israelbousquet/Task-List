@@ -29,4 +29,35 @@
       gap: 20px;
     }
   }
+
+  .painel-open-delete-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    span {
+      color: $secondary-color;
+    }
+  }
+
+  .mat-card {
+    padding: 15px 20px;
+    border-radius: 30px;
+    background-color: $bg-color;
+  }
+
+  .mat-icon {
+    color: $tertiary-color;
+  }
+
+  &:hover {
+    .mat-card {
+      transition: 0.2s ease;
+      background: $red-primary-color;
+    }
+    .mat-icon {
+      transition: 0.2s ease;
+      color: $secondary-color;
+    }
+  }
 }

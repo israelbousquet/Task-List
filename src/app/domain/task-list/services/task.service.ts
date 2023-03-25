@@ -36,6 +36,10 @@ export class TaskService {
     this.setStorage('tasks', this.tasks);
   }
 
+  deleteAllTasks() {
+    this.tasks = [];
+  }
+
   deleteTask(taskId: number) {
     const findIndex = this.tasks.findIndex((task) => task.id === taskId);
     this.tasks.splice(findIndex, 1);

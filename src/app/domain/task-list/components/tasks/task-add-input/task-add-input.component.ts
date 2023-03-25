@@ -24,5 +24,7 @@ export class TaskAddInputComponent implements OnInit {
   emitValue() {
     this.valueChange.emit(this.form.controls.name.value);
     this.form.reset();
+    this.form.controls.name.clearValidators();
+    this.form.controls.name.updateValueAndValidity();
   }
 }
