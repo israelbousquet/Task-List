@@ -17,16 +17,13 @@ export class TaskProgressComponent implements OnInit {
   progress: number = 0;
 
   ngOnInit(): void {
-    this.getProgressFromStorage();
-    this.progressReactToChangeCheckbox();
+    this.progressBehavior();
     this.showMessageWhenProgressCompleted();
   }
 
-  progressReactToChangeCheckbox() {
-    this.taskService.checkboxChanged$.subscribe(() => {
-      const progress = this.taskService.getPercentProgress();
-      this.progress = progress;
-      this.taskService.setStorage('totalCheck', this.progress);
+  progressBehavior() {
+    this.taskService.checkboxChangedValue$$.subscribe((value: number) => {
+      this.progress = value;
     });
   }
 
@@ -38,11 +35,5 @@ export class TaskProgressComponent implements OnInit {
         );
       }
     });
-  }
-
-  getProgressFromStorage() {
-    const progressStorage = this.taskService.getStorage('totalCheck') ?? 0;
-    console.log(progressStorage);
-    this.progress = progressStorage;
   }
 }

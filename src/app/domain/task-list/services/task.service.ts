@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 
 import { Task } from '../interfaces/task';
 import { Subtask } from './../interfaces/subtask';
@@ -41,7 +41,7 @@ export class TaskService {
     this.tasks.splice(findIndex, 1);
     this.setStorage('tasks', this.tasks);
 
-    this.checkboxChangedSource.next(0);
+    this.getTotalPercentProgress();
   }
 
   deleteSubTask(subtaskId: number, taskIndex: number) {
@@ -51,7 +51,7 @@ export class TaskService {
     console.log(findIndex);
     this.tasks[taskIndex].subtask.splice(findIndex, 1);
     this.setStorage('tasks', this.tasks);
-    this.checkboxChangedSource.next(0);
+    this.getTotalPercentProgress();
   }
 
   addSubTask(subTaskValue: string, taskIndex: number) {
@@ -70,12 +70,13 @@ export class TaskService {
     };
     this.tasks[taskIndex].subtask.push(newSubTask);
     this.setStorage('tasks', this.tasks);
-    this.checkboxChangedSource.next(0);
+    this.getTotalPercentProgress();
   }
 
   editSubtask(taskIndex: number, subtaskIndex: number, subtaskNew: string) {
     this.tasks[taskIndex].subtask[subtaskIndex].name = subtaskNew;
     this.setStorage('tasks', this.tasks);
+    this.getTotalPercentProgress();
   }
 
   setStorage(key: string, data: any) {
@@ -86,42 +87,32 @@ export class TaskService {
     return JSON.parse(window.localStorage.getItem(key) || '[]');
   }
 
-  removeTaskStorage(id: number) {
-    const actualTasks = this.getStorage('tasks');
-    const newTasks = actualTasks.filter((task: Task) => task.id !== id);
-    this.setStorage('tasks', newTasks);
-  }
+  private checkboxChanged = new BehaviorSubject<number>(0);
+  checkboxChangedValue$$ = this.checkboxChanged.asObservable();
 
-  getCheckedSubTasks(): number {
-    let count = 0;
-    this.tasks.map(({ subtask }) =>
-      subtask.map(({ checked }) => {
-        if (checked) count++;
-      })
-    );
-    return count;
-  }
+  getTotalPercentProgress() {
+    const subtaskLength =
+      this.tasks.reduce((sum, { subtask }) => {
+        return sum + subtask.length;
+      }, 0) ?? 0;
 
-  getTotalSubtasks(): number {
-    let count = 0;
-    for (const task of this.tasks) {
-      count += task.subtask.length;
-    }
-    return count;
-  }
+    const subtaskCheckedLength =
+      this.tasks.reduce((sum, { subtask }) => {
+        return (
+          sum +
+          subtask.reduce((sum, { checked }) => {
+            return sum + (checked ? 1 : 0);
+          }, 0)
+        );
+      }, 0) ?? 0;
 
-  getPercentProgress() {
-    const totalChecked = this.getCheckedSubTasks();
-    const totalSubTasks = this.getTotalSubtasks();
-    const total = (totalChecked * 100) / totalSubTasks;
+    const total = Math.floor((subtaskCheckedLength * 100) / subtaskLength);
     if (isNaN(total)) {
-      return 0;
+      return this.checkboxChanged.next(0);
     }
-    return Math.floor(total);
-  }
 
-  private checkboxChangedSource = new Subject<number>();
-  checkboxChanged$ = this.checkboxChangedSource.asObservable();
+    this.checkboxChanged.next(total);
+  }
 
   checkboxClickedToShowMessage$ = new Subject<boolean>();
 
@@ -131,9 +122,8 @@ export class TaskService {
         subtask.map((subtask) => {
           if (subtask.id === id) {
             subtask.checked = !subtask.checked;
-            this.getPercentProgress();
+            this.getTotalPercentProgress();
             this.setStorage('tasks', this.tasks);
-            this.checkboxChangedSource.next(0);
             this.checkboxClickedToShowMessage$.next(false);
             return;
           }
