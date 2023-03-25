@@ -11,13 +11,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 import { ErrorMsgComponent } from './components/tasks/error-msg/error-msg.component';
-import { SubtaskItemComponent } from './components/tasks/subtask-item/subtask-item.component';
 import { SubtaskComponent } from './components/tasks/subtask/subtask.component';
 import { TaskAddInputComponent } from './components/tasks/task-add-input/task-add-input.component';
 import { TaskAddComponent } from './components/tasks/task-add/task-add.component';
 import { TaskDeleteComponent } from './components/tasks/task-delete/task-delete.component';
 import { TaskProgressComponent } from './components/tasks/task-progress/task-progress.component';
 import { TaskTitleComponent } from './components/tasks/task-title/task-title.component';
+import { TaskComponent } from './components/tasks/task/task.component';
 import { ConfirmDialogComponent } from './components/widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from './components/widgets/edit-dialog/edit-dialog.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -29,9 +29,9 @@ import { TaskListDomainRoutingModule } from './task-list-routing.module';
     TaskTitleComponent,
     TaskProgressComponent,
     TaskAddComponent,
-    SubtaskComponent,
+    TaskComponent,
     TaskAddInputComponent,
-    SubtaskItemComponent,
+    SubtaskComponent,
     ConfirmDialogComponent,
     TaskDeleteComponent,
     EditDialogComponent,

@@ -1,40 +1,15 @@
-<section class="subtask-container">
-  <div class="subtask">
-    <mat-expansion-panel
-      (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false"
+<div class="subtask-item">
+  <mat-checkbox
+    [checked]="subtask.checked"
+    [ngClass]="{ 'text-checked': subtask.checked }"
+    (change)="changeCheckbox(subtask.id)"
+  >
+    {{ subtask.name }}
+  </mat-checkbox>
+  <div class="subtask-item-actions">
+    <mat-icon (click)="editSubtask(subtask)" class="edit">edit</mat-icon>
+    <mat-icon (click)="deleteSubtask(subtask, taskIndex)" class="delete"
+      >delete</mat-icon
     >
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{ task.taskname }}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="painel-open">
-        <app-task-add-input
-          (valueChange)="emitValue($event)"
-        ></app-task-add-input>
-
-        <div class="painel-open-content">
-          <ul>
-            <li *ngFor="let subtask of task.subtask; let i = index">
-              <mat-card>
-                <ng-container *ngIf="subtask.name !== ''">
-                  <app-subtask-item
-                    [subtask]="subtask"
-                    [task]="task"
-                    [taskIndex]="taskIndex"
-                    [subtaskIndex]="i"
-                  ></app-subtask-item>
-                </ng-container>
-              </mat-card>
-            </li>
-          </ul>
-
-          <div class="painel-open-delete">
-            <app-task-delete [task]="task"></app-task-delete>
-          </div>
-        </div>
-      </div>
-    </mat-expansion-panel>
   </div>
-</section>
+</div>

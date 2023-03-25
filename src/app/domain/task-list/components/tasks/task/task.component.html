@@ -1,0 +1,40 @@
+<section class="subtask-container">
+  <div class="subtask">
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ task.taskname }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="painel-open">
+        <app-task-add-input
+          (valueChange)="emitValue($event)"
+        ></app-task-add-input>
+
+        <div class="painel-open-content">
+          <ul>
+            <li *ngFor="let subtask of task.subtask; let i = index">
+              <mat-card>
+                <ng-container *ngIf="subtask.name !== ''">
+                  <app-subtask
+                    [subtask]="subtask"
+                    [task]="task"
+                    [taskIndex]="taskIndex"
+                    [subtaskIndex]="i"
+                  ></app-subtask>
+                </ng-container>
+              </mat-card>
+            </li>
+          </ul>
+
+          <div class="painel-open-delete">
+            <app-task-delete [task]="task"></app-task-delete>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </div>
+</section>

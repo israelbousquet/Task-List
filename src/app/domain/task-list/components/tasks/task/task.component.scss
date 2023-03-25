@@ -1,0 +1,72 @@
+@import "/src/scss/variables.scss";
+:host {
+  .subtask-container {
+    max-width: 100vw;
+    .subtask {
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      margin: 20px auto;
+
+      border-radius: 15px;
+      color: $secondary-color;
+    }
+
+    @media (max-width: 768px) {
+      .subtask {
+        width: 90%;
+      }
+    }
+
+    .painel-open ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .painel-open-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 25px;
+    }
+
+    .painel-open-delete {
+      display: flex;
+      justify-content: center;
+    }
+
+    .mat-expansion-panel {
+      border-radius: 15px;
+      padding: 10px 0;
+      width: 100%;
+      background-color: $primary-color;
+    }
+    .mat-expansion-panel-header-title {
+      color: $secondary-color;
+    }
+    .mat-expansion-panel:not([class*="mat-elevation-z"]) {
+      box-shadow: none;
+    }
+    .mat-expansion-indicator::after {
+      color: white;
+    }
+    .mat-expansion-panel-header-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .mat-checkbox-label {
+      color: $secondary-color;
+    }
+
+    .mat-card {
+      padding: 8px;
+      background-color: $tertiary-color;
+    }
+  }
+}
