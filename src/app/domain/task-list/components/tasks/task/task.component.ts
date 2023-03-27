@@ -13,8 +13,6 @@ export class TaskComponent {
   @Input() taskIndex: number;
   @Output() taskChange = new EventEmitter<string>();
 
-  panelOpenState = false;
-
   constructor(private taskService: TaskService) {}
 
   emitValue(value: string) {
