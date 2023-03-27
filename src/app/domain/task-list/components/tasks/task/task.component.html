@@ -17,16 +17,14 @@
         <div class="painel-open-content">
           <ul>
             <li *ngFor="let subtask of task.subtask; let i = index">
-              <mat-card>
-                <ng-container *ngIf="subtask.name !== ''">
-                  <app-subtask
-                    [subtask]="subtask"
-                    [task]="task"
-                    [taskIndex]="taskIndex"
-                    [subtaskIndex]="i"
-                  ></app-subtask>
-                </ng-container>
-              </mat-card>
+              <ng-container *ngIf="subtask.name !== ''">
+                <app-subtask
+                  [subtask]="subtask"
+                  [task]="task"
+                  [taskIndex]="taskIndex"
+                  [subtaskIndex]="i"
+                ></app-subtask>
+              </ng-container>
             </li>
           </ul>
 

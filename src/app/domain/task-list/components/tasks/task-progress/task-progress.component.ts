@@ -25,7 +25,7 @@ export class TaskProgressComponent implements OnInit {
   }
 
   progressBehavior() {
-    this.progress$$ = this.taskService.checkboxChangedValue$$.pipe(
+    this.progress$$ = this.taskService.taskPercentage$$.pipe(
       tap((value) => (this.progressComplete = value))
     );
   }

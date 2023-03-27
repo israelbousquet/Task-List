@@ -92,8 +92,7 @@ export class TaskService {
     return JSON.parse(window.localStorage.getItem(key) || '[]');
   }
 
-  private checkboxChanged = new BehaviorSubject<number>(0);
-  checkboxChangedValue$$ = this.checkboxChanged.asObservable();
+  public taskPercentage$$ = new BehaviorSubject<number>(0);
 
   getTotalPercentProgress() {
     const subtaskLength =
@@ -114,10 +113,10 @@ export class TaskService {
     const total = Math.floor((subtaskCheckedLength * 100) / subtaskLength);
 
     if (isNaN(total)) {
-      return this.checkboxChanged.next(0);
+      return this.taskPercentage$$.next(0);
     }
 
-    this.checkboxChanged.next(total);
+    this.taskPercentage$$.next(total);
   }
 
   checkboxClickedToShowMessage$ = new Subject<boolean>();
