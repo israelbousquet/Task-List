@@ -2,8 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HotToastService } from '@ngneat/hot-toast';
 
-import { Subtask } from '../../../interfaces/subtask';
-import { Task } from '../../../interfaces/task';
+import { Task, Subtask } from '../../../interfaces/task';
 import { TaskService } from '../../../services/task.service';
 import { ToastService } from '../../../services/toast.service';
 import { ConfirmDialogComponent } from 'src/app/widgets/confirm-dialog/confirm-dialog.component';
@@ -14,7 +13,7 @@ import { EditDialogComponent } from 'src/app/widgets/edit-dialog/edit-dialog.com
   templateUrl: './subtask.component.html',
   styleUrls: ['./subtask.component.scss'],
 })
-export class SubtaskComponent implements OnInit {
+export class SubtaskComponent {
   @Input() subtask: Subtask;
   @Input() task: Task;
   @Input() taskIndex: number;
@@ -26,8 +25,6 @@ export class SubtaskComponent implements OnInit {
     private toast: HotToastService,
     private toastService: ToastService
   ) {}
-
-  ngOnInit(): void {}
 
   changeCheckbox(id: number) {
     this.taskService.changeCheckbox(id);

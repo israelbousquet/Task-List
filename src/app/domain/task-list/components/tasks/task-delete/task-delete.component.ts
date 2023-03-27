@@ -12,7 +12,7 @@ import { Task } from './../../../interfaces/task';
   templateUrl: './task-delete.component.html',
   styleUrls: ['./task-delete.component.scss'],
 })
-export class TaskDeleteComponent implements OnInit {
+export class TaskDeleteComponent {
   @Input() task: Task;
   constructor(
     private taskService: TaskService,
@@ -20,8 +20,6 @@ export class TaskDeleteComponent implements OnInit {
     private toast: HotToastService,
     private toastService: ToastService
   ) {}
-
-  ngOnInit(): void {}
 
   deleteTask(id: number) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {

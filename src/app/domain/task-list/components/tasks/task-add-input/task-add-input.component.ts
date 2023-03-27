@@ -13,8 +13,6 @@ export class TaskAddInputComponent implements OnInit {
 
   @Output() valueChange = new EventEmitter<string>();
 
-  constructor() {}
-
   ngOnInit(): void {
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),

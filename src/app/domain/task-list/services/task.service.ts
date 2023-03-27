@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 
-import { Task } from '../interfaces/task';
-import { Subtask } from './../interfaces/subtask';
+import { Subtask, Task } from '../interfaces/task';
 
 @Injectable({
   providedIn: 'root',

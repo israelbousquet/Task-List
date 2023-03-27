@@ -8,7 +8,7 @@ import { TaskService } from '../../../services/task.service';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
   @Input() task: Task;
   @Input() taskIndex: number;
   @Output() taskChange = new EventEmitter<string>();
@@ -16,8 +16,6 @@ export class TaskComponent implements OnInit {
   panelOpenState = false;
 
   constructor(private taskService: TaskService) {}
-
-  ngOnInit(): void {}
 
   emitValue(value: string) {
     this.taskChange.emit(value);
