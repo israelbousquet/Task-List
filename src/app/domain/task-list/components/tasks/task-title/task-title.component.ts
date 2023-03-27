@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/widgets/confirm-dialog/confirm-dialog.component';
 
 import { TaskService } from '../../../services/task.service';
-import { ConfirmDialogComponent } from 'src/app/widgets/confirm-dialog/confirm-dialog.component';
 import { ToastService } from './../../../services/toast.service';
 
 @Component({
