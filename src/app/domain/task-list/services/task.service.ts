@@ -96,16 +96,16 @@ export class TaskService {
 
   getTotalPercentProgress() {
     const subtaskLength =
-      this.tasks.reduce((sum, { subtask }) => {
-        return sum + subtask.length;
+      this.tasks.reduce((acc, { subtask }) => {
+        return acc + subtask.length;
       }, 0) ?? 0;
 
     const subtaskCheckedLength =
-      this.tasks.reduce((sum, { subtask }) => {
+      this.tasks.reduce((acc, { subtask }) => {
         return (
-          sum +
-          subtask.reduce((sum, { checked }) => {
-            return sum + (checked ? 1 : 0);
+          acc +
+          subtask.reduce((acc, { checked }) => {
+            return acc + (checked ? 1 : 0);
           }, 0)
         );
       }, 0) ?? 0;
