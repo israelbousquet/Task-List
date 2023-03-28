@@ -1,7 +1,10 @@
 <section class="add-task-container">
   <div class="add-task">
     <div class="add-task-input">
-      <app-task-add-input (valueChange)="addTask($event)"></app-task-add-input>
+      <app-task-add-input
+        [textInput]="'Digite a nova tarefa'"
+        (valueChange)="addTask($event)"
+      ></app-task-add-input>
     </div>
   </div>
 

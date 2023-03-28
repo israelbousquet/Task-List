@@ -2,7 +2,7 @@
   <div class="add-task">
     <div class="add-input">
       <mat-form-field appearance="fill" style="width: 100%">
-        <mat-label>Digite a nova tarefa</mat-label>
+        <mat-label>{{ textInput }}</mat-label>
         <input matInput #input formControlName="name" maxlength="50" />
         <mat-hint align="end">{{ input.value.length }}/50</mat-hint>
         <mat-error

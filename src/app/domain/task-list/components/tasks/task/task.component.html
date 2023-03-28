@@ -8,7 +8,8 @@
       </mat-expansion-panel-header>
       <div class="painel-open">
         <app-task-add-input
-          (valueChange)="emitValue($event)"
+          [textInput]="'Digite a Sub-Tarefa'"
+          (valueChange)="emitValueToSubtask($event)"
         ></app-task-add-input>
 
         <div class="painel-open-content">

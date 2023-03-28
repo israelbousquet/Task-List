@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -11,6 +11,7 @@ export class TaskAddInputComponent implements OnInit {
     name: FormControl;
   }>;
 
+  @Input() textInput: string = '';
   @Output() valueChange = new EventEmitter<string>();
 
   ngOnInit(): void {

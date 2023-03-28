@@ -15,7 +15,7 @@ export class TaskComponent {
 
   constructor(private taskService: TaskService) {}
 
-  emitValue(value: string) {
+  emitValueToSubtask(value: string) {
     this.taskChange.emit(value);
   }
 
