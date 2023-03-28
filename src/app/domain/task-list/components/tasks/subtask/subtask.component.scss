@@ -10,6 +10,11 @@
     background-color: $tertiary-color;
     animation: slideLeft 0.2s forwards;
 
+    .mat-checkbox-layout {
+      display: flex;
+      align-items: center;
+    }
+
     .text-checked {
       text-decoration: line-through;
     }

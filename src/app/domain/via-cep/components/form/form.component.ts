@@ -1,7 +1,7 @@
 import { CepService } from './../../services/cep.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { throwError } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
 import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
@@ -33,14 +33,19 @@ export class FormComponent implements OnInit {
     });
   }
 
+  public loading$$ = new BehaviorSubject<boolean>(false);
+
   consultaCEP() {
+    this.loading$$.next(true);
     const cep = this.form.get('cep')?.value;
     this.cepService.getCep(cep).subscribe({
       next: (data) => {
+        this.loading$$.next(false);
         console.log(data);
         this.setValueForm(data);
       },
       error: (err) => {
+        this.loading$$.next(false);
         this.toastService.showToastError('Cep não encontrado');
       },
     });
@@ -49,9 +54,9 @@ export class FormComponent implements OnInit {
   setValueForm(dataCep: any) {
     this.form.patchValue({
       bairro: dataCep.bairro,
-      rua: dataCep.logradouro,
-      cidade: dataCep.localidade,
-      estado: dataCep.uf,
+      rua: dataCep.rua,
+      cidade: dataCep.cidade,
+      estado: dataCep.estado,
     });
   }
 }
