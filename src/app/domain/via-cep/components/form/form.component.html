@@ -2,35 +2,35 @@
   <div class="input-box">
     <mat-form-field appearance="fill">
       <mat-label>CEP</mat-label>
-      <input matInput />
+      <input matInput formControlName="cep" (blur)="consultaCEP()" />
     </mat-form-field>
   </div>
 
   <div class="input-box">
     <mat-form-field appearance="fill">
       <mat-label>Rua</mat-label>
-      <input matInput />
+      <input matInput formControlName="rua" />
     </mat-form-field>
   </div>
 
   <div class="input-box">
     <mat-form-field appearance="fill">
       <mat-label>Bairro</mat-label>
-      <input matInput />
+      <input matInput formControlName="bairro" />
     </mat-form-field>
   </div>
 
   <div class="input-box">
     <mat-form-field appearance="fill">
       <mat-label>Cidade</mat-label>
-      <input matInput />
+      <input matInput formControlName="cidade" />
     </mat-form-field>
   </div>
 
   <div class="input-box grid-span-2">
     <mat-form-field appearance="fill" class="input">
       <mat-label>Estado</mat-label>
-      <input matInput />
+      <input matInput formControlName="estado" />
     </mat-form-field>
   </div>
 </form>

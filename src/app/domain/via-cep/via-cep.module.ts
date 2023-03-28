@@ -5,8 +5,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { FormComponent } from './components/form/form.component';
-import { ViaCepRoutingModule } from './via-cep-routing.module';
 import { CepComponent } from './pages/cep/cep.component';
+import { ViaCepRoutingModule } from './via-cep-routing.module';
 
 @NgModule({
   declarations: [FormComponent, CepComponent],
