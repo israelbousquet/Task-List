@@ -9,6 +9,10 @@ import { FormComponent } from './components/form/form.component';
 import { CepComponent } from './pages/cep/cep.component';
 import { ViaCepRoutingModule } from './via-cep-routing.module';
 
+import { SharedModule } from 'src/app/shared/shared.module';
+
+import { NgxMaskModule } from 'ngx-mask';
+
 @NgModule({
   declarations: [FormComponent, CepComponent],
   imports: [
@@ -19,6 +23,9 @@ import { ViaCepRoutingModule } from './via-cep-routing.module';
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    SharedModule,
+    NgxMaskModule.forChild(),
   ],
+  bootstrap: [CepComponent],
 })
 export class ViaCepModule {}

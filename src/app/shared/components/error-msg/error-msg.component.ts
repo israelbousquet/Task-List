@@ -9,7 +9,6 @@ import { FormControl } from '@angular/forms';
 export class ErrorMsgComponent {
   @Input() control: FormControl;
   @Input() label: string;
-  @Input() inputLength?: number = 75;
 
   get errorMessage() {
     for (const erro in this.control.errors) {
@@ -20,7 +19,6 @@ export class ErrorMsgComponent {
   generateMessageError(label: string, erroKey: string) {
     const message: { [key: string]: any } = {
       required: `${label} é um campo obrigatório`,
-      inputLengthInvalid: `O campo não pode conter mais de ${this.inputLength} letras`,
     };
 
     return message[erroKey];

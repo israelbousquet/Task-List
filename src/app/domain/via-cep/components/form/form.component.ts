@@ -25,7 +25,11 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      cep: new FormControl('', [Validators.required]),
+      cep: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(8),
+      ]),
       rua: new FormControl('', [Validators.required]),
       bairro: new FormControl('', [Validators.required]),
       cidade: new FormControl('', [Validators.required]),
@@ -36,8 +40,11 @@ export class FormComponent implements OnInit {
   public loading$$ = new BehaviorSubject<boolean>(false);
 
   consultaCEP() {
-    this.loading$$.next(true);
     const cep = this.form.get('cep')?.value;
+    if (cep.length < 8) return;
+
+    this.loading$$.next(true);
+
     this.cepService.getCep(cep).subscribe({
       next: (data) => {
         this.loading$$.next(false);
@@ -58,5 +65,12 @@ export class FormComponent implements OnInit {
       cidade: dataCep.cidade,
       estado: dataCep.estado,
     });
+  }
+
+  public onSubmit() {
+    for (const erro in this.form.controls.cep.errors) {
+      console.log(erro);
+    }
+    console.log(this.form.controls);
   }
 }

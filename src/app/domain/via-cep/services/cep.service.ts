@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { delay, map, Observable, tap } from 'rxjs';
 
 import { Cep } from '../interfaces/cep';
 
@@ -23,7 +23,8 @@ export class CepService {
         bairro: response.bairro,
         cidade: response.localidade,
         estado: response.uf,
-      }))
+      })),
+      delay(1000)
     );
   }
 }
