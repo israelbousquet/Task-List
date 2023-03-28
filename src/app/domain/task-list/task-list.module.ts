@@ -9,8 +9,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { SharedModule } from 'src/app/shared/shared.module';
 
-import { ErrorMsgComponent } from './components/tasks/error-msg/error-msg.component';
 import { SubtaskComponent } from './components/tasks/subtask/subtask.component';
 import { TaskAddInputComponent } from './components/tasks/task-add-input/task-add-input.component';
 import { TaskAddComponent } from './components/tasks/task-add/task-add.component';
@@ -18,12 +18,15 @@ import { TaskDeleteComponent } from './components/tasks/task-delete/task-delete.
 import { TaskProgressComponent } from './components/tasks/task-progress/task-progress.component';
 import { TaskTitleComponent } from './components/tasks/task-title/task-title.component';
 import { TaskComponent } from './components/tasks/task/task.component';
-import { HomeComponent } from './pages/home/home.component';
+import { TasksComponent } from './pages/tasks/tasks.component';
 import { TaskListDomainRoutingModule } from './task-list-routing.module';
+import { HomeComponent } from './pages/home/home.component';
+import { AddProjectComponent } from './components/projects/add-project/add-project.component';
+import { ProjectComponent } from './components/projects/project/project.component';
 
 @NgModule({
   declarations: [
-    HomeComponent,
+    TasksComponent,
     TaskTitleComponent,
     TaskProgressComponent,
     TaskAddComponent,
@@ -31,7 +34,9 @@ import { TaskListDomainRoutingModule } from './task-list-routing.module';
     TaskAddInputComponent,
     SubtaskComponent,
     TaskDeleteComponent,
-    ErrorMsgComponent,
+    HomeComponent,
+    AddProjectComponent,
+    ProjectComponent,
   ],
   imports: [
     CommonModule,
@@ -46,6 +51,7 @@ import { TaskListDomainRoutingModule } from './task-list-routing.module';
     MatIconModule,
     MatCardModule,
     MatDialogModule,
+    SharedModule,
   ],
 })
 export class TaskListDomainModule {}

@@ -14,6 +14,11 @@ const routes: Routes = [
         (m) => m.TaskListDomainModule
       ),
   },
+  {
+    path: 'viacep',
+    loadChildren: () =>
+      import('./domain/via-cep/via-cep.module').then((m) => m.ViaCepModule),
+  },
 ];
 
 @NgModule({

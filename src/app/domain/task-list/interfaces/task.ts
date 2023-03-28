@@ -1,3 +1,9 @@
+export interface Project {
+  id: number;
+  projectName: string;
+  tasks: Task[];
+}
+
 export interface Task {
   id: number;
   taskname: string;

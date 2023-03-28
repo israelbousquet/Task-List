@@ -3,8 +3,20 @@
 @import "/src/scss/reset.scss";
 @import "/src/scss/material-global.scss";
 
-* {
+.mat-typography h1,
+.mat-typography h2,
+.mat-typography h3,
+.mat-typography h4,
+.mat-typography h5,
+.mat-typography h6,
+.mat-typography p,
+.mat-typography span {
   font-family: "Plus Jakarta Sans", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+* {
   box-sizing: border-box;
 }
 

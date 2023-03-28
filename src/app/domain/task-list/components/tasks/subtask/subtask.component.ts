@@ -6,7 +6,7 @@ import { EditDialogComponent } from 'src/app/widgets/edit-dialog/edit-dialog.com
 
 import { Subtask, Task } from '../../../interfaces/task';
 import { TaskService } from '../../../services/task.service';
-import { ToastService } from '../../../services/toast.service';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-subtask',

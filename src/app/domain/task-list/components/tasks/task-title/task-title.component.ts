@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/widgets/confirm-dialog/confirm-dialog.component';
 
 import { TaskService } from '../../../services/task.service';
-import { ToastService } from './../../../services/toast.service';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-task-title',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 
 import { TaskService } from '../../../services/task.service';
-import { ToastService } from './../../../services/toast.service';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-task-progress',
