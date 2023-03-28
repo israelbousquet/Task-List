@@ -1,1 +1,36 @@
-<form [formGroup]="form"></form>
+<form [formGroup]="form">
+  <div class="input-box">
+    <mat-form-field appearance="fill">
+      <mat-label>CEP</mat-label>
+      <input matInput />
+    </mat-form-field>
+  </div>
+
+  <div class="input-box">
+    <mat-form-field appearance="fill">
+      <mat-label>Rua</mat-label>
+      <input matInput />
+    </mat-form-field>
+  </div>
+
+  <div class="input-box">
+    <mat-form-field appearance="fill">
+      <mat-label>Bairro</mat-label>
+      <input matInput />
+    </mat-form-field>
+  </div>
+
+  <div class="input-box">
+    <mat-form-field appearance="fill">
+      <mat-label>Cidade</mat-label>
+      <input matInput />
+    </mat-form-field>
+  </div>
+
+  <div class="input-box grid-span-2">
+    <mat-form-field appearance="fill" class="input">
+      <mat-label>Estado</mat-label>
+      <input matInput />
+    </mat-form-field>
+  </div>
+</form>

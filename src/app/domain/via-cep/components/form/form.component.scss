@@ -1,0 +1,29 @@
+@import "src/scss/variables.scss";
+
+:host {
+  form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    .grid-span-2 {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    form {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 1000px) {
+    form {
+      display: block;
+    }
+  }
+}
