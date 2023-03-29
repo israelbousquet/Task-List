@@ -10,6 +10,12 @@
     align-items: center;
     justify-content: space-around;
 
+    .menu-itens-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .toggle {
       .mat-slide-toggle {
         display: flex;
@@ -49,5 +55,16 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .menu-itens-container {
+    flex-direction: column;
+    gap: 20px;
   }
 }

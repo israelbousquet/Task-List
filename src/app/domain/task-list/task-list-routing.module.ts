@@ -7,7 +7,7 @@ import { TasksComponent } from './pages/tasks/tasks.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: TasksComponent,
   },
   {
     path: 'tasks',

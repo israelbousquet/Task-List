@@ -3,16 +3,18 @@
     <div class="menu-logo">
       <h1>Projects</h1>
     </div>
-    <nav class="menu-itens">
-      <ul>
-        <li><a routerLink="/viacep">ViaCep</a></li>
-        <li><a routerLink="/">Todo List</a></li>
-      </ul>
-    </nav>
-    <div class="toggle">
-      <mat-slide-toggle [(ngModel)]="isChecked" (change)="changed($event)">
-        <mat-icon>{{ nameMode }}</mat-icon>
-      </mat-slide-toggle>
+    <div class="menu-itens-container">
+      <nav class="menu-itens">
+        <ul>
+          <li><a routerLink="/viacep">ViaCep</a></li>
+          <li><a routerLink="/">Todo List</a></li>
+        </ul>
+      </nav>
+      <div class="toggle">
+        <mat-slide-toggle [(ngModel)]="isChecked" (change)="changed($event)">
+          <mat-icon>{{ nameMode }}</mat-icon>
+        </mat-slide-toggle>
+      </div>
     </div>
   </div>
 </header>
