@@ -10,6 +10,18 @@
     align-items: center;
     justify-content: space-around;
 
+    .toggle {
+      .mat-slide-toggle {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .mat-icon {
+          color: var(--secondary-color);
+        }
+      }
+    }
+
     .menu-logo {
       h1 {
         color: var(--bg-color-dark);
@@ -26,7 +38,7 @@
 
         li a {
           font-size: 1.1rem;
-          color: var(--secondary-color);
+          color: white;
           padding: 12px;
           border-radius: 8px;
           transition: 0.2s ease;

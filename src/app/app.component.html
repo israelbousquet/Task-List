@@ -9,6 +9,11 @@
         <li><a routerLink="/">Todo List</a></li>
       </ul>
     </nav>
+    <div class="toggle">
+      <mat-slide-toggle [(ngModel)]="isChecked" (change)="changed($event)">
+        <mat-icon>{{ nameMode }}</mat-icon>
+      </mat-slide-toggle>
+    </div>
   </div>
 </header>
 <router-outlet></router-outlet>
