@@ -48,11 +48,11 @@ export class FormComponent implements OnInit {
     this.cepService.getCep(cep).subscribe({
       next: (data) => {
         this.loading$$.next(false);
-        console.log(data);
         this.setValueForm(data);
       },
       error: (err) => {
         this.loading$$.next(false);
+        this.setValueForm('');
         this.toastService.showToastError('Cep não encontrado');
       },
     });
@@ -60,17 +60,14 @@ export class FormComponent implements OnInit {
 
   setValueForm(dataCep: any) {
     this.form.patchValue({
-      bairro: dataCep.bairro,
-      rua: dataCep.rua,
-      cidade: dataCep.cidade,
-      estado: dataCep.estado,
+      bairro: dataCep.bairro ?? '',
+      rua: dataCep.rua ?? '',
+      cidade: dataCep.cidade ?? '',
+      estado: dataCep.estado ?? '',
     });
   }
 
   public onSubmit() {
-    for (const erro in this.form.controls.cep.errors) {
-      console.log(erro);
-    }
-    console.log(this.form.controls);
+    this.toastService.showToastSucess('Formulário enviado com sucesso');
   }
 }
