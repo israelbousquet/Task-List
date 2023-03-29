@@ -14,19 +14,19 @@
       margin-top: 25px;
     }
 
-    button {
-      cursor: pointer;
-      background-color: $blue-secondary-color;
-      &[disabled] {
-        cursor: not-allowed;
-        &:hover {
-          background-color: $blue-secondary-color;
-        }
-      }
-      &:hover {
-        background-color: $blue-primary-color;
-      }
-    }
+    // button {
+    //   cursor: pointer;
+    //   background-color: $blue-secondary-color;
+    //   &[disabled] {
+    //     cursor: not-allowed;
+    //     &:hover {
+    //       background-color: $blue-secondary-color;
+    //     }
+    //   }
+    //   &:hover {
+    //     background-color: $blue-primary-color;
+    //   }
+    // }
 
     .grid-span-2 {
       grid-column: span 2;
