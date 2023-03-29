@@ -2,7 +2,7 @@
 :host {
   .add-task {
     max-width: 100vw;
-    // background-color: $tertiary-color;
+
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -23,7 +23,7 @@
         width: 50px;
         border: none;
         border-radius: 5px;
-        background-color: $blue-primary-color;
+        background-color: var(--blue-primary-color);
       }
     }
     .add-input-field {
@@ -31,7 +31,7 @@
     }
 
     .mat-raised-button.mat-primary {
-      background-color: $blue-primary-color;
+      background-color: var(--blue-primary-color);
     }
 
     .mat-hint {

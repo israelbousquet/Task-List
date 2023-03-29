@@ -2,11 +2,11 @@
 
 :host {
   .mat-dialog-container {
-    background: $primary-color;
+    background: var(--primary-color);
   }
 
   .mat-dialog-content p {
-    color: $secondary-color;
+    color: var(--secondary-color);
   }
 
   .dialog-edit-buttons {

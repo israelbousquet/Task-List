@@ -7,27 +7,27 @@
     gap: 10px;
 
     span {
-      color: $secondary-color;
+      color: var(--secondary-color);
     }
   }
 
   .mat-card {
     padding: 5px 10px;
-    background-color: $bg-color;
+    background-color: var(--bg-color);
   }
 
   .mat-icon {
-    color: $tertiary-color;
+    color: var(--tertiary-color);
   }
 
   &:hover {
     .mat-card {
       transition: 0.2s ease;
-      background: $bg-color-dark;
+      background: var(--bg-color-dark);
     }
     .mat-icon {
       transition: 0.2s ease;
-      color: $red-primary-color;
+      color: var(--red-primary-color);
     }
   }
 }

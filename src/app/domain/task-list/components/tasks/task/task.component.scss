@@ -12,7 +12,7 @@
       margin: 20px auto;
 
       border-radius: 15px;
-      color: $secondary-color;
+      color: var(--secondary-color);
     }
 
     @media (max-width: 768px) {
@@ -44,10 +44,10 @@
       border-radius: 15px;
       padding: 10px 0;
       width: 100%;
-      background-color: $primary-color;
+      background-color: var(--primary-color);
     }
     .mat-expansion-panel-header-title {
-      color: $secondary-color;
+      color: var(--secondary-color);
     }
     .mat-expansion-panel:not([class*="mat-elevation-z"]) {
       box-shadow: none;
@@ -61,12 +61,12 @@
     }
 
     .mat-checkbox-label {
-      color: $secondary-color;
+      color: var(--secondary-color);
     }
 
     .mat-card {
       padding: 8px;
-      background-color: $tertiary-color;
+      background-color: var(--tertiary-color);
     }
   }
 }

@@ -9,12 +9,11 @@
       padding: 64px;
       border-radius: 16px;
       margin: 0 auto;
-      // background-color: $bg-color-dark;
 
       .form-left-title {
         margin-bottom: 32px;
         h1 {
-          color: $blue-primary-color;
+          color: var(--blue-primary-color);
           font-size: 1.3rem;
           font-weight: 600;
           line-height: 1.15;

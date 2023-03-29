@@ -4,7 +4,7 @@
     max-width: 100vw;
 
     .title {
-      background-color: $bg-color-dark;
+      background-color: var(--bg-color-dark);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -15,7 +15,7 @@
     }
 
     h2 {
-      color: $secondary-color;
+      color: var(--secondary-color);
       font-size: 3rem;
       font-weight: 700;
     }
@@ -36,25 +36,25 @@
     gap: 10px;
 
     span {
-      color: $secondary-color;
+      color: var(--secondary-color);
     }
   }
 
   .mat-card {
     padding: 15px 20px;
     border-radius: 30px;
-    background-color: $primary-color;
+    background-color: var(--primary-color);
 
     &:hover {
       transition: 0.2s ease;
-      background: $red-primary-color;
+      background: var(--red-primary-color);
     }
 
     .mat-icon {
-      color: $secondary-color;
+      color: var(--secondary-color);
       &:hover {
         transition: 0.2s ease;
-        color: $secondary-color;
+        color: var(--secondary-color);
       }
     }
   }

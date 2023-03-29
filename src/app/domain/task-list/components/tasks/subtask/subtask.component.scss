@@ -7,7 +7,7 @@
     justify-content: space-between;
     border-radius: 10px;
     padding: 8px 16px;
-    background-color: $tertiary-color;
+    background-color: var(--tertiary-color);
     animation: slideLeft 0.2s forwards;
 
     .mat-checkbox-layout {
@@ -20,11 +20,11 @@
     }
 
     .mat-checkbox-layout .mat-checkbox-label {
-      color: $secondary-color;
+      color: var(--secondary-color);
     }
 
     .mat-checkbox {
-      color: $secondary-color;
+      color: var(--secondary-color);
     }
     .mat-checkbox-frame {
       border-color: white;
@@ -46,17 +46,17 @@
     .subtask-item-actions {
       display: flex;
       align-items: center;
-      color: $secondary-color;
+      color: var(--secondary-color);
 
       .edit {
         &:hover {
-          color: $blue-primary-color;
+          color: var(--blue-primary-color);
         }
       }
 
       .delete {
         &:hover {
-          color: $red-primary-color;
+          color: var(--red-primary-color);
         }
       }
     }
