@@ -14,10 +14,15 @@
       margin-top: 25px;
     }
 
-    .mat-raised-button.mat-primary {
+    button {
       cursor: pointer;
       background-color: $blue-secondary-color;
-
+      &[disabled] {
+        cursor: not-allowed;
+        &:hover {
+          background-color: $blue-secondary-color;
+        }
+      }
       &:hover {
         background-color: $blue-primary-color;
       }
