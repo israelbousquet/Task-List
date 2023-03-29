@@ -2,6 +2,11 @@
   background: var(--primary-color);
 }
 
+.mat-card {
+  padding: 8px;
+  background-color: var(--tertiary-color);
+}
+
 .mat-hint {
   color: var(--secondary-color);
 }

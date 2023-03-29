@@ -1,0 +1,33 @@
+.projects-container {
+  width: 100vw;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+    width: 600px;
+    padding: 32px 16px;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: var(--tertiary-color);
+
+    .button-itens {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+
+      .mat-card-title {
+        color: var(--secondary-color);
+        font-weight: 500;
+      }
+    }
+  }
+
+  .projects-grid {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
