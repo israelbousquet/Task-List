@@ -12,13 +12,19 @@ export class ErrorMsgComponent {
 
   get errorMessage() {
     for (const erro in this.control.errors) {
-      return this.generateMessageError(this.label, erro);
+      return this.generateMessageError(
+        this.label,
+        erro,
+        this.control.errors[erro]
+      );
     }
   }
 
-  generateMessageError(label: string, erroKey: string) {
+  generateMessageError(label: string, erroKey: string, validatorValue?: any) {
     const message: { [key: string]: any } = {
       required: `${label} é um campo obrigatório`,
+      maxlength: `${label} deve ter no máximo ${validatorValue.requiredLength} caracteres`,
+      minlength: `${label} deve ter no mínimo ${validatorValue.requiredLength} caracteres`,
     };
 
     return message[erroKey];

@@ -10,8 +10,26 @@
       width: 100%;
     }
 
+    .spinner {
+      margin-top: 25px;
+    }
+
+    .mat-raised-button.mat-primary {
+      cursor: pointer;
+      background-color: $blue-secondary-color;
+
+      &:hover {
+        background-color: $blue-primary-color;
+      }
+    }
+
     .grid-span-2 {
       grid-column: span 2;
+    }
+
+    .grid-span-3 {
+      width: 100%;
+      grid-column: span 3;
     }
   }
 
