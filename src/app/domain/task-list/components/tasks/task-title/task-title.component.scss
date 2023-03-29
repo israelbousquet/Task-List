@@ -44,20 +44,18 @@
     padding: 15px 20px;
     border-radius: 30px;
     background-color: $primary-color;
-  }
 
-  .mat-icon {
-    color: $secondary-color;
-  }
-
-  &:hover {
-    .mat-card {
+    &:hover {
       transition: 0.2s ease;
       background: $red-primary-color;
     }
+
     .mat-icon {
-      transition: 0.2s ease;
       color: $secondary-color;
+      &:hover {
+        transition: 0.2s ease;
+        color: $secondary-color;
+      }
     }
   }
 }
