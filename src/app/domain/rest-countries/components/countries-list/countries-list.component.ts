@@ -26,6 +26,7 @@ export class CountriesListComponent implements OnInit {
     if (countryName.length > 0) {
       this.filteredCountries$ = this.allCountries$.pipe(
         map((countries: any) => {
+          console.log(countries);
           return countries
             .filter((c: any) => {
               const name = c.name.common.toLowerCase();
