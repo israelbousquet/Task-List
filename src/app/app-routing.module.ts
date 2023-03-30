@@ -19,6 +19,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./domain/via-cep/via-cep.module').then((m) => m.ViaCepModule),
   },
+  {
+    path: 'restcountries',
+    loadChildren: () =>
+      import('./domain/rest-countries/rest-countries.module').then(
+        (m) => m.RestCountriesModule
+      ),
+  },
 ];
 
 @NgModule({
