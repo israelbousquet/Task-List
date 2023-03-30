@@ -1,4 +1,5 @@
 .countrie-card {
+  animation: showUp 0.35s forwards;
   .mat-card-image {
     height: 50%;
   }
@@ -29,5 +30,16 @@
         margin-top: 6px;
       }
     }
+  }
+}
+
+@keyframes showUp {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
