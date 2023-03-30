@@ -11,6 +11,9 @@ export class CountriesListComponent implements OnInit {
   allCountries$: any;
   filteredCountries$: any;
 
+  countryName: string;
+  regionName: string;
+
   constructor(private countrieService: CountriesService) {}
 
   ngOnInit() {
@@ -22,15 +25,29 @@ export class CountriesListComponent implements OnInit {
     this.allCountries$ = this.countrieService.getCountries();
   }
 
-  getAllCountriesForRegion(region: string) {
-    this.allCountries$ = this.countrieService.getCountriesByRegion(region);
+  getAllCountriesForRegion(region: string, countryName: string) {
+    if (countryName) {
+      return (this.allCountries$ = this.countrieService
+        .getCountriesByRegion(region)
+        .pipe(
+          map((country: any) => {
+            console.log(country);
+            return country.filter((country: any) => {
+              const name = country.name.common.toLowerCase();
+              return name.startsWith(countryName.toLowerCase());
+            });
+          })
+        ));
+    }
+    return (this.allCountries$ =
+      this.countrieService.getCountriesByRegion(region));
   }
 
   searchCountryName(countryName: string) {
+    this.countryName = countryName;
     if (countryName.length > 0) {
       this.filteredCountries$ = this.allCountries$.pipe(
         map((countries: any) => {
-          // console.log(countries);
           return countries
             .filter((c: any) => {
               const name = c.name.common.toLowerCase();
@@ -47,7 +64,7 @@ export class CountriesListComponent implements OnInit {
   }
 
   searchRegionName(regionName: string) {
-    this.getAllCountriesForRegion(regionName);
+    this.getAllCountriesForRegion(regionName, this.countryName);
     this.filteredCountries$ = this.allCountries$;
   }
 }
