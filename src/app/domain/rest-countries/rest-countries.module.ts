@@ -12,6 +12,8 @@ import { CountriesSearchComponent } from './components/countries-search/countrie
 import { CountriesComponent } from './pages/countries/countries.component';
 import { RestCountriesRoutingModule } from './rest-countries-routing.module';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     CountrieCardComponent,
@@ -27,6 +29,8 @@ import { RestCountriesRoutingModule } from './rest-countries-routing.module';
     MatIconModule,
     MatSelectModule,
     MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class RestCountriesModule {}

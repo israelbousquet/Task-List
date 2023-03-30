@@ -1,15 +1,15 @@
 <div class="countries">
-  <form>
+  <form [formGroup]="form">
     <mat-form-field appearance="fill" class="countries-input">
       <mat-label>
         <mat-icon>search</mat-icon>
         Search for a country...
       </mat-label>
-      <input matInput />
+      <input matInput formControlName="name" (keyup)="countrieName()" />
     </mat-form-field>
     <mat-form-field appearance="fill" class="countries-input">
       <mat-label>Filter by region</mat-label>
-      <mat-select>
+      <mat-select formControlName="region">
         <mat-option value="option">Option</mat-option>
       </mat-select>
     </mat-form-field>

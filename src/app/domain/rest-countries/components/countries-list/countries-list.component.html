@@ -1,27 +1,11 @@
+<app-countries-search
+  (countryName)="searchCountryName($event)"
+  [country]="allCountries$ | async"
+></app-countries-search>
 <section>
   <ul class="countrie-list-grid">
-    <li>
-      <a href="#">
-        <mat-card class="countrie-card">
-          <img
-            mat-card-image
-            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-            alt="Photo of a Shiba Inu"
-          />
-          <mat-card-content class="countrie-card-content">
-            <mat-card-title class="countrie-card-content-title"
-              >Brazil</mat-card-title
-            >
-            <mat-card-subtitle class="countrie-card-content-subtitle">
-              <ul>
-                <li><strong>Population</strong>: 200.000.000</li>
-                <li><strong>Capital</strong>: Brasília</li>
-                <li><strong>Region</strong>: America</li>
-              </ul>
-            </mat-card-subtitle>
-          </mat-card-content>
-        </mat-card>
-      </a>
+    <li *ngFor="let country of filteredCountries$ | async">
+      <app-countrie-card [country]="country"></app-countrie-card>
     </li>
   </ul>
 </section>

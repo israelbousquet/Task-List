@@ -1,30 +1,5 @@
 .countrie-list-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-}
-
-.countrie-card {
-  background-color: var(--primary-color);
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
-  .countrie-card-content {
-    padding: 15px 0px;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-
-    .countrie-card-content-title {
-      font-size: 1.7rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-    .countrie-card-content-subtitle {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--secondary-color-transparent);
-
-      strong {
-        font-weight: 500;
-        color: var(--secondary-color);
-      }
-    }
-  }
+  gap: 40px;
 }
