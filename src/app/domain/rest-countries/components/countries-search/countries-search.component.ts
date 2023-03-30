@@ -8,7 +8,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CountriesSearchComponent implements OnInit {
   @Output() countryName = new EventEmitter<string>();
+  @Output() regionName = new EventEmitter<string>();
   @Input() country: any;
+
+  regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+
   form: FormGroup<{
     name: FormControl;
     region: FormControl;
@@ -25,8 +29,13 @@ export class CountriesSearchComponent implements OnInit {
     });
   }
 
-  countrieName() {
+  countryChange() {
     const name = this.form.controls.name.value;
     this.countryName.emit(name);
+  }
+
+  regionChange() {
+    const regionName = this.form.controls.region.value;
+    this.regionName.emit(regionName);
   }
 }

@@ -1,5 +1,6 @@
 <app-countries-search
   (countryName)="searchCountryName($event)"
+  (regionName)="searchRegionName($event)"
   [country]="allCountries$ | async"
 ></app-countries-search>
 <section>

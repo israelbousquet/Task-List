@@ -5,12 +5,16 @@
         <mat-icon>search</mat-icon>
         Search for a country...
       </mat-label>
-      <input matInput formControlName="name" (keyup)="countrieName()" />
+      <input matInput formControlName="name" (keyup)="countryChange()" />
     </mat-form-field>
     <mat-form-field appearance="fill" class="countries-input">
       <mat-label>Filter by region</mat-label>
       <mat-select formControlName="region">
-        <mat-option value="option">Option</mat-option>
+        <ng-container *ngFor="let region of regions">
+          <mat-option (click)="regionChange()" [value]="region">{{
+            region
+          }}</mat-option>
+        </ng-container>
       </mat-select>
     </mat-form-field>
   </form>

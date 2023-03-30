@@ -11,4 +11,9 @@ export class CountriesService {
   getCountries(): Observable<any> {
     return this.http.get('https://restcountries.com/v3.1/all');
   }
+
+  getCountriesByRegion(region: string): Observable<any> {
+    return this.http.get(`
+    https://restcountries.com/v3.1/region/${region}`);
+  }
 }

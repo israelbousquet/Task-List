@@ -22,11 +22,15 @@ export class CountriesListComponent implements OnInit {
     this.allCountries$ = this.countrieService.getCountries();
   }
 
+  getAllCountriesForRegion(region: string) {
+    this.allCountries$ = this.countrieService.getCountriesByRegion(region);
+  }
+
   searchCountryName(countryName: string) {
     if (countryName.length > 0) {
       this.filteredCountries$ = this.allCountries$.pipe(
         map((countries: any) => {
-          console.log(countries);
+          // console.log(countries);
           return countries
             .filter((c: any) => {
               const name = c.name.common.toLowerCase();
@@ -40,5 +44,10 @@ export class CountriesListComponent implements OnInit {
     } else {
       this.filteredCountries$ = this.allCountries$;
     }
+  }
+
+  searchRegionName(regionName: string) {
+    this.getAllCountriesForRegion(regionName);
+    this.filteredCountries$ = this.allCountries$;
   }
 }
