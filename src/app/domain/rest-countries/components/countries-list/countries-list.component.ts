@@ -25,8 +25,8 @@ export class CountriesListComponent implements OnInit {
     this.allCountries$ = this.countrieService.getCountries();
   }
 
-  getAllCountriesForRegion(region: string, countryName: string) {
-    if (countryName) {
+  getAllCountriesForRegion(region: string) {
+    if (this.countryName) {
       return (this.allCountries$ = this.countrieService
         .getCountriesByRegion(region)
         .pipe(
@@ -34,7 +34,7 @@ export class CountriesListComponent implements OnInit {
             console.log(country);
             return country.filter((country: any) => {
               const name = country.name.common.toLowerCase();
-              return name.startsWith(countryName.toLowerCase());
+              return name.startsWith(this.countryName.toLowerCase());
             });
           })
         ));
@@ -64,7 +64,7 @@ export class CountriesListComponent implements OnInit {
   }
 
   searchRegionName(regionName: string) {
-    this.getAllCountriesForRegion(regionName, this.countryName);
+    this.getAllCountriesForRegion(regionName);
     this.filteredCountries$ = this.allCountries$;
   }
 }
