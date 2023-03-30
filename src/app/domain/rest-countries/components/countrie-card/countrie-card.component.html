@@ -1,21 +1,19 @@
 <a href="#">
-  <mat-card class="countrie-card">
+  <div class="countrie-card">
     <img
       mat-card-image
       src="{{ country.flags.png }}"
       alt="Photo of a Shiba Inu"
     />
-    <mat-card-content class="countrie-card-content">
-      <mat-card-title class="countrie-card-content-title">{{
-        country.name.common
-      }}</mat-card-title>
-      <mat-card-subtitle class="countrie-card-content-subtitle">
+    <div class="countrie-card-content">
+      <h2 class="countrie-card-content-title">{{ country.name.common }}</h2>
+      <div class="countrie-card-content-subtitle">
         <ul>
           <li><strong>Population</strong>: {{ country.population }}</li>
           <li><strong>Capital</strong>: {{ country.capital }}</li>
           <li><strong>Region</strong>: {{ country.region }}</li>
         </ul>
-      </mat-card-subtitle>
-    </mat-card-content>
-  </mat-card>
+      </div>
+    </div>
+  </div>
 </a>

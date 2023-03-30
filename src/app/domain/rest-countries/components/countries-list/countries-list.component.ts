@@ -27,6 +27,7 @@ export class CountriesListComponent implements OnInit {
 
   getAllCountriesForRegion(region: string) {
     if (this.countryName) {
+      console.log(this.countryName);
       return (this.allCountries$ = this.countrieService
         .getCountriesByRegion(region)
         .pipe(
@@ -39,6 +40,7 @@ export class CountriesListComponent implements OnInit {
           })
         ));
     }
+    console.log(this.countryName);
     return (this.allCountries$ =
       this.countrieService.getCountriesByRegion(region));
   }

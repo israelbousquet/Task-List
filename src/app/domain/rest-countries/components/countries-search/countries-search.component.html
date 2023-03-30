@@ -5,7 +5,7 @@
         <mat-icon>search</mat-icon>
         Search for a country...
       </mat-label>
-      <input matInput formControlName="name" (keyup)="countryChange()" />
+      <input matInput formControlName="name" (input)="countryChange()" />
     </mat-form-field>
     <mat-form-field appearance="fill" class="countries-input">
       <mat-label>Filter by region</mat-label>

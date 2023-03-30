@@ -55,3 +55,14 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .countries {
+    form {
+      flex-direction: column;
+      .countries-input {
+        width: 100%;
+      }
+    }
+  }
+}
