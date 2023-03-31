@@ -19,39 +19,12 @@ export class CountriesListComponent implements OnInit {
   }
 
   getAllCountries() {
-    this.allCountries$ = this.countrieService.getCountries();
+    // this.allCountries$ = this.countrieService.getCountries();
+    this.allCountries$ = this.countrieService.countries$$;
+    this.allCountries$.subscribe((res: any) => console.log(res));
   }
 
-  filtersCountryByNameOrRegion(filters: { search: string; region: string }) {
-    const { search, region } = filters;
-    let countries = this.countrieService.getCountries();
-
-    if (region) {
-      const filterByRegion = countries.pipe(
-        map((country: any) => {
-          return country.filter((country: any) => {
-            return country.region === region;
-          });
-        })
-      );
-      countries = filterByRegion;
-    }
-
-    if (search) {
-      const filterBySearch = countries.pipe(
-        map((country: any) => {
-          return country
-            .filter((country: any) => {
-              const name = country.name.common.toLowerCase();
-              return name.startsWith(search.toLowerCase());
-            })
-            .sort((a: any, b: any) =>
-              a.name.common.localeCompare(b.name.common)
-            );
-        })
-      );
-      countries = filterBySearch;
-    }
-    this.filteredCountries$ = countries;
+  filterCountryOrRegion(filters: { search: string; region: string }) {
+    this.countrieService.filtersCountryByNameOrRegion(filters);
   }
 }
