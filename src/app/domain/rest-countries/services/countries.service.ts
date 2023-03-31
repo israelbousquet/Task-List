@@ -1,106 +1,73 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject, map, of } from 'rxjs';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CountriesService {
-  allCountries$: any;
+  private API_url = 'https://restcountries.com/v3.1/all';
+  public countries$$ = new BehaviorSubject([]);
 
-  constructor(private http: HttpClient) {
-    this.getCountriesFromStorage();
+  constructor(
+    private http: HttpClient,
+    private localStorage: LocalStorageService
+  ) {}
+
+  getCountriesFromApi(): Observable<any> {
+    return this.http.get(this.API_url);
   }
 
-  public countries$$ = new BehaviorSubject([{}]);
+  getAllCountries() {
+    const storageCountries = this.localStorage.get('countries');
 
-  getCountries(): Observable<any> {
-    return this.http.get('https://restcountries.com/v3.1/all');
-  }
+    if (storageCountries.length) {
+      return this.countries$$.next(storageCountries);
+    }
 
-  setCountriesInLocalStorage() {
-    this.getCountries().subscribe((res) => {
-      this.setStorage('countries', res);
+    this.getCountriesFromApi().subscribe((countries: any) => {
+      this.localStorage.set('countries', countries);
+      this.countries$$.next(countries);
     });
   }
 
-  getCountriesFromStorage() {
-    const countries = this.getStorage('countries');
-
-    if (countries.length) {
-      this.countries$$.next(countries);
-      return of(countries);
-    }
-    if (!countries.length) {
-      this.setCountriesInLocalStorage();
-      this.getCountries().subscribe((res) => this.countries$$.next(res));
-      return this.getCountries();
-    }
-
-    return this.getCountries();
+  getCountriesFromLocalStorage() {
+    return this.localStorage.get('countries');
   }
 
   getCountriesByName(name: string) {
-    let countries = this.getCountriesFromStorage();
+    const countriesFromStorage = this.getCountriesFromLocalStorage();
 
-    countries.pipe(
-      map((countries: any) => {
-        return countries.filter((country: any) => {
-          return country.name.common === name;
-        });
-      })
-    );
+    const countriesByName = countriesFromStorage.filter((country: any) => {
+      return country.name.common === name;
+    });
 
-    return countries;
-  }
-
-  setStorage(key: string, data: any) {
-    window.localStorage.setItem(key, JSON.stringify(data));
-  }
-
-  getStorage(key: string) {
-    return JSON.parse(window.localStorage.getItem(key) || '[]');
+    return of(countriesByName);
   }
 
   filtersCountryByNameOrRegion(filters: { search: string; region: string }) {
     const { search, region } = filters;
-    let countries = this.getCountriesFromStorage();
+    let countries = this.getCountriesFromLocalStorage();
+    console.log(countries);
 
     if (region) {
-      const filterByRegion = countries.pipe(
-        map((country: any) => {
-          return country.filter((country: any) => {
-            return country.region === region;
-          });
-        })
-      );
+      const filterByRegion = countries.filter((country: any) => {
+        return country.region === region;
+      });
       countries = filterByRegion;
     }
 
     if (search) {
-      const filterBySearch = countries.pipe(
-        map((country: any) => {
-          return country
-            .filter((country: any) => {
-              const name = country.name.common.toLowerCase();
-              return name.startsWith(search.toLowerCase());
-            })
-            .sort((a: any, b: any) =>
-              a.name.common.localeCompare(b.name.common)
-            );
+      const filterBySearch = countries
+        .filter((country: any) => {
+          const name = country.name.common.toLowerCase();
+          return name.startsWith(search.toLowerCase());
         })
-      );
+        .sort((a: any, b: any) => a.name.common.localeCompare(b.name.common));
       countries = filterBySearch;
     }
 
-    countries.subscribe((res) => this.countries$$.next(res));
+    this.countries$$.next(countries);
   }
-
-  // initCountries() {
-  //   const countriesFromStorage = this.getStorage('countries');
-  //   console.log(countriesFromStorage);
-  //   this.allCountries$.subscribe((data: any) =>
-  //     this.setStorage('countries', data)
-  //   );
-  // }
 }

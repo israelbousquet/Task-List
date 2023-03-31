@@ -1,36 +1,52 @@
 <p>country-detail works!</p>
-<section class="country-container">
-  <div class="country-image">
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg"
-      alt=""
-    />
-  </div>
-  <div class="country-content-container">
-    <div class="country-content">
-      <h2>Afeganistão</h2>
-    </div>
-    <div class="country-infos">
-      <div class="country-infos-left">
-        <ul>
-          <li>Native Name:</li>
-          <li>Population:</li>
-          <li>Region:</li>
-          <li>Sub Region:</li>
-        </ul>
+<ng-container>
+  <section class="country-container">
+    <img src="{{ country.flags.png }}" />
+
+    <div class="country-content-container">
+      <div class="country-content">
+        <h2>{{ country.name.common }}</h2>
       </div>
-      <div class="country-infos-rigth">
-        <ul>
-          <li>Capital:</li>
-          <li>Top Level Domain:</li>
-          <li>Currencies:</li>
-          <li>Languages:</li>
-        </ul>
+      <div class="country-infos">
+        <div class="country-infos-left">
+          <ul>
+            <li>
+              <span>Native Name:</span>
+              {{ keyLanguage }}
+              <!-- {{ country.name.nativeLanguage[keyLanguage].common }} -->
+            </li>
+            <li><span>Population:</span> {{ country.population }}</li>
+            <li><span>Region:</span> {{ country.region }}</li>
+            <li><span>Sub Region:</span> {{ country.subregion }}</li>
+          </ul>
+        </div>
+        <div class="country-infos-rigth">
+          <ul>
+            <li><span>Capital:</span> {{ country.capital }}</li>
+            <li><span>Top Level Domain:</span> {{ country.tld[0] }}</li>
+            <li><span>Currencies:</span> Afghan afghani</li>
+
+            <li>
+              <span>Languages:</span>
+              <ng-container
+                *ngFor="
+                  let language of getLanguageArray(country.languages);
+                  let last = last
+                "
+              >
+                {{ language }}{{ last ? "" : ", " }}
+              </ng-container>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="country-borders-container">
+        <h2>Border Countries:</h2>
+        <button>China</button>
+        <button>China</button>
+        <button>China</button>
+        <button>China</button>
       </div>
     </div>
-    <div class="country-borders-container">
-      <span>Border Countries:</span>
-      <div class="country-borders-conte"></div>
-    </div>
-  </div>
-</section>
+  </section>
+</ng-container>

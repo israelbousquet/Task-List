@@ -13,6 +13,7 @@ export class CountriesListComponent implements OnInit {
   constructor(private countrieService: CountriesService) {}
 
   ngOnInit() {
+    this.countrieService.getAllCountries();
     this.getAllCountries();
   }
 
