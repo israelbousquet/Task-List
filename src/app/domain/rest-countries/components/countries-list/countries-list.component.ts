@@ -11,12 +11,14 @@ export class CountriesListComponent implements OnInit {
   allCountries$: any;
   filteredCountries$: any;
 
-  countryName: string;
-  regionName: string;
-
   constructor(private countrieService: CountriesService) {}
 
   ngOnInit() {
+    this.countrieService.getCountriesTeste();
+    this.countrieService.countries$$.subscribe((countrie) =>
+      console.log(countrie)
+    );
+    this.allCountries$ = this.countrieService.getCountries();
     this.getAllCountries();
     this.filteredCountries$ = this.allCountries$;
   }
@@ -25,53 +27,8 @@ export class CountriesListComponent implements OnInit {
     this.allCountries$ = this.countrieService.getCountries();
   }
 
-  // getAllCountriesForRegion(region: string) {
-  //   if (this.countryName) {
-  //     console.log(this.countryName);
-  //     return (this.allCountries$ = this.countrieService
-  //       .getCountriesByRegion(region)
-  //       .pipe(
-  //         map((country: any) => {
-  //           return country.filter((country: any) => {
-  //             const name = country.name.common.toLowerCase();
-  //             return name.startsWith(this.countryName.toLowerCase());
-  //           });
-  //         })
-  //       ));
-  //   }
-  //   console.log(this.countryName);
-  //   return (this.allCountries$ =
-  //     this.countrieService.getCountriesByRegion(region));
-  // }
-
-  // searchCountryName(countryName: string) {
-  //   this.countryName = countryName;
-  //   if (countryName.length > 0) {
-  //     this.filteredCountries$ = this.allCountries$.pipe(
-  //       map((countries: any) => {
-  //         return countries
-  //           .filter((c: any) => {
-  //             const name = c.name.common.toLowerCase();
-  //             return name.startsWith(countryName.toLowerCase());
-  //           })
-  //           .sort((a: any, b: any) =>
-  //             a.name.common.localeCompare(b.name.common)
-  //           );
-  //       })
-  //     );
-  //   } else {
-  //     this.filteredCountries$ = this.allCountries$;
-  //   }
-  // }
-
-  // searchRegionName(regionName: string) {
-  //   this.getAllCountriesForRegion(regionName);
-  //   this.filteredCountries$ = this.allCountries$;
-  // }
-
   filtersCountryByNameOrRegion(filters: { search: string; region: string }) {
     const { search, region } = filters;
-    console.log(filters);
     let countries = this.countrieService.getCountries();
 
     if (region) {

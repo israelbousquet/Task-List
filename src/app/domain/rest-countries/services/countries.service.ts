@@ -1,44 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CountriesService {
   allCountries$: any;
-  allCountries: any;
 
-  constructor(private http: HttpClient) {
-    this.allCountries$ = this.getCountries();
-    // this.initCountries();
-  }
+  constructor(private http: HttpClient) {}
+
+  public countries$$ = new BehaviorSubject([{}]);
 
   getCountries(): Observable<any> {
     return this.http.get('https://restcountries.com/v3.1/all');
   }
 
   getCountriesTeste() {
-    return this.http
-      .get('https://restcountries.com/v3.1/all')
-      .subscribe((res) => (this.allCountries = res));
-  }
-
-  setCountriesStorage() {
-    this.http.get('https://restcountries.com/v3.1/all').subscribe({
-      next: (data) => this.setStorage('countries', data),
+    return this.http.get<[{}]>('https://restcountries.com/v3.1/all').subscribe({
+      next: (res) => this.countries$$.next(res),
     });
-  }
-
-  getCountriesFromLocalStorage() {
-    const countries = this.getStorage('countries');
-    //verifica se tem algo no localstorage
-    if (countries.length) {
-    }
-
-    //verifica se nao tem nada no localstorage
-    if (!countries.length) {
-    }
   }
 
   setStorage(key: string, data: any) {
