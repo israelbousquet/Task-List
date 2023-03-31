@@ -10,20 +10,18 @@
   <div class="projects-grid">
     <!-- <div class="button-itens">
       <button mat-button>
-        <mat-card-title>Adicione um novo projeto</mat-card-title>
+        <mat-card-title>Adicione um novo projeto</mat-card-title>j
         <mat-icon>add_circle</mat-icon>
       </button>
     </div> -->
-    <div class="project-card add-project">
-      <mat-card>
-        <mat-card-title>Adicione um novo projeto</mat-card-title>
-        <mat-icon>add_circle</mat-icon>
-      </mat-card>
+    <div class="project-card add-project" (click)="addProject()">
+      <p>Adicione um<br />novo projeto</p>
+      <mat-icon class="add-icon">add_circle</mat-icon>
     </div>
-    <div class="project-card">
-      <mat-card>
-        <mat-card-title></mat-card-title>
-      </mat-card>
-    </div>
+    <a class="project-card" routerLink="/tasks">
+      <div>
+        <h2>Task Principal</h2>
+      </div>
+    </a>
   </div>
 </section>

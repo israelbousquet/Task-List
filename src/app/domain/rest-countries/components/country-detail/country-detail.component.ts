@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap } from 'rxjs';
 import { CountriesService } from '../../services/countries.service';
+import { Country } from '../../interfaces/country';
 
 @Component({
   selector: 'app-country-detail',
@@ -9,7 +10,7 @@ import { CountriesService } from '../../services/countries.service';
   styleUrls: ['./country-detail.component.scss'],
 })
 export class CountryDetailComponent implements OnInit {
-  country: any;
+  country: Country;
   keyLanguage: string;
 
   constructor(
@@ -30,7 +31,7 @@ export class CountryDetailComponent implements OnInit {
         switchMap((name) => this.countriesService.getCountriesByName(name))
       )
       .subscribe({
-        next: (country) => (this.country = country[0]),
+        next: (country: Country[]) => (this.country = country[0]),
       });
   }
 
@@ -39,7 +40,6 @@ export class CountryDetailComponent implements OnInit {
   }
 
   getKey() {
-    console.log(Object.keys(this.country.languages)[0]);
     this.keyLanguage = Object.keys(this.country.languages)[0];
 
     console.log(Object.values(this.country.name));

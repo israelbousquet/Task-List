@@ -41,19 +41,51 @@
       gap: 20px;
 
       .project-card {
-        // &.add-project {
-        //   mat-card {
-        //     // background-color: red;
-        //   }
-        // }
-        mat-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 180px;
+        padding: 0px 20px;
+        color: var(--secondary-color);
+        border-radius: 15px;
+        background-color: var(--tertiary-color);
+        position: relative;
+
+        h2 {
+          font-size: 1.7rem;
+        }
+
+        &:not(.add-project) {
+          &::after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: 0;
+            right: 0;
+            width: 70%;
+            margin: 0 auto;
+            border-radius: 20px;
+            height: 10px;
+            background-color: var(--secondary-color-transparent);
+          }
+        }
+      }
+
+      .add-project {
+        color: white;
+        background-color: var(--blue-primary-color);
+        cursor: pointer;
+        p {
+          font-size: 1.7rem;
+          line-height: 1.2;
+        }
+        .add-icon {
+          font-size: 48px;
           display: flex;
-          flex-direction: column;
-          align-items: flex-start;
+          height: 64px;
+          width: 64px;
           justify-content: center;
-          height: 200px;
-          color: var(--secondary-color);
-          border-radius: 15px;
+          align-items: center;
         }
       }
     }

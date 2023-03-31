@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 import { Subtask, Task } from '../interfaces/task';
 
@@ -12,8 +13,8 @@ export class TaskService {
   lastId: number = -1;
   lastSubtaskId: number = -1;
 
-  constructor() {
-    const taskStorage = this.getStorage('tasks');
+  constructor(private localStorageService: LocalStorageService) {
+    const taskStorage = this.localStorageService.get('tasks');
     this.tasks = taskStorage;
   }
 
@@ -32,19 +33,19 @@ export class TaskService {
       subtask: [],
     };
     this.tasks.push(newTask);
-    this.setStorage('tasks', this.tasks);
+    this.localStorageService.set('tasks', this.tasks);
   }
 
   deleteAllTasks() {
     this.tasks.splice(0, this.tasks.length, ...[]);
-    this.setStorage('tasks', []);
+    this.localStorageService.set('tasks', []);
     this.getTotalPercentProgress();
   }
 
   deleteTask(taskId: number) {
     const findIndex = this.tasks.findIndex((task) => task.id === taskId);
     this.tasks.splice(findIndex, 1);
-    this.setStorage('tasks', this.tasks);
+    this.localStorageService.set('tasks', this.tasks);
 
     this.getTotalPercentProgress();
   }
@@ -55,7 +56,7 @@ export class TaskService {
     );
     console.log(findIndex);
     this.tasks[taskIndex].subtask.splice(findIndex, 1);
-    this.setStorage('tasks', this.tasks);
+    this.localStorageService.set('tasks', this.tasks);
     this.getTotalPercentProgress();
   }
 
@@ -74,22 +75,14 @@ export class TaskService {
       checked: false,
     };
     this.tasks[taskIndex].subtask.push(newSubTask);
-    this.setStorage('tasks', this.tasks);
+    this.localStorageService.set('tasks', this.tasks);
     this.getTotalPercentProgress();
   }
 
   editSubtask(taskIndex: number, subtaskIndex: number, subtaskNew: string) {
     this.tasks[taskIndex].subtask[subtaskIndex].name = subtaskNew;
-    this.setStorage('tasks', this.tasks);
+    this.localStorageService.set('tasks', this.tasks);
     this.getTotalPercentProgress();
-  }
-
-  setStorage(key: string, data: any) {
-    window.localStorage.setItem(key, JSON.stringify(data));
-  }
-
-  getStorage(key: string) {
-    return JSON.parse(window.localStorage.getItem(key) || '[]');
   }
 
   public taskPercentage$$ = new BehaviorSubject<number>(0);
@@ -128,7 +121,7 @@ export class TaskService {
           if (subtask.id === id) {
             subtask.checked = !subtask.checked;
             this.getTotalPercentProgress();
-            this.setStorage('tasks', this.tasks);
+            this.localStorageService.set('tasks', this.tasks);
             this.checkboxClickedToShowMessage$.next(false);
             return;
           }

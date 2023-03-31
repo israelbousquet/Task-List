@@ -2,21 +2,22 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject, map, of } from 'rxjs';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { Country } from '../interfaces/country';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CountriesService {
   private API_url = 'https://restcountries.com/v3.1/all';
-  public countries$$ = new BehaviorSubject([]);
+  public countries$$ = new BehaviorSubject<Array<Country>>([]);
 
   constructor(
     private http: HttpClient,
     private localStorage: LocalStorageService
   ) {}
 
-  getCountriesFromApi(): Observable<any> {
-    return this.http.get(this.API_url);
+  getCountriesFromApi(): Observable<Array<Country>> {
+    return this.http.get<Array<Country>>(this.API_url);
   }
 
   getAllCountries() {
@@ -39,7 +40,7 @@ export class CountriesService {
   getCountriesByName(name: string) {
     const countriesFromStorage = this.getCountriesFromLocalStorage();
 
-    const countriesByName = countriesFromStorage.filter((country: any) => {
+    const countriesByName = countriesFromStorage.filter((country: Country) => {
       return country.name.common === name;
     });
 
@@ -49,10 +50,9 @@ export class CountriesService {
   filtersCountryByNameOrRegion(filters: { search: string; region: string }) {
     const { search, region } = filters;
     let countries = this.getCountriesFromLocalStorage();
-    console.log(countries);
 
     if (region) {
-      const filterByRegion = countries.filter((country: any) => {
+      const filterByRegion = countries.filter((country: Country) => {
         return country.region === region;
       });
       countries = filterByRegion;
@@ -60,7 +60,7 @@ export class CountriesService {
 
     if (search) {
       const filterBySearch = countries
-        .filter((country: any) => {
+        .filter((country: Country) => {
           const name = country.name.common.toLowerCase();
           return name.startsWith(search.toLowerCase());
         })

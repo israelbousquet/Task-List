@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { debounceTime, map } from 'rxjs';
+import { debounceTime, map, Observable } from 'rxjs';
 import { CountriesService } from '../../services/countries.service';
+import { Country } from '../../interfaces/country';
 
 @Component({
   selector: 'app-countries-list',
@@ -8,7 +9,7 @@ import { CountriesService } from '../../services/countries.service';
   styleUrls: ['./countries-list.component.scss'],
 })
 export class CountriesListComponent implements OnInit {
-  allCountries$: any;
+  allCountries$: Observable<Array<Country>>;
 
   constructor(private countrieService: CountriesService) {}
 
