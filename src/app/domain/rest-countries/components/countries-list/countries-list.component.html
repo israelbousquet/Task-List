@@ -1,6 +1,4 @@
 <app-countries-search
-  (countryName)="searchCountryName($event)"
-  (regionName)="searchRegionName($event)"
   (filters)="filtersCountryByNameOrRegion($event)"
   [country]="allCountries$ | async"
 ></app-countries-search>
