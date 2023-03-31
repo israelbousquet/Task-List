@@ -1,3 +1,4 @@
+import { DetailsComponent } from './pages/details/details.component';
 import { CountriesComponent } from './pages/countries/countries.component';
 
 import { NgModule } from '@angular/core';
@@ -7,6 +8,10 @@ const routes: Routes = [
   {
     path: '',
     component: CountriesComponent,
+  },
+  {
+    path: 'details/:name',
+    component: DetailsComponent,
   },
 ];
 

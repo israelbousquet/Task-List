@@ -40,6 +40,20 @@ export class CountriesService {
     return this.getCountries();
   }
 
+  getCountriesByName(name: string) {
+    let countries = this.getCountriesFromStorage();
+
+    countries.pipe(
+      map((countries: any) => {
+        return countries.filter((country: any) => {
+          return country.name.common === name;
+        });
+      })
+    );
+
+    return countries;
+  }
+
   setStorage(key: string, data: any) {
     window.localStorage.setItem(key, JSON.stringify(data));
   }

@@ -13,6 +13,8 @@ import { CountriesComponent } from './pages/countries/countries.component';
 import { RestCountriesRoutingModule } from './rest-countries-routing.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CountryDetailComponent } from './components/country-detail/country-detail.component';
+import { DetailsComponent } from './pages/details/details.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CountriesListComponent,
     CountriesSearchComponent,
     CountriesComponent,
+    CountryDetailComponent,
+    DetailsComponent,
   ],
   imports: [
     CommonModule,
