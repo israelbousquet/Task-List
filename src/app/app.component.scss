@@ -1,19 +1,26 @@
-@import "/src/scss/variables.scss";
-
 .menu-container {
   padding: 32px 0px;
-  background-color: var(--blue-primary-color);
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.35);
+  background-color: var(--primary-color);
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+  z-index: 30;
 
   .menu {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+
+    .menu-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
 
     .menu-itens-container {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 20px;
     }
 
     .toggle {
@@ -27,31 +34,29 @@
         }
       }
     }
+  }
 
-    .menu-logo {
-      h1 {
-        color: var(--bg-color-dark);
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 5px;
-      }
+  .menu-logo {
+    h1 {
+      color: var(--secondary-color);
+      font-weight: 600;
     }
+  }
 
-    .menu-itens {
-      ul {
-        display: flex;
-        gap: 8px;
+  .menu-itens {
+    ul {
+      display: flex;
+      gap: 8px;
 
-        li a {
-          font-size: 1.1rem;
-          color: white;
-          padding: 12px;
-          border-radius: 8px;
-          transition: 0.2s ease;
+      li a {
+        font-size: 1.2rem;
+        color: var(--secondary-color);
+        padding: 12px;
+        border-radius: 8px;
+        transition: 0.2s ease;
 
-          &:hover {
-            background-color: var(--secondary-color-transparent);
-          }
+        &:hover {
+          background-color: var(--secondary-color-transparent);
         }
       }
     }

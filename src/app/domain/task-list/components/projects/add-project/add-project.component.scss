@@ -1,91 +1,95 @@
 :host {
-  .project-title {
-    width: 100vw;
-    margin: 20px 0px;
-    .project-container {
-      width: 70%;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      height: 200px;
-      background-color: var(--primary-color);
-      border-radius: 15px;
-      padding: 0px 50px;
+  .container {
+    margin-top: 50px;
 
-      .project-title-content {
-        display: flex;
-        align-items: flex-end;
-        gap: 15px;
-        h1 {
-          font-size: 3.7rem;
-          font-weight: 600;
-          color: var(--secondary-color);
-        }
-        p {
-          font-size: 1rem;
-          color: var(--secondary-color-transparent);
-          letter-spacing: 2px;
-        }
-      }
-    }
-  }
-
-  .projects-container {
-    width: 100vw;
-
-    .projects-grid {
-      width: 70%;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-
-      .project-card {
+    .project-title {
+      width: 100vw;
+      margin-bottom: 30px;
+      .project-container {
+        width: 80%;
+        margin: 0 auto;
         display: flex;
         align-items: center;
-        justify-content: center;
-        height: 180px;
-        padding: 0px 20px;
-        color: var(--secondary-color);
+        height: 200px;
+        background-color: var(--primary-color);
         border-radius: 15px;
-        background-color: var(--tertiary-color);
-        position: relative;
+        padding: 0px 50px;
 
-        h2 {
-          font-size: 1.7rem;
-        }
-
-        &:not(.add-project) {
-          &::after {
-            content: "";
-            position: absolute;
-            top: -5px;
-            left: 0;
-            right: 0;
-            width: 70%;
-            margin: 0 auto;
-            border-radius: 20px;
-            height: 10px;
-            background-color: var(--secondary-color-transparent);
+        .project-title-content {
+          display: flex;
+          align-items: flex-end;
+          gap: 15px;
+          h1 {
+            font-size: 3.7rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+          }
+          p {
+            font-size: 1rem;
+            color: var(--secondary-color-transparent);
+            letter-spacing: 2px;
           }
         }
       }
+    }
 
-      .add-project {
-        color: white;
-        background-color: var(--blue-primary-color);
-        cursor: pointer;
-        p {
-          font-size: 1.7rem;
-          line-height: 1.2;
-        }
-        .add-icon {
-          font-size: 48px;
+    .projects-container {
+      width: 100vw;
+
+      .projects-grid {
+        width: 80%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+
+        .project-card {
           display: flex;
-          height: 64px;
-          width: 64px;
-          justify-content: center;
           align-items: center;
+          justify-content: center;
+          height: 180px;
+          padding: 0px 20px;
+          color: var(--secondary-color);
+          border-radius: 15px;
+          background-color: var(--tertiary-color);
+          position: relative;
+
+          h2 {
+            font-size: 1.7rem;
+          }
+
+          &:not(.add-project) {
+            &::after {
+              content: "";
+              position: absolute;
+              top: -5px;
+              left: 0;
+              right: 0;
+              width: 70%;
+              margin: 0 auto;
+              border-radius: 20px;
+              height: 10px;
+              background-color: var(--secondary-color-transparent);
+            }
+          }
+        }
+
+        .add-project {
+          color: white;
+          background-color: var(--blue-primary-color);
+          cursor: pointer;
+          p {
+            font-size: 1.7rem;
+            line-height: 1.2;
+          }
+          .add-icon {
+            font-size: 48px;
+            display: flex;
+            height: 64px;
+            width: 64px;
+            justify-content: center;
+            align-items: center;
+          }
         }
       }
     }
