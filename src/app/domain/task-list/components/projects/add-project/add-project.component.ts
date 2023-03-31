@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
-import { Project } from '../../../interfaces/task';
+import { Project, Task } from '../../../interfaces/task';
 
 @Component({
   selector: 'app-add-project',
@@ -13,5 +13,13 @@ export class AddProjectComponent implements OnInit {
 
   ngOnInit() {}
 
-  addProject() {}
+  addProject(taskName: string) {
+    const newProject = {
+      id: 0,
+      projectName: taskName,
+      tasks: [],
+    };
+    this.projects.push(newProject);
+    this.localStorage.set('projects', this.projects);
+  }
 }
