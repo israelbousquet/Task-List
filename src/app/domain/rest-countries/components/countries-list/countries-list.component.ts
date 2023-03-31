@@ -14,11 +14,6 @@ export class CountriesListComponent implements OnInit {
   constructor(private countrieService: CountriesService) {}
 
   ngOnInit() {
-    this.countrieService.getCountriesTeste();
-    this.countrieService.countries$$.subscribe((countrie) =>
-      console.log(countrie)
-    );
-    this.allCountries$ = this.countrieService.getCountries();
     this.getAllCountries();
     this.filteredCountries$ = this.allCountries$;
   }
