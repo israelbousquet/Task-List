@@ -2,50 +2,80 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
-import { Subtask, Task } from '../interfaces/task';
+import { Subtask, Task, Project } from '../interfaces/task';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
+  projects: Project[] = [];
   tasks: Task[] = [];
 
-  lastId: number = -1;
+  lastProjectId: number = -1;
+  lastTaskId: number = -1;
   lastSubtaskId: number = -1;
 
   constructor(private localStorageService: LocalStorageService) {
     const taskStorage = this.localStorageService.get('tasks');
     this.tasks = taskStorage;
+    this.getProjectsLocalStorage();
   }
+
+  public projects$$ = new BehaviorSubject<Project[]>([]);
 
   getTasks(): Observable<Task[]> {
     return of(this.tasks);
   }
 
+  getProjectsLocalStorage() {
+    const projectStorage = this.localStorageService.get('projects');
+    console.log(projectStorage);
+    if (projectStorage.length) {
+      return this.projects$$.next(projectStorage);
+    }
+  }
+
+  addProject(taskName: string) {
+    this.projects.map(({ id }) => {
+      if (id > this.lastProjectId) this.lastProjectId = id;
+    });
+
+    const newProject = {
+      id: ++this.lastProjectId,
+      projectName: taskName,
+      tasks: [],
+    };
+    this.projects.push(newProject);
+    this.localStorageService.set('projects', this.projects);
+    this.projects$$.next(this.projects);
+  }
+
   addTask(taskNameValue: string) {
     this.tasks.map(({ id }) => {
-      if (id > this.lastId) this.lastId = id;
+      if (id > this.lastTaskId) this.lastTaskId = id;
     });
 
     const newTask: Task = {
-      id: ++this.lastId,
+      id: ++this.lastTaskId,
       taskname: taskNameValue,
       subtask: [],
     };
+
+    // this.projects[projectIndex].tasks.push(newTask);
     this.tasks.push(newTask);
-    this.localStorageService.set('tasks', this.tasks);
+    this.localStorageService.set('projects', this.tasks);
   }
 
   deleteAllTasks() {
     this.tasks.splice(0, this.tasks.length, ...[]);
-    this.localStorageService.set('tasks', []);
+    this.localStorageService.set('projects', []);
     this.getTotalPercentProgress();
   }
 
   deleteTask(taskId: number) {
     const findIndex = this.tasks.findIndex((task) => task.id === taskId);
     this.tasks.splice(findIndex, 1);
-    this.localStorageService.set('tasks', this.tasks);
+    this.localStorageService.set('projects', this.tasks);
 
     this.getTotalPercentProgress();
   }
@@ -56,7 +86,7 @@ export class TaskService {
     );
     console.log(findIndex);
     this.tasks[taskIndex].subtask.splice(findIndex, 1);
-    this.localStorageService.set('tasks', this.tasks);
+    this.localStorageService.set('projects', this.tasks);
     this.getTotalPercentProgress();
   }
 
@@ -75,13 +105,13 @@ export class TaskService {
       checked: false,
     };
     this.tasks[taskIndex].subtask.push(newSubTask);
-    this.localStorageService.set('tasks', this.tasks);
+    this.localStorageService.set('projects', this.tasks);
     this.getTotalPercentProgress();
   }
 
   editSubtask(taskIndex: number, subtaskIndex: number, subtaskNew: string) {
     this.tasks[taskIndex].subtask[subtaskIndex].name = subtaskNew;
-    this.localStorageService.set('tasks', this.tasks);
+    this.localStorageService.set('projects', this.tasks);
     this.getTotalPercentProgress();
   }
 
@@ -121,7 +151,7 @@ export class TaskService {
           if (subtask.id === id) {
             subtask.checked = !subtask.checked;
             this.getTotalPercentProgress();
-            this.localStorageService.set('tasks', this.tasks);
+            this.localStorageService.set('projects', this.tasks);
             this.checkboxClickedToShowMessage$.next(false);
             return;
           }

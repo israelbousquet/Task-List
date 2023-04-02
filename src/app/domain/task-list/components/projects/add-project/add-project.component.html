@@ -19,11 +19,11 @@
         <p>Adicione um<br />novo projeto</p>
         <mat-icon class="add-icon">add_circle</mat-icon>
       </div>
-      <a class="project-card" routerLink="/tasks">
-        <div>
-          <h2>Task Principal</h2>
-        </div>
-      </a>
+      <ng-container
+        *ngFor="let project of projects$ | async; let index = index"
+      >
+        <app-project [project]="project" [projectIndex]="index"></app-project>
+      </ng-container>
     </div>
   </section>
 </section>
