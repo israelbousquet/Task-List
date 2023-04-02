@@ -10,6 +10,7 @@
     <mat-form-field appearance="fill" class="countries-input">
       <mat-label>Filter by region</mat-label>
       <mat-select formControlName="region">
+        <mat-option (click)="filterChange()" [value]="''">All</mat-option>
         <ng-container *ngFor="let region of regions">
           <mat-option (click)="filterChange()" [value]="region">{{
             region
