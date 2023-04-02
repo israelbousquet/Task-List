@@ -3,9 +3,15 @@
   [country]="allCountries$ | async"
 ></app-countries-search>
 <section>
-  <ul class="countrie-list-grid">
-    <li *ngFor="let country of allCountries$ | async">
+  <ul
+    class="countrie-list-grid"
+    *ngIf="allCountries$ | async as countries; else loading"
+  >
+    <li *ngFor="let country of countries">
       <app-countrie-card [country]="country"></app-countrie-card>
     </li>
   </ul>
+  <ng-template #loading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
 </section>

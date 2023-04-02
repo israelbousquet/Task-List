@@ -39,6 +39,10 @@ export class CountryDetailComponent implements OnInit {
     return Object.values(languages);
   }
 
+  getCurrencyNames(currencies: { [key: string]: any }): string[] {
+    return Object.values(currencies).map((currency) => currency.name);
+  }
+
   getKey() {
     this.keyLanguage = Object.keys(this.country.languages)[0];
 

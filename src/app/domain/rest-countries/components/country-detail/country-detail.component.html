@@ -22,7 +22,14 @@
           <ul>
             <li><span>Capital:</span> {{ country.capital }}</li>
             <li><span>Top Level Domain:</span> {{ country.tld[0] }}</li>
-            <li><span>Currencies:</span> Afghan afghani</li>
+            <li
+              *ngFor="
+                let currencyName of getCurrencyNames(country.currencies);
+                let last = last
+              "
+            >
+              <span>Currencies</span> {{ currencyName }}{{ last ? "" : ", " }}
+            </li>
 
             <li>
               <span>Languages:</span>

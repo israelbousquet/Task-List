@@ -27,7 +27,7 @@ export class CountriesService {
       return this.countries$$.next(storageCountries);
     }
 
-    this.getCountriesFromApi().subscribe((countries: any) => {
+    this.getCountriesFromApi().subscribe((countries: Country[]) => {
       this.localStorage.set('countries', countries);
       this.countries$$.next(countries);
     });
