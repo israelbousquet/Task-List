@@ -11,7 +11,6 @@
     border-radius: 15px;
     background-color: var(--tertiary-color);
     position: relative;
-    cursor: pointer;
 
     h2 {
       font-size: 1.7rem;
@@ -20,20 +19,33 @@
     &::after {
       content: "";
       position: absolute;
-      top: -5px;
+      top: -3px;
       left: 0;
       right: 0;
-      width: 70%;
+      width: 30%;
       margin: 0 auto;
       border-radius: 20px;
-      height: 7px;
+      height: 5px;
       background-color: var(--blue-primary-color);
     }
 
     .title {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      width: 100%;
       gap: 15px;
+
+      .title-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+      }
+
+      .menu-detail-project {
+        background-color: red;
+      }
 
       .title-icon {
         display: flex;
@@ -68,5 +80,22 @@
         color: var(--blue-primary-color);
       }
     }
+  }
+}
+
+::ng-deep .mat-menu-panel {
+  border-radius: 10px !important;
+}
+
+::ng-deep .menu-detail-project {
+  background: var(--primary-color);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+
+  button {
+    color: var(--secondary-color);
+  }
+
+  .menu-icon {
+    color: var(--secondary-color);
   }
 }

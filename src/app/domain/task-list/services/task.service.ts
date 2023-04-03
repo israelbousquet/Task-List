@@ -21,7 +21,7 @@ export class TaskService {
 
   constructor(private localStorageService: LocalStorageService) {
     this.getProjectsLocalStorage();
-    this.testePercentage();
+    this.setPercentageInTaskProject();
   }
 
   public projects$$ = new BehaviorSubject<Project[]>([]);
@@ -64,10 +64,25 @@ export class TaskService {
     this.projects$$.next(this.projects);
   }
 
-  testePercentage() {
-    this.taskPercentage$$.subscribe(
-      (data) => (this.projects[this.projectIndex].tasksPercentage = data)
-    );
+  deleteProject(projectIndex: number) {
+    this.projects.splice(projectIndex, 1);
+    this.localStorageService.set('projects', this.projects);
+    this.projects$$.next(this.projects);
+  }
+
+  editProject(projectIndex: number, newValue: string) {
+    this.projects[projectIndex].projectName = newValue;
+    this.localStorageService.set('projects', this.projects);
+  }
+
+  setPercentageInTaskProject(): void {
+    this.taskPercentage$$.subscribe((data) => {
+      const project = this.projects[this.projectIndex];
+      if (project) {
+        project.tasksPercentage = data;
+      }
+    });
+    return;
   }
 
   addTask(taskNameValue: string) {
@@ -89,7 +104,6 @@ export class TaskService {
     this.actualTasks.splice(0, this.actualTasks.length, ...[]);
     this.localStorageService.set('projects', []);
     this.getTotalPercentProgress();
-    this.testePercentage();
   }
 
   deleteTask(taskId: number) {
@@ -98,7 +112,6 @@ export class TaskService {
     this.localStorageService.set('projects', this.projects);
 
     this.getTotalPercentProgress();
-    this.testePercentage();
   }
 
   deleteSubTask(subtaskId: number, taskIndex: number) {
@@ -108,7 +121,6 @@ export class TaskService {
     this.actualTasks[taskIndex].subtask.splice(findIndex, 1);
     this.localStorageService.set('projects', this.projects);
     this.getTotalPercentProgress();
-    this.testePercentage();
   }
 
   addSubTask(subTaskValue: string, taskIndex: number) {
@@ -128,14 +140,12 @@ export class TaskService {
     this.actualTasks[taskIndex].subtask.push(newSubTask);
     this.localStorageService.set('projects', this.projects);
     this.getTotalPercentProgress();
-    this.testePercentage();
   }
 
   editSubtask(taskIndex: number, subtaskIndex: number, subtaskNew: string) {
     this.actualTasks[taskIndex].subtask[subtaskIndex].name = subtaskNew;
     this.localStorageService.set('projects', this.projects);
     this.getTotalPercentProgress();
-    this.testePercentage();
   }
 
   public taskPercentage$$ = new BehaviorSubject<number>(0);
@@ -175,7 +185,7 @@ export class TaskService {
           if (subtask.id === id) {
             subtask.checked = !subtask.checked;
             this.getTotalPercentProgress();
-            this.testePercentage();
+
             this.localStorageService.set('projects', this.projects);
             this.checkboxClickedToShowMessage$.next(false);
             return;

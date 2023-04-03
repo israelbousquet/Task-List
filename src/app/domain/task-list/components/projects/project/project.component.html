@@ -1,9 +1,35 @@
-<div class="project-card showUp" [routerLink]="['tasks', projectIndex]">
+<div class="project-card showUp">
   <div class="title">
-    <div class="title-icon">
-      <mat-icon>home</mat-icon>
+    <div class="title-content" [routerLink]="['tasks', projectIndex]">
+      <div class="title-icon">
+        <mat-icon>home</mat-icon>
+      </div>
+      <h2>{{ project.projectName }}</h2>
     </div>
-    <h2>{{ project.projectName }}</h2>
+    <div class="title-details">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu
+        #menu="matMenu"
+        class="menu-detail-project"
+        yPosition="above"
+        xPosition="after"
+      >
+        <button mat-menu-item (click)="editProject()">
+          <mat-icon class="menu-icon">edit</mat-icon>
+          <span>Editar</span>
+        </button>
+        <button mat-menu-item (click)="deleteProject()">
+          <mat-icon class="menu-icon">delete</mat-icon>
+          <span>Deletar</span>
+        </button>
+      </mat-menu>
+    </div>
   </div>
   <div class="content-container">
     <div class="content-task-percentage">
