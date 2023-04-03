@@ -30,7 +30,7 @@
               "src/scss/variables.scss",
               "src/theme.scss",
               "src/scss/global.scss",
-              "src/animations.scss"
+              "src/scss/animations.scss"
             ],
             "scripts": []
           },
@@ -100,7 +100,7 @@
               "src/scss/variables.scss",
               "src/theme.scss",
               "src/scss/global.scss",
-              "src/animations.scss"
+              "src/scss/animations.scss"
             ],
             "scripts": []
           }

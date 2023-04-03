@@ -1,13 +1,13 @@
 <div class="countries">
   <form [formGroup]="form">
-    <mat-form-field appearance="fill" class="countries-input">
+    <mat-form-field appearance="fill" class="countries-input showRight">
       <mat-label>
         <mat-icon>search</mat-icon>
         Search for a country...
       </mat-label>
       <input matInput formControlName="name" (input)="filterChange()" />
     </mat-form-field>
-    <mat-form-field appearance="fill" class="countries-input">
+    <mat-form-field appearance="fill" class="countries-input showLeft">
       <mat-label>Filter by region</mat-label>
       <mat-select formControlName="region">
         <mat-option (click)="filterChange()" [value]="''">All</mat-option>

@@ -1,7 +1,7 @@
 <section class="container">
   <section class="project-title">
     <div class="project-container">
-      <div class="project-title-content">
+      <div class="project-title-content showUp">
         <h1>Tasks</h1>
         <p>Todas as suas tasks estão aqui</p>
       </div>
@@ -15,9 +15,9 @@
         <mat-icon>add_circle</mat-icon>
       </button>
     </div> -->
-      <div class="project-card add-project" (click)="addProject()">
+      <div class="project-card add-project showRight" (click)="addProject()">
         <p>Adicione um<br />novo projeto</p>
-        <mat-icon class="add-icon">add_circle</mat-icon>
+        <mat-icon class="add-icon showUp">add_circle</mat-icon>
       </div>
       <ng-container
         *ngFor="let project of projects$ | async; let index = index"

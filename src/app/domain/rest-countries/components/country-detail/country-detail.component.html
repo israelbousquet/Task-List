@@ -1,14 +1,14 @@
 <section class="detail-main">
-  <div class="details-nav">
+  <div class="details-nav showLeft">
     <button routerLink="/restcountries">
       <mat-icon class="icon-nav">keyboard_backspace</mat-icon>
       <p>Back</p>
     </button>
   </div>
   <section class="country-container">
-    <img src="{{ country.flags.png }}" />
+    <img class="showUp" src="{{ country.flags.png }}" />
 
-    <div class="country-content-container">
+    <div class="country-content-container showRight">
       <div class="country-content">
         <h2>{{ country.name.common }}</h2>
       </div>
