@@ -17,6 +17,7 @@ export class ProjectComponent implements OnInit {
   @Input() projectIndex: number;
 
   taskPercentage: number;
+  dataOfCreation: string;
 
   constructor(
     private taskService: TaskService,
@@ -26,10 +27,15 @@ export class ProjectComponent implements OnInit {
   ) {}
   ngOnInit() {
     this.countTaskPercentage();
+    this.getData();
   }
 
   countTaskPercentage() {
     this.taskPercentage = this.project.tasksPercentage;
+  }
+
+  getData() {
+    this.dataOfCreation = this.project.dataCreation;
   }
 
   editProject() {

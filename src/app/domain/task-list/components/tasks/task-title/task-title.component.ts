@@ -11,7 +11,7 @@ import { ToastService } from 'src/app/shared/services/toast.service';
   styleUrls: ['./task-title.component.scss'],
 })
 export class TaskTitleComponent {
-  projectName: string = 'Projeaddddddddddddddddddddddddddddddddct';
+  @Input() projectName: string = '';
 
   constructor(
     private taskService: TaskService,

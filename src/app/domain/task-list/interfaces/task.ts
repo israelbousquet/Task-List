@@ -2,6 +2,7 @@ export interface Project {
   id: number;
   projectName: string;
   tasksPercentage: number;
+  dataCreation: string;
   tasks: Task[];
 }
 

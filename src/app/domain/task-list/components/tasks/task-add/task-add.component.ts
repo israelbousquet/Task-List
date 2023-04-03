@@ -16,6 +16,7 @@ export class TaskAddComponent implements OnInit {
   lastSubtaskId = -1;
 
   projectIndex: number;
+  projectName: string;
 
   constructor(
     private taskService: TaskService,
@@ -25,6 +26,13 @@ export class TaskAddComponent implements OnInit {
   ngOnInit(): void {
     this.initParamsTask();
     this.getTasks();
+    this.getName();
+  }
+
+  getName() {
+    this.taskService.projects$$.subscribe((projects: Project[]) => {
+      return (this.projectName = projects[this.projectIndex].projectName);
+    });
   }
 
   initParamsTask() {

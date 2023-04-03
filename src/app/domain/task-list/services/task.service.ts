@@ -48,15 +48,16 @@ export class TaskService {
     return projectStorage;
   }
 
-  addProject(taskName: string) {
+  addProject(projectName: string, dataOfCreation: string) {
     this.projects.map(({ id }) => {
       if (id > this.lastProjectId) this.lastProjectId = id;
     });
 
     const newProject = {
       id: ++this.lastProjectId,
-      projectName: taskName,
+      projectName: projectName,
       tasksPercentage: this.taskPercentage$$.getValue(),
+      dataCreation: dataOfCreation,
       tasks: [],
     };
     this.projects.push(newProject);
