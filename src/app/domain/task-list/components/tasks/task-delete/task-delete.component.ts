@@ -29,7 +29,7 @@ export class TaskDeleteComponent {
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        this.taskService.deleteTask(id, this.projectIndex);
+        this.taskService.deleteTask(id);
         this.toastService.showToastSucess('Item deletado com sucesso');
       }
     });

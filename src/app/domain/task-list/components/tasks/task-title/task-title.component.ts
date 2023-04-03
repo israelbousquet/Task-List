@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/widgets/confirm-dialog/confirm-dialog.component';
 
@@ -11,6 +11,8 @@ import { ToastService } from 'src/app/shared/services/toast.service';
   styleUrls: ['./task-title.component.scss'],
 })
 export class TaskTitleComponent {
+  projectName: string = 'Projeaddddddddddddddddddddddddddddddddct';
+
   constructor(
     private taskService: TaskService,
     private toastService: ToastService,

@@ -20,9 +20,10 @@ import { AppComponent } from './app.component';
 import { TaskListDomainModule } from './domain/task-list/task-list.module';
 import { ConfirmDialogComponent } from './widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from './widgets/edit-dialog/edit-dialog.component';
+import { AddDialogComponent } from './widgets/add-dialog/add-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, ConfirmDialogComponent, EditDialogComponent],
+  declarations: [AppComponent, ConfirmDialogComponent, EditDialogComponent, AddDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

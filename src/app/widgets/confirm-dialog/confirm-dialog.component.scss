@@ -1,6 +1,33 @@
 @import "/src/scss/variables.scss";
 
 :host {
+  .dialog-edit-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+
+    button {
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      color: #fff;
+      flex: 1;
+
+      &.confirm {
+        background-color: var(--blue-primary-color);
+
+        &[disabled] {
+          background-color: var(--blue-secondary-color);
+        }
+      }
+
+      &.cancel {
+        background-color: var(--tertiary-color);
+      }
+    }
+  }
   .mat-dialog-container {
     background: var(--primary-color);
   }

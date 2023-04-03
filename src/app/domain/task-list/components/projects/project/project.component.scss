@@ -1,29 +1,31 @@
-.project-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 50px 30px;
-  height: 100%;
-  color: var(--secondary-color);
-  border-radius: 15px;
-  background-color: var(--tertiary-color);
-  position: relative;
-  cursor: pointer;
+:host {
+  .project-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 30px;
+    height: 100%;
+    color: var(--secondary-color);
+    border-radius: 15px;
+    background-color: var(--tertiary-color);
+    position: relative;
+    cursor: pointer;
 
-  h2 {
-    font-size: 1.7rem;
-  }
+    h2 {
+      font-size: 1.7rem;
+    }
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: 0;
-    right: 0;
-    width: 70%;
-    margin: 0 auto;
-    border-radius: 20px;
-    height: 7px;
-    background-color: var(--blue-primary-color);
+    &::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 0;
+      right: 0;
+      width: 70%;
+      margin: 0 auto;
+      border-radius: 20px;
+      height: 7px;
+      background-color: var(--blue-primary-color);
+    }
   }
 }

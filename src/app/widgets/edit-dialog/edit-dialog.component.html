@@ -9,13 +9,12 @@
   <div mat-dialog-actions class="dialog-edit-buttons">
     <button
       class="button-submit"
-      mat-flat-button
       type="submit"
       (click)="save(form.get('editName')?.value)"
       [disabled]="form.invalid"
     >
       Editar
     </button>
-    <button mat-flat-button color="warn" (click)="close()">Cancelar</button>
+    <button class="button-cancel" (click)="close()">Cancelar</button>
   </div>
 </form>

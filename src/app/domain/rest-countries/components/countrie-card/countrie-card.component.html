@@ -1,4 +1,7 @@
-<div class="countrie-card" [routerLink]="['details', country.name.common]">
+<div
+  class="countrie-card showUp"
+  [routerLink]="['details', country.name.common]"
+>
   <img src="{{ country.flags.png }}" alt="Photo of a Shiba Inu" />
   <div class="countrie-card-content">
     <h2 class="countrie-card-content-title">{{ country.name.common }}</h2>

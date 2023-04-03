@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, Subject } from 'rxjs';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 import { Subtask, Task, Project } from '../interfaces/task';
@@ -15,24 +15,36 @@ export class TaskService {
   lastTaskId: number = -1;
   lastSubtaskId: number = -1;
 
+  projectIndex: number;
+
+  actualTasks: Task[];
+
   constructor(private localStorageService: LocalStorageService) {
     this.getProjectsLocalStorage();
   }
 
   public projects$$ = new BehaviorSubject<Project[]>([]);
+  public tasks$$ = new BehaviorSubject<Task[]>([]);
 
-  getTasks(projectIndex: number): Observable<Task[]> {
-    return of(this.projects[projectIndex].tasks ?? []);
+  initProjectsItemByProjectIndex(projectIndex: number) {
+    this.projectIndex = projectIndex;
+    this.actualTasks = this.projects[this.projectIndex].tasks;
+  }
+
+  getTasks() {
+    const findTaskByProjectIndex = this.projects[this.projectIndex].tasks ?? [];
+    return this.tasks$$.next(findTaskByProjectIndex);
   }
 
   getProjectsLocalStorage() {
     const projectStorage = this.localStorageService.get('projects');
-    console.log(projectStorage);
+
     if (projectStorage.length) {
       this.projects = projectStorage;
-      console.log(projectStorage);
       return this.projects$$.next(this.projects);
     }
+
+    return projectStorage;
   }
 
   addProject(taskName: string) {
@@ -50,8 +62,8 @@ export class TaskService {
     this.projects$$.next(this.projects);
   }
 
-  addTask(taskNameValue: string, projectIndex: number) {
-    this.tasks.map(({ id }) => {
+  addTask(taskNameValue: string) {
+    this.actualTasks.map(({ id }) => {
       if (id > this.lastTaskId) this.lastTaskId = id;
     });
 
@@ -61,30 +73,29 @@ export class TaskService {
       subtask: [],
     };
 
-    this.projects[projectIndex].tasks.push(newTask);
-    console.log(this.projects);
+    this.actualTasks.push(newTask);
     this.localStorageService.set('projects', this.projects);
   }
 
   deleteAllTasks() {
-    this.tasks.splice(0, this.tasks.length, ...[]);
+    this.actualTasks.splice(0, this.actualTasks.length, ...[]);
     this.localStorageService.set('projects', []);
     this.getTotalPercentProgress();
   }
 
-  deleteTask(taskId: number, projectIndex: number) {
-    const findIndex = this.tasks.findIndex((task) => task.id === taskId);
-    this.projects[projectIndex].tasks.splice(findIndex, 1);
+  deleteTask(taskId: number) {
+    const findIndex = this.actualTasks.findIndex((task) => task.id === taskId);
+    this.actualTasks.splice(findIndex, 1);
     this.localStorageService.set('projects', this.projects);
 
     this.getTotalPercentProgress();
   }
 
   deleteSubTask(subtaskId: number, taskIndex: number) {
-    const findIndex = this.tasks[taskIndex].subtask.findIndex(
+    const findIndex = this.actualTasks[taskIndex].subtask.findIndex(
       (task) => task.id === subtaskId
     );
-    this.tasks[taskIndex].subtask.splice(findIndex, 1);
+    this.actualTasks[taskIndex].subtask.splice(findIndex, 1);
     this.localStorageService.set('projects', this.projects);
     this.getTotalPercentProgress();
   }
@@ -92,7 +103,7 @@ export class TaskService {
   addSubTask(subTaskValue: string, taskIndex: number) {
     this.lastSubtaskId = -1;
 
-    this.tasks.map(({ subtask }) =>
+    this.actualTasks.map(({ subtask }) =>
       subtask.map(({ id }) => {
         if (id > this.lastSubtaskId) this.lastSubtaskId = id;
       })
@@ -103,13 +114,13 @@ export class TaskService {
       name: subTaskValue,
       checked: false,
     };
-    this.tasks[taskIndex].subtask.push(newSubTask);
+    this.actualTasks[taskIndex].subtask.push(newSubTask);
     this.localStorageService.set('projects', this.projects);
     this.getTotalPercentProgress();
   }
 
   editSubtask(taskIndex: number, subtaskIndex: number, subtaskNew: string) {
-    this.tasks[taskIndex].subtask[subtaskIndex].name = subtaskNew;
+    this.actualTasks[taskIndex].subtask[subtaskIndex].name = subtaskNew;
     this.localStorageService.set('projects', this.projects);
     this.getTotalPercentProgress();
   }
@@ -118,12 +129,12 @@ export class TaskService {
 
   getTotalPercentProgress() {
     const subtaskLength =
-      this.tasks.reduce((acc, { subtask }) => {
+      this.actualTasks.reduce((acc, { subtask }) => {
         return acc + subtask.length;
       }, 0) ?? 0;
 
     const subtaskCheckedLength =
-      this.tasks.reduce((acc, { subtask }) => {
+      this.actualTasks.reduce((acc, { subtask }) => {
         return (
           acc +
           subtask.reduce((acc, { checked }) => {
@@ -138,14 +149,14 @@ export class TaskService {
       return this.taskPercentage$$.next(0);
     }
 
-    this.taskPercentage$$.next(total);
+    return this.taskPercentage$$.next(total);
   }
 
   checkboxClickedToShowMessage$ = new Subject<boolean>();
 
   changeCheckbox(id: number) {
-    if (this.tasks && this.tasks.length) {
-      this.tasks.map(({ subtask }) =>
+    if (this.actualTasks && this.actualTasks.length) {
+      this.actualTasks.map(({ subtask }) =>
         subtask.map((subtask) => {
           if (subtask.id === id) {
             subtask.checked = !subtask.checked;

@@ -8,6 +8,7 @@ import { EditDialogComponent } from 'src/app/widgets/edit-dialog/edit-dialog.com
 import { Project } from '../../../interfaces/task';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { Observable } from 'rxjs';
+import { AddDialogComponent } from 'src/app/widgets/add-dialog/add-dialog.component';
 
 @Component({
   selector: 'app-add-project',
@@ -32,15 +33,8 @@ export class AddProjectComponent implements OnInit {
     this.projects$ = this.taskService.projects$$;
   }
 
-  addProject(taskName: string) {
-    // const newProject = {
-    //   id: 0,
-    //   projectName: taskName,
-    //   tasks: [],
-    // };
-    // this.projects.push(newProject);
-    // this.localStorage.set('projects', this.projects);
-    const dialogRef = this.dialog.open(EditDialogComponent);
+  addProject() {
+    const dialogRef = this.dialog.open(AddDialogComponent);
 
     dialogRef.afterClosed().subscribe((inputValue: string) => {
       if (inputValue) {
