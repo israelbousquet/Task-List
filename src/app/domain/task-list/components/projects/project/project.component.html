@@ -1,3 +1,18 @@
 <div class="project-card showUp" [routerLink]="['tasks', projectIndex]">
-  <h2>{{ project.projectName }}</h2>
+  <div class="title">
+    <div class="title-icon">
+      <mat-icon>home</mat-icon>
+    </div>
+    <h2>{{ project.projectName }}</h2>
+  </div>
+  <div class="content-container">
+    <div class="content-task-percentage">
+      <mat-icon class="icon">task</mat-icon>
+      <p>50%</p>
+    </div>
+    <div class="content-date">
+      <mat-icon class="icon">calendar_today</mat-icon>
+      <p>03/04/2023</p>
+    </div>
+  </div>
 </div>

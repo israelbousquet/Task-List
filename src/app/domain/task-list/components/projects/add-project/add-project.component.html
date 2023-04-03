@@ -15,9 +15,9 @@
         <mat-icon>add_circle</mat-icon>
       </button>
     </div> -->
-      <div class="project-card add-project showRight" (click)="addProject()">
-        <p>Adicione um<br />novo projeto</p>
-        <mat-icon class="add-icon showUp">add_circle</mat-icon>
+      <div class="project-card add-project" (click)="addProject()">
+        <p class="showRight">Adicione um<br />novo projeto</p>
+        <mat-icon class="add-icon showLeft">add_circle</mat-icon>
       </div>
       <ng-container
         *ngFor="let project of projects$ | async; let index = index"
