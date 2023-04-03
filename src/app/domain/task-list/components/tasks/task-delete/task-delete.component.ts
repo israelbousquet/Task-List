@@ -14,6 +14,7 @@ import { Task } from './../../../interfaces/task';
 })
 export class TaskDeleteComponent {
   @Input() task: Task;
+  @Input() projectIndex: number;
   constructor(
     private taskService: TaskService,
     public dialog: MatDialog,
@@ -28,7 +29,7 @@ export class TaskDeleteComponent {
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        this.taskService.deleteTask(id);
+        this.taskService.deleteTask(id, this.projectIndex);
         this.toastService.showToastSucess('Item deletado com sucesso');
       }
     });

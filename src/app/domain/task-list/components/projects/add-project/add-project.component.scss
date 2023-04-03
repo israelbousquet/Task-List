@@ -85,14 +85,15 @@
           color: white;
           background-color: var(--blue-primary-color);
           cursor: pointer;
+          padding: 50px 30px;
 
           @media (max-width: 768px) {
             padding: 30px;
           }
-          @media (max-width: 380px) {
-            flex-direction: column;
-            align-items: flex-start;
-          }
+          // @media (max-width: 380px) {
+          //   flex-direction: column;
+          //   align-items: flex-start;
+          // }
 
           p {
             font-size: 1.7rem;
