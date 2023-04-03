@@ -26,7 +26,9 @@ export class TaskProgressComponent implements OnInit {
 
   progressBehavior() {
     this.progress$$ = this.taskService.taskPercentage$$.pipe(
-      tap((value) => (this.progressComplete = value))
+      tap((value) => {
+        return (this.progressComplete = value);
+      })
     );
   }
 
