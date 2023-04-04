@@ -37,11 +37,12 @@ export class SubtaskComponent {
 
     dialogRef.afterClosed().subscribe((inputValue: string) => {
       if (inputValue) {
-        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-          data: 'Deseja realmente editar?',
-        });
-
-        this.confirmEdit(dialogRef, inputValue);
+        this.taskService.editSubtask(
+          this.taskIndex,
+          this.subtaskIndex,
+          inputValue
+        );
+        this.toastService.showToastSucess('Item editado com sucesso');
       }
     });
   }
@@ -55,19 +56,6 @@ export class SubtaskComponent {
       if (result) {
         this.taskService.deleteSubTask(subtask.id, taskIndex);
         this.toastService.showToastSucess('Subtask deletada com sucesso');
-      }
-    });
-  }
-
-  confirmEdit(dialogRef: any, inputValue: string) {
-    dialogRef.afterClosed().subscribe((result: boolean) => {
-      if (result) {
-        this.taskService.editSubtask(
-          this.taskIndex,
-          this.subtaskIndex,
-          inputValue
-        );
-        this.toastService.showToastSucess('Item editado com sucesso');
       }
     });
   }
