@@ -14,18 +14,18 @@ export class TaskService {
   lastProjectId: number = -1;
   lastTaskId: number = -1;
   lastSubtaskId: number = -1;
-
   projectIndex: number;
-
   actualTasks: Task[];
+
+  public projects$$ = new BehaviorSubject<Project[]>([]);
+  public tasks$$ = new BehaviorSubject<Task[]>([]);
+  public taskPercentage$$ = new BehaviorSubject<number>(0);
+  public checkboxClickedToShowMessage$$ = new BehaviorSubject<boolean>(false);
 
   constructor(private localStorageService: LocalStorageService) {
     this.getProjectsLocalStorage();
     this.setPercentageInTaskProject();
   }
-
-  public projects$$ = new BehaviorSubject<Project[]>([]);
-  public tasks$$ = new BehaviorSubject<Task[]>([]);
 
   initProjectsItemByProjectIndex(projectIndex: number) {
     this.projectIndex = projectIndex;
@@ -149,8 +149,6 @@ export class TaskService {
     this.getTotalPercentProgress();
   }
 
-  public taskPercentage$$ = new BehaviorSubject<number>(0);
-
   getTotalPercentProgress() {
     const subtaskLength =
       this.actualTasks.reduce((acc, { subtask }) => {
@@ -175,8 +173,6 @@ export class TaskService {
 
     this.taskPercentage$$.next(total);
   }
-
-  checkboxClickedToShowMessage$$ = new BehaviorSubject<boolean>(false);
 
   changeCheckbox(id: number) {
     if (this.actualTasks && this.actualTasks.length) {
