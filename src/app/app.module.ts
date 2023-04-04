@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatStepperModule } from '@angular/material/stepper';
 import { BrowserModule } from '@angular/platform-browser';
 import {
   BrowserAnimationsModule,
@@ -53,6 +54,7 @@ import { EditDialogComponent } from './widgets/edit-dialog/edit-dialog.component
     MatSelectModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatStepperModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
