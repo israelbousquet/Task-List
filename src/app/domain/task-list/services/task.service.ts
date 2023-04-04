@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, of, Subject } from 'rxjs';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { ProjectDialog } from 'src/app/interfaces/project-dialog';
 
 import { Subtask, Task, Project } from '../interfaces/task';
 
@@ -48,14 +49,15 @@ export class TaskService {
     return projectStorage;
   }
 
-  addProject(projectName: string, dataOfCreation: string) {
+  addProject(projectValue: ProjectDialog, dataOfCreation: string) {
     this.projects.map(({ id }) => {
       if (id > this.lastProjectId) this.lastProjectId = id;
     });
 
     const newProject = {
       id: ++this.lastProjectId,
-      projectName: projectName,
+      projectName: projectValue.name,
+      projectIcon: projectValue.icon.value,
       tasksPercentage: this.taskPercentage$$.getValue(),
       dataCreation: dataOfCreation,
       tasks: [],

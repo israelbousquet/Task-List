@@ -1,16 +1,33 @@
 <form [formGroup]="form">
-  <div mat-dialog-content>
-    <mat-form-field appearance="fill">
+  <div mat-dialog-content class="fields-container">
+    <mat-form-field appearance="fill" class="input-name">
       <mat-label>Digite o novo projeto</mat-label>
       <input matInput #input maxlength="25" formControlName="name" />
       <mat-hint align="end">{{ input.value.length }}/25</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="input-icon">
+      <mat-label>Select the icon</mat-label>
+      <mat-select formControlName="icon">
+        <ng-container *ngFor="let icon of icons">
+          <mat-option [value]="icon">
+            <mat-icon>{{ icon.value }}</mat-icon>
+            <span>{{ icon.name }}</span>
+          </mat-option>
+        </ng-container>
+        <mat-select-trigger class="select-option-display">
+          <mat-icon>{{ form.controls.icon.value.value }}</mat-icon>
+          <span>{{ form.controls.icon.value.name }}</span>
+        </mat-select-trigger>
+      </mat-select>
     </mat-form-field>
   </div>
   <div mat-dialog-actions class="dialog-edit-buttons">
     <button
       class="button-submit"
       type="submit"
-      (click)="save(form.get('name')?.value)"
+      (click)="addIcon()"
+      (click)="save()"
       [disabled]="form.invalid"
     >
       Adicionar

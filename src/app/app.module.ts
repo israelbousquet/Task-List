@@ -6,6 +6,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserModule } from '@angular/platform-browser';
 import {
@@ -18,12 +19,17 @@ import { NgxMaskModule } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskListDomainModule } from './domain/task-list/task-list.module';
+import { AddDialogComponent } from './widgets/add-dialog/add-dialog.component';
 import { ConfirmDialogComponent } from './widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from './widgets/edit-dialog/edit-dialog.component';
-import { AddDialogComponent } from './widgets/add-dialog/add-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, ConfirmDialogComponent, EditDialogComponent, AddDialogComponent],
+  declarations: [
+    AppComponent,
+    ConfirmDialogComponent,
+    EditDialogComponent,
+    AddDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,6 +47,7 @@ import { AddDialogComponent } from './widgets/add-dialog/add-dialog.component';
     NgxMaskModule.forRoot(),
     MatSlideToggleModule,
     MatIconModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

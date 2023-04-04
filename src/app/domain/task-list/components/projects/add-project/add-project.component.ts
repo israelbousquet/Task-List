@@ -10,6 +10,7 @@ import { Project } from '../../../interfaces/task';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { Observable } from 'rxjs';
 import { AddDialogComponent } from 'src/app/widgets/add-dialog/add-dialog.component';
+import { ProjectDialog } from 'src/app/interfaces/project-dialog';
 
 @Component({
   selector: 'app-add-project',
@@ -42,7 +43,7 @@ export class AddProjectComponent implements OnInit {
     const dataToString =
       this.datePipe.transform(dataOfCreation, 'dd/MM/yyyy') ?? '';
 
-    dialogRef.afterClosed().subscribe((inputValue: string) => {
+    dialogRef.afterClosed().subscribe((inputValue: ProjectDialog) => {
       if (inputValue) {
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
           data: 'Tem certeza que deseja adicionar?',
@@ -53,7 +54,7 @@ export class AddProjectComponent implements OnInit {
     });
   }
 
-  confirmEdit(dialogRef: any, inputValue: string, dataToString: string) {
+  confirmEdit(dialogRef: any, inputValue: ProjectDialog, dataToString: string) {
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
         this.taskService.addProject(inputValue, dataToString);

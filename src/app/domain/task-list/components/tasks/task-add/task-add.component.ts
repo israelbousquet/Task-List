@@ -17,6 +17,7 @@ export class TaskAddComponent implements OnInit {
 
   projectIndex: number;
   projectName: string;
+  projectIcon: string;
 
   constructor(
     private taskService: TaskService,
@@ -27,11 +28,18 @@ export class TaskAddComponent implements OnInit {
     this.initParamsTask();
     this.getTasks();
     this.getName();
+    this.getIconProject();
   }
 
   getName() {
     this.taskService.projects$$.subscribe((projects: Project[]) => {
       return (this.projectName = projects[this.projectIndex].projectName);
+    });
+  }
+
+  getIconProject() {
+    this.taskService.projects$$.subscribe((projects: Project[]) => {
+      return (this.projectIcon = projects[this.projectIndex].projectIcon);
     });
   }
 

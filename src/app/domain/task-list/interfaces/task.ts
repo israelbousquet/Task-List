@@ -1,6 +1,7 @@
 export interface Project {
   id: number;
   projectName: string;
+  projectIcon: string;
   tasksPercentage: number;
   dataCreation: string;
   tasks: Task[];

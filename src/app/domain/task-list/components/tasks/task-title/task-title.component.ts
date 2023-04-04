@@ -12,6 +12,7 @@ import { ToastService } from 'src/app/shared/services/toast.service';
 })
 export class TaskTitleComponent {
   @Input() projectName: string = '';
+  @Input() projectIcon: string = '';
 
   constructor(
     private taskService: TaskService,

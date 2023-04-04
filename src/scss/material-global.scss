@@ -1,3 +1,15 @@
+.mat-select-panel {
+  background: var(--tertiary-color) !important;
+  border-radius: 10px !important;
+
+  .mat-option {
+    color: var(--secondary-color) !important;
+    mat-icon {
+      color: var(--blue-primary-color) !important;
+    }
+  }
+}
+
 .mat-dialog-container {
   background: var(--primary-color);
   border-radius: 10px !important;

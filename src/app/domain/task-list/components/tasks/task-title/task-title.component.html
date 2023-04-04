@@ -1,6 +1,11 @@
 <header class="title-container">
   <div class="title showBottom">
-    <h2>{{ projectName }}</h2>
+    <div class="title-content-container">
+      <div class="title-icon">
+        <mat-icon>{{ projectIcon }}</mat-icon>
+      </div>
+      <h2>{{ projectName }}</h2>
+    </div>
     <div class="title-actions">
       <app-task-progress></app-task-progress>
       <mat-card style="cursor: pointer" (click)="deleteAllTasks()">
