@@ -13,10 +13,14 @@ export class AppComponent {
 
   ngOnInit() {}
 
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
   changed(event: MatSlideToggleChange) {
     this.nameMode = event.checked ? 'light_mode' : 'nightlight_round';
     document.body.classList.toggle('ligthMode');
   }
-
-  public onToggleSidenav = () => {};
 }
