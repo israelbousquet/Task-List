@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Project, Task } from '../../../interfaces/task';
 import { TaskService } from '../../../services/task.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-add',
@@ -21,15 +20,13 @@ export class TaskAddComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.initParamsTask();
     this.getTasks();
     this.getName();
-    this.resetCount();
   }
 
   getName() {
@@ -55,13 +52,5 @@ export class TaskAddComponent implements OnInit {
 
   addSubTask(subTaskValue: string, taskIndex: number) {
     this.taskService.addSubTask(subTaskValue, taskIndex);
-  }
-
-  resetCount() {
-    const currentRoute = this.router.url;
-    if (currentRoute.includes('tasks')) {
-      this.taskService.messageShownCount = 0;
-      console.log(this.taskService.messageShownCount);
-    }
   }
 }
