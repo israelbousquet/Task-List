@@ -2,10 +2,7 @@
   <div class="task-progress">
     <span>Progresso da lista</span>
     <div class="task-progress-bar">
-      <div
-        class="task-progress-bar-fill"
-        [style.width.%]="progress$$ | async"
-      ></div>
+      <div class="task-progress-bar-fill" [style.width.%]="progress"></div>
     </div>
     <span class="task-progress-title">{{ progress }}%</span>
   </div>

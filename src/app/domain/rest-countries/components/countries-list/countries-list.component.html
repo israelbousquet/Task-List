@@ -2,7 +2,7 @@
   (filters)="filterCountryOrRegion($event)"
   [country]="allCountries$ | async"
 ></app-countries-search>
-<section>
+<section class="countrie-list-container">
   <ul
     class="countrie-list-grid"
     *ngIf="allCountries$ | async as countries; else loading"
