@@ -2,7 +2,13 @@
   <div mat-dialog-content>
     <mat-form-field appearance="fill">
       <mat-label>Digite a novo nome</mat-label>
-      <input matInput #input maxlength="50" formControlName="editName" />
+      <input
+        matInput
+        #input
+        maxlength="50"
+        formControlName="editName"
+        [value]="form.get('editName')?.value"
+      />
       <mat-hint align="end">{{ input.value.length }}/50</mat-hint>
     </mat-form-field>
   </div>

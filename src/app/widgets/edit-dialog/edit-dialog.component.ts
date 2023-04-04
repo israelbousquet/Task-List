@@ -1,3 +1,4 @@
+import { ToastService } from 'src/app/shared/services/toast.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -12,12 +13,13 @@ export class EditDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public subtaskName: string
+    public toastService: ToastService,
+    @Inject(MAT_DIALOG_DATA) public data: string
   ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      editName: new FormControl('', Validators.required),
+      editName: new FormControl(this.data, Validators.required),
     });
   }
 
@@ -26,6 +28,10 @@ export class EditDialogComponent implements OnInit {
   }
 
   save(inputValue: string) {
+    if (inputValue === this.data) {
+      this.toastService.showToastError('Digite um valor diferente do atual');
+      return;
+    }
     this.dialogRef.close(inputValue);
   }
 }

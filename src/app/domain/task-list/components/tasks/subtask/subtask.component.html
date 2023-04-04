@@ -7,7 +7,7 @@
     {{ subtask.name }}
   </mat-checkbox>
   <div class="subtask-item-actions">
-    <mat-icon (click)="editSubtask(subtask)" class="edit">edit</mat-icon>
+    <mat-icon (click)="editSubtask(subtask.name)" class="edit">edit</mat-icon>
     <mat-icon (click)="deleteSubtask(subtask, taskIndex)" class="delete"
       >delete</mat-icon
     >

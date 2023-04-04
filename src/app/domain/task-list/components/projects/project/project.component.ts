@@ -38,8 +38,10 @@ export class ProjectComponent implements OnInit {
     this.dataOfCreation = this.project.dataCreation;
   }
 
-  editProject() {
-    const dialogRef = this.dialog.open(EditDialogComponent);
+  editProject(projectName: string) {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      data: projectName,
+    });
 
     dialogRef.afterClosed().subscribe((inputValue: string) => {
       if (inputValue) {

@@ -30,8 +30,10 @@ export class SubtaskComponent {
     this.taskService.changeCheckbox(id);
   }
 
-  editSubtask(subtask: Subtask) {
-    const dialogRef = this.dialog.open(EditDialogComponent);
+  editSubtask(subtaskname: string) {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      data: subtaskname,
+    });
 
     dialogRef.afterClosed().subscribe((inputValue: string) => {
       if (inputValue) {
