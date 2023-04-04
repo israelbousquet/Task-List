@@ -88,6 +88,9 @@
     }
 
     .toggle {
+      @media (max-width: 768px) {
+        display: none;
+      }
       .mat-slide-toggle {
         display: flex;
         align-items: center;

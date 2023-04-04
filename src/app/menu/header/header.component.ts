@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {}
 
-  showSidenav = true;
+  showSidenav = false;
 
   sidenavToggle() {
     this.showSidenav = !this.showSidenav;
