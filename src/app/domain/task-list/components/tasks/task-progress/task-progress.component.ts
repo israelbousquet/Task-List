@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, skip, tap } from 'rxjs';
 
 import { TaskService } from '../../../services/task.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+
+@UntilDestroy()
 @Component({
   selector: 'app-task-progress',
   templateUrl: './task-progress.component.html',
@@ -13,8 +15,7 @@ import { ToastService } from 'src/app/shared/services/toast.service';
 export class TaskProgressComponent implements OnInit {
   constructor(
     private taskService: TaskService,
-    private toastService: ToastService,
-    private router: Router
+    private toastService: ToastService
   ) {}
 
   progress$$: Observable<number>;
@@ -42,15 +43,15 @@ export class TaskProgressComponent implements OnInit {
       this.callMessage = false;
     }, 5000);
 
-    this.taskService.checkboxClickedToShowMessage$$.subscribe(
-      (value: boolean) => {
+    this.taskService.checkboxClickedToShowMessage$$
+      .pipe(untilDestroyed(this), skip(1))
+      .subscribe((value: boolean) => {
         if (value && this.progress === 100) {
           this.callMessage = true;
           this.toastService.showGoodJob(
             'Parabéns! Você concluiu todas as tarefas'
           );
         }
-      }
-    );
+      });
   }
 }
