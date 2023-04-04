@@ -12,6 +12,10 @@
 
       border-radius: 15px;
       color: var(--secondary-color);
+
+      @media (max-width: 768px) {
+        width: 90%;
+      }
     }
 
     .painel-open ul {
