@@ -19,8 +19,6 @@ export class TaskService {
 
   actualTasks: Task[];
 
-  messageShownCount = 0;
-
   constructor(private localStorageService: LocalStorageService) {
     this.getProjectsLocalStorage();
     this.setPercentageInTaskProject();
