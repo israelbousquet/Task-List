@@ -21,7 +21,7 @@ export class TaskTitleComponent {
   ) {}
 
   deleteAllTasks() {
-    if (this.taskService.tasks.length === 0) {
+    if (this.taskService.actualTasks.length === 0) {
       return this.toastService.showToastError('Não existem tasks para excluir');
     }
 
