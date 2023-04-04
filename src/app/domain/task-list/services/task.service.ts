@@ -105,7 +105,7 @@ export class TaskService {
 
   deleteAllTasks() {
     this.actualTasks.splice(0, this.actualTasks.length, ...[]);
-    this.localStorageService.set('projects', []);
+    this.localStorageService.set('projects', this.projects);
     this.getTotalPercentProgress();
   }
 
