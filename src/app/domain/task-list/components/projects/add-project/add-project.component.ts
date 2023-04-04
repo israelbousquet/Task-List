@@ -47,18 +47,6 @@ export class AddProjectComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((inputValue: ProjectDialog) => {
       if (inputValue) {
-        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-          data: 'Tem certeza que deseja adicionar?',
-        });
-
-        this.confirmEdit(dialogRef, inputValue, dataToString);
-      }
-    });
-  }
-
-  confirmEdit(dialogRef: any, inputValue: ProjectDialog, dataToString: string) {
-    dialogRef.afterClosed().subscribe((result: boolean) => {
-      if (result) {
         this.taskService.addProject(inputValue, dataToString);
         this.toastService.showToastSucess('Projeto adicionado com sucesso');
       }

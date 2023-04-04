@@ -45,11 +45,8 @@ export class ProjectComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((inputValue: string) => {
       if (inputValue) {
-        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-          data: 'Deseja realmente editar?',
-        });
-
-        this.confirmEdit(dialogRef, inputValue);
+        this.taskService.editProject(this.projectIndex, inputValue);
+        this.toastService.showToastSucess('Projeto editado com sucesso');
       }
     });
   }
@@ -63,15 +60,6 @@ export class ProjectComponent implements OnInit {
       if (result) {
         this.taskService.deleteProject(this.projectIndex);
         this.toastService.showToastSucess('Projeto deletado com sucesso');
-      }
-    });
-  }
-
-  confirmEdit(dialogRef: any, inputValue: string) {
-    dialogRef.afterClosed().subscribe((result: boolean) => {
-      if (result) {
-        this.taskService.editProject(this.projectIndex, inputValue);
-        this.toastService.showToastSucess('Projeto editado com sucesso');
       }
     });
   }
