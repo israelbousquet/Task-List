@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { TaskService } from '../../../services/task.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
@@ -12,11 +13,12 @@ import { ToastService } from 'src/app/shared/services/toast.service';
 export class TaskProgressComponent implements OnInit {
   constructor(
     private taskService: TaskService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private router: Router
   ) {}
 
   progress$$: Observable<number>;
-  progressComplete: number;
+  progress: number;
 
   ngOnInit(): void {
     this.taskService.getTotalPercentProgress();
@@ -25,20 +27,25 @@ export class TaskProgressComponent implements OnInit {
   }
 
   progressBehavior() {
-    this.progress$$ = this.taskService.taskPercentage$$.pipe(
-      tap((value) => {
-        return (this.progressComplete = value);
-      })
-    );
+    this.taskService.taskPercentage$$.subscribe((value: number) => {
+      return (this.progress = value);
+    });
   }
 
   showMessageWhenProgressCompleted() {
-    this.taskService.checkboxClickedToShowMessage$.subscribe(() => {
-      if (this.progressComplete === 100) {
-        this.toastService.showGoodJob(
-          'Parabéns! Você concluiu todas as tarefas'
-        );
+    this.taskService.checkboxClickedToShowMessage$$.subscribe(
+      (value: boolean) => {
+        if (value && this.progress === 100) {
+          if (
+            value &&
+            this.progress === 100 &&
+            this.taskService.messageShownCount === 0
+          )
+            this.toastService.showGoodJob(
+              'Parabéns! Você concluiu todas as tarefas'
+            );
+        }
       }
-    });
+    );
   }
 }

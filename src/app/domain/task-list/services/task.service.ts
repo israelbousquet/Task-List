@@ -19,6 +19,8 @@ export class TaskService {
 
   actualTasks: Task[];
 
+  messageShownCount = 0;
+
   constructor(private localStorageService: LocalStorageService) {
     this.getProjectsLocalStorage();
     this.setPercentageInTaskProject();
@@ -174,10 +176,9 @@ export class TaskService {
     }
 
     this.taskPercentage$$.next(total);
-    return total;
   }
 
-  checkboxClickedToShowMessage$ = new Subject<boolean>();
+  checkboxClickedToShowMessage$$ = new BehaviorSubject<boolean>(false);
 
   changeCheckbox(id: number) {
     if (this.actualTasks && this.actualTasks.length) {
@@ -186,9 +187,8 @@ export class TaskService {
           if (subtask.id === id) {
             subtask.checked = !subtask.checked;
             this.getTotalPercentProgress();
-
             this.localStorageService.set('projects', this.projects);
-            this.checkboxClickedToShowMessage$.next(false);
+            this.checkboxClickedToShowMessage$$.next(true);
             return;
           }
         })

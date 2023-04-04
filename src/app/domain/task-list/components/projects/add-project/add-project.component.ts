@@ -5,6 +5,7 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 import { ConfirmDialogComponent } from 'src/app/widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from 'src/app/widgets/edit-dialog/edit-dialog.component';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { Project } from '../../../interfaces/task';
 import { ToastService } from 'src/app/shared/services/toast.service';
@@ -25,11 +26,13 @@ export class AddProjectComponent implements OnInit {
     public dialog: MatDialog,
     public taskService: TaskService,
     private toastService: ToastService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.getProjects();
+    this.resetCount();
   }
 
   getProjects(): any {
@@ -60,5 +63,13 @@ export class AddProjectComponent implements OnInit {
         this.toastService.showToastSucess('Projeto adicionado com sucesso');
       }
     });
+  }
+
+  resetCount() {
+    const currentRoute = this.router.url;
+    if (!currentRoute.includes('tasks')) {
+      this.taskService.messageShownCount = 20;
+      console.log(this.taskService.messageShownCount);
+    }
   }
 }
