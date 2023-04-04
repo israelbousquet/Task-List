@@ -32,18 +32,23 @@ export class TaskProgressComponent implements OnInit {
     });
   }
 
+  callMessage: boolean = false;
+
   showMessageWhenProgressCompleted() {
+    if (this.callMessage) {
+      return;
+    }
+    setTimeout(() => {
+      this.callMessage = false;
+    }, 5000);
+
     this.taskService.checkboxClickedToShowMessage$$.subscribe(
       (value: boolean) => {
         if (value && this.progress === 100) {
-          if (
-            value &&
-            this.progress === 100 &&
-            this.taskService.messageShownCount === 0
-          )
-            this.toastService.showGoodJob(
-              'Parabéns! Você concluiu todas as tarefas'
-            );
+          this.callMessage = true;
+          this.toastService.showGoodJob(
+            'Parabéns! Você concluiu todas as tarefas'
+          );
         }
       }
     );
