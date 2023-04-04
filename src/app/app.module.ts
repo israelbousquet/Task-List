@@ -7,7 +7,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import {
   BrowserAnimationsModule,
@@ -19,6 +21,8 @@ import { NgxMaskModule } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskListDomainModule } from './domain/task-list/task-list.module';
+import { HeaderComponent } from './menu/header/header.component';
+import { SidenavComponent } from './menu/sidenav/sidenav.component';
 import { AddDialogComponent } from './widgets/add-dialog/add-dialog.component';
 import { ConfirmDialogComponent } from './widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from './widgets/edit-dialog/edit-dialog.component';
@@ -29,6 +33,8 @@ import { EditDialogComponent } from './widgets/edit-dialog/edit-dialog.component
     ConfirmDialogComponent,
     EditDialogComponent,
     AddDialogComponent,
+    HeaderComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +54,8 @@ import { EditDialogComponent } from './widgets/edit-dialog/edit-dialog.component
     MatSlideToggleModule,
     MatIconModule,
     MatSelectModule,
+    MatToolbarModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
