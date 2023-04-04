@@ -88,14 +88,18 @@
         &:hover {
           transition: 0.2s ease;
           background: var(--red-primary-color);
+
+          span {
+            color: #fff;
+          }
+
+          .mat-icon {
+            color: #fff;
+          }
         }
 
         .mat-icon {
           color: var(--secondary-color);
-          &:hover {
-            transition: 0.2s ease;
-            color: var(--secondary-color);
-          }
         }
       }
     }

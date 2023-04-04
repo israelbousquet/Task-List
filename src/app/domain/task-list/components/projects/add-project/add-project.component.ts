@@ -37,6 +37,8 @@ export class AddProjectComponent implements OnInit {
     this.projects$ = this.taskService.projects$$;
   }
 
+  deleteAllProjects() {}
+
   addProject() {
     const dialogRef = this.dialog.open(AddDialogComponent);
     const dataOfCreation = new Date();
