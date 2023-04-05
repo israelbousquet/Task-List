@@ -4,6 +4,7 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 import { ProjectDialog } from 'src/app/interfaces/project-dialog';
 
 import { Subtask, Task, Project } from '../interfaces/task';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,10 @@ export class TaskService {
   public taskPercentage$$ = new BehaviorSubject<number>(0);
   public checkboxClickedToShowMessage$$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private localStorageService: LocalStorageService) {
+  constructor(
+    private localStorageService: LocalStorageService,
+    private toastService: ToastService
+  ) {
     this.getProjectsLocalStorage();
     this.setPercentageInTaskProject();
   }
@@ -75,6 +79,11 @@ export class TaskService {
 
   editProject(projectIndex: number, newValue: string) {
     this.projects[projectIndex].projectName = newValue;
+    this.localStorageService.set('projects', this.projects);
+  }
+
+  deleteAllProjects() {
+    this.projects.splice(0, this.projects.length, ...[]);
     this.localStorageService.set('projects', this.projects);
   }
 

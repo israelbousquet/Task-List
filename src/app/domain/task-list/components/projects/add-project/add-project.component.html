@@ -2,15 +2,19 @@
   <section class="project-title">
     <div class="project-container">
       <div class="project-title-content showUp">
-        <h1>Tasks</h1>
-        <p>Todas as suas tasks estão aqui</p>
+        <h1>Projects</h1>
+        <p>All your tasks are here</p>
+      </div>
+      <div class="project-title-button" (click)="deleteAllProjects()">
+        <span>Delete all projects</span>
+        <mat-icon>delete</mat-icon>
       </div>
     </div>
   </section>
   <section class="projects-container">
     <div class="projects-grid">
       <div class="project-card add-project" (click)="addProject()">
-        <p class="showUp">Adicione um<br />novo projeto</p>
+        <p class="showUp">Add a<br />new project</p>
         <mat-icon class="add-icon showUp">add_circle</mat-icon>
       </div>
       <ng-container

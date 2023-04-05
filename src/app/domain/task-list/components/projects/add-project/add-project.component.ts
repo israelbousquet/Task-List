@@ -37,7 +37,26 @@ export class AddProjectComponent implements OnInit {
     this.projects$ = this.taskService.projects$$;
   }
 
-  deleteAllProjects() {}
+  deleteAllProjects() {
+    const projects = this.taskService.projects$$.getValue();
+
+    if (!projects.length) {
+      return this.toastService.showToastError(
+        'Não existem projetos para excluir'
+      );
+    }
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: 'Deseja realmente excluir todos os Projetos?',
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.taskService.deleteAllProjects();
+        this.toastService.showToastSucess('Tasks deletadas com sucesso');
+      }
+    });
+  }
 
   addProject() {
     const dialogRef = this.dialog.open(AddDialogComponent);
