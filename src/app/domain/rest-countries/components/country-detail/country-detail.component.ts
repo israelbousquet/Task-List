@@ -26,6 +26,7 @@ export class CountryDetailComponent implements OnInit {
     this.initCountryParams();
     this.getKey();
     this.getBorders();
+    console.log(this.country);
   }
 
   initCountryParams() {
