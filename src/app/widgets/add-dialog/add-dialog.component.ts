@@ -40,6 +40,14 @@ export class AddDialogComponent implements OnInit {
       name: 'Money',
       value: 'monetization_on',
     },
+    {
+      name: 'Controller',
+      value: 'sports_esports',
+    },
+    {
+      name: 'Exercise',
+      value: 'fitness_center',
+    },
   ];
 
   constructor(

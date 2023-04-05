@@ -10,6 +10,16 @@
   }
 }
 
+.mat-option.mat-active {
+  background: var(--tertiary-color-dark) !important;
+}
+.mat-option {
+  transition: 0.2s ease;
+  &:hover {
+    background: var(--tertiary-color-dark) !important;
+  }
+}
+
 .mat-dialog-container {
   background: var(--primary-color);
   border-radius: 10px !important;

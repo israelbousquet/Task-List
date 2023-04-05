@@ -1,28 +1,41 @@
 :host {
-  .countrie-list-container {
+  .countries-list-container {
     padding-bottom: 50px;
 
-    .countrie-list-grid {
+    .countries-list-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 40px;
       justify-content: center;
     }
 
+    .country-not-found {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-top: 30px;
+
+      p {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--secondary-color);
+      }
+    }
+
     @media (max-width: 1600px) {
-      .countrie-list-grid {
+      .countries-list-grid {
         grid-template-columns: repeat(4, 1fr);
       }
     }
 
     @media (max-width: 1250px) {
-      .countrie-list-grid {
+      .countries-list-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
     @media (max-width: 950px) {
-      .countrie-list-grid {
+      .countries-list-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }

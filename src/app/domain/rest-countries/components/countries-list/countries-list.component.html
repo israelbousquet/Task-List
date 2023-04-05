@@ -2,15 +2,22 @@
   (filters)="filterCountryOrRegion($event)"
   [country]="allCountries$ | async"
 ></app-countries-search>
-<section class="countrie-list-container">
-  <ul
-    class="countrie-list-grid"
-    *ngIf="allCountries$ | async as countries; else loading"
-  >
-    <li *ngFor="let country of countries">
-      <app-countrie-card [country]="country"></app-countrie-card>
-    </li>
-  </ul>
+<section class="countries-list-container">
+  <ng-container *ngIf="(allCountries$ | async)?.length; else emptyList">
+    <ul
+      class="countries-list-grid"
+      *ngIf="allCountries$ | async as countries; else loading"
+    >
+      <li *ngFor="let country of countries">
+        <app-countrie-card [country]="country"></app-countrie-card>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #emptyList>
+    <div class="country-not-found showUp">
+      <p>Não há um país com esse nome.</p>
+    </div>
+  </ng-template>
   <ng-template #loading>
     <mat-spinner></mat-spinner>
   </ng-template>
