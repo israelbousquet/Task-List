@@ -38,6 +38,11 @@ export interface Country {
     openStreetMaps: string;
   };
   name: {
+    localeCompare(name: {
+      common: string;
+      nativeName: NativeName;
+      official: string;
+    }): number;
     common: string;
     nativeName: NativeName;
     official: string;
