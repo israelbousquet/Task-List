@@ -1,8 +1,8 @@
-import { CepService } from './../../services/cep.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BehaviorSubject, throwError } from 'rxjs';
 import { ToastService } from 'src/app/shared/services/toast.service';
+
+import { CepService } from './../../services/cep.service';
 
 @Component({
   selector: 'app-form',
@@ -36,22 +36,20 @@ export class FormComponent implements OnInit {
       estado: new FormControl('', [Validators.required]),
     });
   }
-
-  public loading$$ = new BehaviorSubject<boolean>(false);
+  public cepIsLoading: boolean = false;
 
   consultaCEP() {
     const cep = this.form.get('cep')?.value;
     if (cep.length < 8) return;
-
-    this.loading$$.next(true);
+    this.cepIsLoading = true;
 
     this.cepService.getCep(cep).subscribe({
       next: (data) => {
-        this.loading$$.next(false);
+        this.cepIsLoading = false;
         this.setValueForm(data);
       },
       error: (err) => {
-        this.loading$$.next(false);
+        this.cepIsLoading = false;
         this.setValueForm('');
         this.toastService.showToastError('Cep não encontrado');
       },
@@ -68,6 +66,11 @@ export class FormComponent implements OnInit {
   }
 
   public onSubmit() {
-    this.toastService.showToastSucess('Formulário enviado com sucesso');
+    this.form.reset();
+    this.form.reset();
+    this.form.setErrors(null); // could be removed
+    this.form.updateValueAndValidity();
+
+    this.toastService.showToastSucess('Formulário resetado com sucesso');
   }
 }

@@ -62,10 +62,6 @@ export class AddDialogComponent implements OnInit {
     });
   }
 
-  addIcon() {
-    console.log(this.form);
-  }
-
   close() {
     this.dialogRef.close();
   }

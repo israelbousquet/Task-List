@@ -8,6 +8,10 @@
         (blur)="consultaCEP()"
         [mask]="'00000-000'"
       />
+      <ng-container *ngIf="cepIsLoading">
+        <mat-spinner [diameter]="35" class="spinner-cep"></mat-spinner>
+      </ng-container>
+
       <mat-error>
         <app-error-msg
           [control]="form.controls.cep"
@@ -45,16 +49,5 @@
     </mat-form-field>
   </div>
 
-  <button
-    mat-raised-button
-    color="primary"
-    class="grid-span-3"
-    [disabled]="form.invalid"
-  >
-    Enviar
-  </button>
-
-  <div *ngIf="loading$$ | async" class="spinner">
-    <mat-spinner [diameter]="50"></mat-spinner>
-  </div>
+  <button class="grid-span-3" type="reset">Limpar</button>
 </form>
