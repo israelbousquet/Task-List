@@ -12,6 +12,7 @@ import { Country } from '../../interfaces/country';
 export class CountryDetailComponent implements OnInit {
   country: Country;
   keyLanguage: string;
+  borders: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,7 +22,7 @@ export class CountryDetailComponent implements OnInit {
   ngOnInit() {
     this.initCountryParams();
     this.getKey();
-    console.log(this.country);
+    this.getBorders();
   }
 
   initCountryParams() {
@@ -45,7 +46,12 @@ export class CountryDetailComponent implements OnInit {
 
   getKey() {
     this.keyLanguage = Object.keys(this.country.languages)[0];
+  }
 
-    console.log(Object.values(this.country.name));
+  getBorders() {
+    if (!this.country.borders) return;
+
+    const borders = this.country.borders;
+    this.borders = this.countriesService.getCountriesNameByBorders(borders);
   }
 }

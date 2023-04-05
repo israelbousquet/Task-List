@@ -53,10 +53,11 @@
       </div>
       <div class="country-borders-container">
         <h2>Border Countries:</h2>
-        <button>China</button>
-        <button>China</button>
-        <button>China</button>
-        <button>China</button>
+        <ng-container *ngFor="let border of borders">
+          <button routerLink="/restcountries/details/{{ border.common }}">
+            {{ border.common }}
+          </button>
+        </ng-container>
       </div>
     </div>
   </section>

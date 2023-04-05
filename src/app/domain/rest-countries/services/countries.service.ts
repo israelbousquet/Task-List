@@ -33,6 +33,21 @@ export class CountriesService {
     });
   }
 
+  getCountriesNameByBorders(borders: string[]) {
+    if (!borders) return [];
+    const countriesFromStorage = this.getCountriesFromLocalStorage();
+
+    const countriesBySigla = countriesFromStorage
+      .filter((country: Country) => {
+        return borders.includes(country.cca3);
+      })
+      .map((country: Country) => {
+        return country.name;
+      });
+
+    return countriesBySigla;
+  }
+
   getCountriesFromLocalStorage() {
     return this.localStorage.get('countries');
   }

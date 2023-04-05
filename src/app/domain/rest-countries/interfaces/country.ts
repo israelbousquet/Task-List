@@ -1,6 +1,7 @@
 export interface Country {
   altSpellings: AltSpellings;
   area: number;
+  borders: string[];
   capital: string[];
   capitalInfo: CapitalInfo;
   car: {
@@ -18,6 +19,7 @@ export interface Country {
   demonyms: {
     [key: string]: Demonym;
   };
+  fifa: string;
   flag: string;
   flags: {
     png: string;
