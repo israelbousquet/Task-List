@@ -76,15 +76,32 @@ export class CountriesService {
     }
 
     if (search) {
+      const searchNormalize = this.normalizeString(search);
+
       const filterBySearch = countries
         .filter((country: Country) => {
-          const name = country.name.common.toLowerCase();
-          return name.startsWith(search.toLowerCase());
+          const name = this.normalizeString(country.name.common);
+          const nameTranslate = this.normalizeString(
+            country.translations['por'].common
+          );
+          return (
+            name.includes(searchNormalize) ||
+            nameTranslate.includes(searchNormalize)
+          );
         })
         .sort((a: any, b: any) => a.name.common.localeCompare(b.name.common));
       countries = filterBySearch;
     }
 
     this.countries$$.next(countries);
+  }
+
+  normalizeString(name: string) {
+    const stringLower = name
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+
+    return stringLower;
   }
 }

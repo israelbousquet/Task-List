@@ -4,7 +4,9 @@
 >
   <img src="{{ country.flags.png }}" alt="Photo of a Shiba Inu" />
   <div class="countrie-card-content">
-    <h2 class="countrie-card-content-title">{{ country.name.common }}</h2>
+    <h2 class="countrie-card-content-title">
+      {{ country.translations["por"].common }}
+    </h2>
     <div class="countrie-card-content-subtitle">
       <ul>
         <li><strong>Population</strong>: {{ country.population }}</li>
