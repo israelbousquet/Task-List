@@ -54,10 +54,10 @@
                 <span>Currencies</span> {{ currencyName }}{{ last ? "" : ", " }}
               </li>
             </ng-container>
+            <ng-container *ngIf="country.languages">
+              <li>
+                <span>Languages:</span>
 
-            <li>
-              <span>Languages:</span>
-              <ng-container *ngIf="country.languages">
                 <ng-container
                   *ngFor="
                     let language of getLanguageArray(country.languages);
@@ -66,8 +66,9 @@
                 >
                   {{ language }}{{ last ? "" : ", " }}
                 </ng-container>
-              </ng-container>
-            </li>
+                <
+              </li>
+            </ng-container>
           </ul>
         </div>
       </div>
