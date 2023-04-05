@@ -39,7 +39,6 @@ export class CountryDetailComponent implements OnInit {
       .subscribe({
         next: (country: Country) => {
           this.country = country;
-          this.getKey();
         },
       });
   }
@@ -53,7 +52,10 @@ export class CountryDetailComponent implements OnInit {
   }
 
   getKey() {
-    this.keyLanguage = Object.keys(this.country.languages)[0];
+    if (this.country.languages) {
+      return (this.keyLanguage = Object.keys(this.country.languages)[0]);
+    }
+    return null;
   }
 
   getBorders() {
