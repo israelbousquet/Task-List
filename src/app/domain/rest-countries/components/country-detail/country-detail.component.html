@@ -10,45 +10,62 @@
 
     <div class="country-content-container showRight">
       <div class="country-content">
-        <h2>{{ country.name.common }}</h2>
+        <h2>{{ country.name ? country.name.common : "N/A" }}</h2>
       </div>
       <div class="country-infos">
         <div class="country-infos-left">
           <ul>
             <li>
               <span>Native Name:</span>
-              {{ country.name.nativeName[keyLanguage].common }}
+              {{
+                country.name.nativeName
+                  ? country.name.nativeName[keyLanguage].common
+                  : "N/A"
+              }}
             </li>
-            <li><span>Population:</span> {{ country.population }}</li>
-            <li><span>Region:</span> {{ country.region }}</li>
-            <li><span>Sub Region:</span> {{ country.subregion }}</li>
+            <li>
+              <span>Population:</span>
+              {{ country ? country.population : "N/A" }}
+            </li>
+            <li><span>Region:</span> {{ country ? country.region : "N/A" }}</li>
+            <li>
+              <span>Sub Region:</span>
+              {{ country.subregion ? country.subregion : "N/A" }}
+            </li>
           </ul>
         </div>
         <div class="country-infos-rigth">
           <ul>
-            <li><span>Capital:</span> {{ country.capital }}</li>
+            <li>
+              <span>Capital:</span>
+              {{ country.capital ? country.capital : "N/A" }}
+            </li>
             <li>
               <span>Top Level Domain:</span>
               {{ country.tld ? country.tld[0] : "N/A" }}
             </li>
-            <li
-              *ngFor="
-                let currencyName of getCurrencyNames(country.currencies);
-                let last = last
-              "
-            >
-              <span>Currencies</span> {{ currencyName }}{{ last ? "" : ", " }}
-            </li>
-
-            <li>
-              <span>Languages:</span>
-              <ng-container
+            <ng-container *ngIf="country.currencies">
+              <li
                 *ngFor="
-                  let language of getLanguageArray(country.languages);
+                  let currencyName of getCurrencyNames(country.currencies);
                   let last = last
                 "
               >
-                {{ language }}{{ last ? "" : ", " }}
+                <span>Currencies</span> {{ currencyName }}{{ last ? "" : ", " }}
+              </li>
+            </ng-container>
+
+            <li>
+              <span>Languages:</span>
+              <ng-container *ngIf="country.languages">
+                <ng-container
+                  *ngFor="
+                    let language of getLanguageArray(country.languages);
+                    let last = last
+                  "
+                >
+                  {{ language }}{{ last ? "" : ", " }}
+                </ng-container>
               </ng-container>
             </li>
           </ul>
