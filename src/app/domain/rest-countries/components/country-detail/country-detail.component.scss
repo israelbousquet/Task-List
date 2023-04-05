@@ -48,6 +48,10 @@
         flex-direction: column;
         justify-content: center;
 
+        @media (max-width: 600px) {
+          width: 100%;
+        }
+
         gap: 30px;
         color: var(--secondary-color);
 

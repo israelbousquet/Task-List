@@ -52,11 +52,13 @@
         </div>
       </div>
       <div class="country-borders-container">
-        <h2>Border Countries:</h2>
-        <ng-container *ngFor="let border of borders">
-          <button routerLink="/restcountries/details/{{ border.common }}">
-            {{ border.common }}
-          </button>
+        <ng-container *ngIf="borders">
+          <h2>Border Countries:</h2>
+          <ng-container *ngFor="let border of borders">
+            <button routerLink="/restcountries/details/{{ border }}">
+              {{ border }}
+            </button>
+          </ng-container>
         </ng-container>
       </div>
     </div>

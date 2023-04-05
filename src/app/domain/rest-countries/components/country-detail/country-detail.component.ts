@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { map, switchMap } from 'rxjs';
-import { CountriesService } from '../../services/countries.service';
-import { Country } from '../../interfaces/country';
 
+import { Country } from '../../interfaces/country';
+import { CountriesService } from '../../services/countries.service';
+
+@UntilDestroy()
 @Component({
   selector: 'app-country-detail',
   templateUrl: './country-detail.component.html',
@@ -28,11 +31,15 @@ export class CountryDetailComponent implements OnInit {
   initCountryParams() {
     this.route.params
       .pipe(
+        untilDestroyed(this),
         map((params: any) => params['name']),
         switchMap((name) => this.countriesService.getCountriesByName(name))
       )
       .subscribe({
-        next: (country: Country[]) => (this.country = country[0]),
+        next: (country: Country) => {
+          this.country = country;
+          this.getKey();
+        },
       });
   }
 

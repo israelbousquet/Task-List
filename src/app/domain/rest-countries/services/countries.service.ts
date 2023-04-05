@@ -42,7 +42,7 @@ export class CountriesService {
         return borders.includes(country.cca3);
       })
       .map((country: Country) => {
-        return country.name;
+        return country.name.common;
       });
 
     return countriesBySigla;
@@ -55,9 +55,11 @@ export class CountriesService {
   getCountriesByName(name: string) {
     const countriesFromStorage = this.getCountriesFromLocalStorage();
 
-    const countriesByName = countriesFromStorage.filter((country: Country) => {
+    const countriesByName = countriesFromStorage.find((country: Country) => {
       return country.name.common === name;
     });
+
+    if (!countriesByName) throw new Error('Country not found');
 
     return of(countriesByName);
   }
