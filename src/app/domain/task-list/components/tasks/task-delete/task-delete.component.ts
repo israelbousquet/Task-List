@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HotToastService } from '@ngneat/hot-toast';
+import { ToastService } from 'src/app/shared/services/toast.service';
 import { ConfirmDialogComponent } from 'src/app/widgets/confirm-dialog/confirm-dialog.component';
 
 import { TaskService } from '../../../services/task.service';
-import { ToastService } from 'src/app/shared/services/toast.service';
 import { Task } from './../../../interfaces/task';
 
 @Component({

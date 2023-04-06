@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { map, startWith, switchMap } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 
 import { Country } from '../../interfaces/country';
 import { CountriesService } from '../../services/countries.service';
-import { Location } from '@angular/common';
 
 @UntilDestroy()
 @Component({

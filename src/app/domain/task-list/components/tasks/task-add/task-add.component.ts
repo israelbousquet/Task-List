@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+
 import { Project, Task } from '../../../interfaces/task';
 import { TaskService } from '../../../services/task.service';
 

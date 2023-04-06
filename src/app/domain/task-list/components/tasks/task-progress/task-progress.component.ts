@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, skip, tap } from 'rxjs';
-
-import { TaskService } from '../../../services/task.service';
+import { Component, OnInit } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Observable, skip } from 'rxjs';
 import { ToastService } from 'src/app/shared/services/toast.service';
 
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { TaskService } from '../../../services/task.service';
 
 @UntilDestroy()
 @Component({

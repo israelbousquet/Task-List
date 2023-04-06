@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, of, Subject } from 'rxjs';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { BehaviorSubject } from 'rxjs';
 import { ProjectDialog } from 'src/app/interfaces/project-dialog';
-
-import { Subtask, Task, Project } from '../interfaces/task';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
+
+import { Project, Subtask, Task } from '../interfaces/task';
 
 @Injectable({
   providedIn: 'root',

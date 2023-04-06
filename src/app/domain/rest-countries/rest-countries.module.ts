@@ -14,8 +14,8 @@ import { CountriesSearchComponent } from './components/countries-search/countrie
 import { CountryDetailComponent } from './components/country-detail/country-detail.component';
 import { CountriesComponent } from './pages/countries/countries.component';
 import { DetailsComponent } from './pages/details/details.component';
-import { RestCountriesRoutingModule } from './rest-countries-routing.module';
 import { PopulationPipe } from './pipes/population.pipe';
+import { RestCountriesRoutingModule } from './rest-countries-routing.module';
 
 @NgModule({
   declarations: [

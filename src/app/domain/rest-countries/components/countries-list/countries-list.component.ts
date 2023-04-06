@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { debounceTime, map, Observable, startWith } from 'rxjs';
-import { CountriesService } from '../../services/countries.service';
+import { map, Observable, startWith } from 'rxjs';
+
 import { Country } from '../../interfaces/country';
+import { CountriesService } from '../../services/countries.service';
 
 @Component({
   selector: 'app-countries-list',

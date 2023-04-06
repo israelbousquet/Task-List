@@ -1,7 +1,7 @@
-import { ToastService } from 'src/app/shared/services/toast.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 @Component({
   selector: 'app-edit-dialog',

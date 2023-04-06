@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject, map, of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+
 import { Country } from '../interfaces/country';
 
 @Injectable({

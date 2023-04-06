@@ -1,11 +1,12 @@
-import { ConfirmDialogComponent } from 'src/app/widgets/confirm-dialog/confirm-dialog.component';
-import { Project } from '../../../interfaces/task';
-import { TaskService } from './../../../services/task.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HotToastService } from '@ngneat/hot-toast';
 import { ToastService } from 'src/app/shared/services/toast.service';
+import { ConfirmDialogComponent } from 'src/app/widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from 'src/app/widgets/edit-dialog/edit-dialog.component';
+
+import { Project } from '../../../interfaces/task';
+import { TaskService } from './../../../services/task.service';
 
 @Component({
   selector: 'app-project',
