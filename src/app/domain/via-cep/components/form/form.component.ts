@@ -68,9 +68,11 @@ export class FormComponent implements OnInit {
   public onSubmit() {
     this.form.reset();
     this.form.reset();
-    this.form.setErrors(null); // could be removed
+    this.form.setErrors(null);
     this.form.updateValueAndValidity();
+  }
 
+  formReset() {
     this.toastService.showToastSucess('Formulário resetado com sucesso');
   }
 }

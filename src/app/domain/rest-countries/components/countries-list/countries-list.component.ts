@@ -20,7 +20,7 @@ export class CountriesListComponent implements OnInit {
 
   getAllCountries() {
     this.allCountries$ = this.countrieService.countries$$.pipe(
-      debounceTime(200),
+      startWith([]),
       map((countries: Country[]) =>
         countries.sort((a, b) => a.name.common.localeCompare(b.name.common))
       )
@@ -28,7 +28,6 @@ export class CountriesListComponent implements OnInit {
   }
 
   filterCountryOrRegion(filters: { search: string; region: string }) {
-    console.log(filters.search.trim());
     this.countrieService.filtersCountryByNameOrRegion(filters);
   }
 }

@@ -73,6 +73,42 @@
   }
 }
 
+::ng-deep .mat-form-field {
+  .mat-select-min-line {
+    color: var(--secondary-color);
+  }
+  .mat-input-element {
+    color: var(--secondary-color);
+  }
+  .mat-form-field-label {
+    color: var(--secondary-color);
+  }
+  .mat-form-field-underline {
+    background-color: var(--blue-primary-color);
+  }
+  .mat-form-field-ripple {
+    background-color: var(--blue-primary-color);
+  }
+}
+
+::ng-deep .mat-form-field.mat-focused {
+  mat-icon {
+    color: var(--blue-primary-color);
+  }
+  .mat-form-field-label {
+    color: var(--blue-primary-color);
+  }
+  .mat-form-field-ripple {
+    background-color: var(--blue-primary-color);
+  }
+  .mat-form-field-required-marker {
+    color: var(--blue-primary-color);
+  }
+  .mat-input-element {
+    color: var(--secondary-color);
+  }
+}
+
 ::ng-deep {
   .mat-progress-spinner circle,
   .mat-spinner circle {

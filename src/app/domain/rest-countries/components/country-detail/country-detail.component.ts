@@ -5,6 +5,7 @@ import { map, startWith, switchMap } from 'rxjs';
 
 import { Country } from '../../interfaces/country';
 import { CountriesService } from '../../services/countries.service';
+import { Location } from '@angular/common';
 
 @UntilDestroy()
 @Component({
@@ -26,13 +27,11 @@ export class CountryDetailComponent implements OnInit {
     this.initCountryParams();
     this.getKey();
     this.getBorders();
-    console.log(this.country);
   }
 
   initCountryParams() {
     this.route.params
       .pipe(
-        // startWith()
         untilDestroyed(this),
         map((params: any) => params['name']),
         switchMap((name) => this.countriesService.getCountriesByName(name))

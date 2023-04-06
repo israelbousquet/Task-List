@@ -1,6 +1,9 @@
 :host {
   .countries-list-container {
     padding-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .country-not-found {
       width: 100%;
@@ -17,13 +20,9 @@
 
     .countries-list-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 40px;
       justify-content: center;
-
-      @media (max-width: 1600px) {
-        grid-template-columns: repeat(4, 1fr);
-      }
 
       @media (max-width: 1250px) {
         grid-template-columns: repeat(3, 1fr);
