@@ -27,33 +27,24 @@
       border-color: white;
     }
 
-    .mat-icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      border-radius: 5px;
-      cursor: pointer;
-
-      &:hover {
-        transition: color 0.2s ease;
-      }
-    }
-
     .subtask-item-actions {
       display: flex;
       align-items: center;
       color: var(--secondary-color-transparent);
 
-      .edit {
-        &:hover {
-          color: var(--blue-primary-color);
-        }
-      }
+      .mat-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        transform-origin: center;
 
-      .delete {
         &:hover {
-          color: var(--red-primary-color);
+          color: var(--secondary-color);
+          transform: scale(1.1);
         }
       }
     }
