@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { debounceTime, map, Observable } from 'rxjs';
+import { debounceTime, map, Observable, startWith } from 'rxjs';
 import { CountriesService } from '../../services/countries.service';
 import { Country } from '../../interfaces/country';
 
@@ -28,6 +28,7 @@ export class CountriesListComponent implements OnInit {
   }
 
   filterCountryOrRegion(filters: { search: string; region: string }) {
+    console.log(filters.search.trim());
     this.countrieService.filtersCountryByNameOrRegion(filters);
   }
 }

@@ -34,21 +34,21 @@ export class CountriesSearchComponent implements OnInit {
     });
   }
 
-  countryChange() {
-    this.filterChange();
-    const name = this.form.controls.name.value;
-    this.search = name;
-    this.countryName.emit(name);
-  }
+  // countryChange() {
+  //   this.filterChange();
+  //   const name = this.form.controls.name.value;
+  //   this.search = name;
+  //   this.countryName.emit(name);
+  // }
 
-  regionChange() {
-    this.filterChange();
-    const regionName = this.form.controls.region.value;
-    this.regionName.emit(regionName);
-  }
+  // regionChange() {
+  //   this.filterChange();
+  //   const regionName = this.form.controls.region.value;
+  //   this.regionName.emit(regionName);
+  // }
 
   filterChange() {
-    const search = this.form.controls.name.value;
+    const search = this.form.controls.name.value.trim();
     const region = this.form.controls.region.value;
     this.filters.emit({ search, region });
   }
