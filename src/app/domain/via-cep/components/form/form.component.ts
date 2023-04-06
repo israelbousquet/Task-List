@@ -30,10 +30,10 @@ export class FormComponent implements OnInit {
         Validators.minLength(8),
         Validators.maxLength(8),
       ]),
-      rua: new FormControl('', [Validators.required]),
-      bairro: new FormControl('', [Validators.required]),
-      cidade: new FormControl('', [Validators.required]),
-      estado: new FormControl('', [Validators.required]),
+      rua: new FormControl(''),
+      bairro: new FormControl(''),
+      cidade: new FormControl(''),
+      estado: new FormControl(''),
     });
   }
   public cepIsLoading: boolean = false;
@@ -65,14 +65,28 @@ export class FormComponent implements OnInit {
     });
   }
 
-  public onSubmit() {
-    this.form.reset();
-    this.form.reset();
-    this.form.setErrors(null);
-    this.form.updateValueAndValidity();
-  }
+  public onSubmit() {}
 
   formReset() {
-    this.toastService.showToastSucess('Formulário resetado com sucesso');
+    const cep = this.form.value.cep;
+
+    const initialValues = {
+      cep: '',
+      rua: '',
+      bairro: '',
+      cidade: '',
+      estado: '',
+    };
+
+    if (cep && cep.length) {
+      this.form.setValue(initialValues);
+      return this.toastService.showToastSucess(
+        'Formulário resetado com sucesso'
+      );
+    }
+
+    this.form.setErrors(null);
+    this.form.updateValueAndValidity();
+    return this.toastService.showToastError('O Formulário está vazio');
   }
 }
