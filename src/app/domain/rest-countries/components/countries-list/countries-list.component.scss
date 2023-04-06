@@ -20,9 +20,13 @@
 
     .countries-list-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 40px;
       justify-content: center;
+
+      @media (max-width: 1650px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
 
       @media (max-width: 1400px) {
         grid-template-columns: repeat(3, 1fr);
