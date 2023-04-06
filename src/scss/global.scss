@@ -1,0 +1,19 @@
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue-primary-color);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+//barra total
+*::-webkit-scrollbar-track {
+  background: var(--bar-bg);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--blue-primary-color);
+  border-radius: 20px;
+}

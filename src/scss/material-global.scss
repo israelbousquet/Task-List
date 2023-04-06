@@ -4,6 +4,7 @@
 
   .mat-option {
     color: var(--secondary-color) !important;
+    font-size: 1.1rem !important;
     mat-icon {
       color: var(--blue-primary-color) !important;
     }
@@ -11,12 +12,12 @@
 }
 
 .mat-option.mat-active {
-  background: var(--tertiary-color-dark) !important;
+  background: var(--tertiary-color-light) !important;
 }
 .mat-option {
   transition: 0.2s ease;
   &:hover {
-    background: var(--tertiary-color-dark) !important;
+    background: var(--tertiary-color-light) !important;
   }
 }
 
