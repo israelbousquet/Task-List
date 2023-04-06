@@ -5,12 +5,14 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+  overflow: hidden;
 
   img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     border-radius: 10px 10px 0px 0px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
   }
 
   .countrie-card-content {
@@ -31,11 +33,16 @@
       font-weight: 300;
       color: var(--secondary-color);
 
-      strong {
-        font-weight: 600;
-      }
-      li ~ li {
-        margin-top: 6px;
+      ul {
+        li {
+          strong {
+            font-weight: 700;
+          }
+
+          & ~ li {
+            margin-top: 6px;
+          }
+        }
       }
     }
   }
