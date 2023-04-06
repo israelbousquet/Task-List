@@ -39,6 +39,7 @@ export class CountryDetailComponent implements OnInit {
         next: (country: Country) => {
           this.country = country;
           this.getKey();
+          this.getBorders();
         },
       });
   }
