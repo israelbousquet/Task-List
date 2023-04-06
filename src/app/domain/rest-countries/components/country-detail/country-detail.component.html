@@ -25,7 +25,7 @@
             </li>
             <li>
               <span>Population:</span>
-              {{ country ? country.population : "N/A" }}
+              {{ country ? (country.population | population) : "N/A" }}
             </li>
             <li><span>Region:</span> {{ country ? country.region : "N/A" }}</li>
             <li>
@@ -66,7 +66,6 @@
                 >
                   {{ language }}{{ last ? "" : ", " }}
                 </ng-container>
-                <
               </li>
             </ng-container>
           </ul>

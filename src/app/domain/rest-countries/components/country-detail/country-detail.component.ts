@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { map, switchMap } from 'rxjs';
+import { map, startWith, switchMap } from 'rxjs';
 
 import { Country } from '../../interfaces/country';
 import { CountriesService } from '../../services/countries.service';
@@ -32,6 +32,7 @@ export class CountryDetailComponent implements OnInit {
   initCountryParams() {
     this.route.params
       .pipe(
+        // startWith()
         untilDestroyed(this),
         map((params: any) => params['name']),
         switchMap((name) => this.countriesService.getCountriesByName(name))
@@ -39,6 +40,7 @@ export class CountryDetailComponent implements OnInit {
       .subscribe({
         next: (country: Country) => {
           this.country = country;
+          this.getKey();
         },
       });
   }

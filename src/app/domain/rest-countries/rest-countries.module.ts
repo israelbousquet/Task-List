@@ -15,6 +15,7 @@ import { CountryDetailComponent } from './components/country-detail/country-deta
 import { CountriesComponent } from './pages/countries/countries.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { RestCountriesRoutingModule } from './rest-countries-routing.module';
+import { PopulationPipe } from './pipes/population.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { RestCountriesRoutingModule } from './rest-countries-routing.module';
     CountriesComponent,
     CountryDetailComponent,
     DetailsComponent,
+    PopulationPipe,
   ],
   imports: [
     CommonModule,
