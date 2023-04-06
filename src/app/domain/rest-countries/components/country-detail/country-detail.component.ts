@@ -16,6 +16,7 @@ export class CountryDetailComponent implements OnInit {
   country: Country;
   keyLanguage: string;
   borders: any;
+  keyLanguageInNativeName: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,8 +25,6 @@ export class CountryDetailComponent implements OnInit {
 
   ngOnInit() {
     this.initCountryParams();
-    this.getKey();
-    this.getBorders();
   }
 
   initCountryParams() {
@@ -38,8 +37,9 @@ export class CountryDetailComponent implements OnInit {
       .subscribe({
         next: (country: Country) => {
           this.country = country;
-          this.getKey();
           this.getBorders();
+          this.getKey();
+          this.verifyKeyLanguage();
         },
       });
   }
@@ -64,5 +64,12 @@ export class CountryDetailComponent implements OnInit {
 
     const borders = this.country.borders;
     this.borders = this.countriesService.getCountriesNameByBorders(borders);
+  }
+
+  verifyKeyLanguage() {
+    if (this.keyLanguage in this.country.name.nativeName) {
+      return (this.keyLanguageInNativeName = true);
+    }
+    return (this.keyLanguageInNativeName = false);
   }
 }
