@@ -12,7 +12,11 @@
 }
 
 .mat-option.mat-active {
-  background: var(--tertiary-color-light) !important;
+  background: var(--blue-primary-color) !important;
+  color: #fff !important;
+  mat-icon {
+    color: #fff !important;
+  }
 }
 .mat-option {
   transition: 0.2s ease;
