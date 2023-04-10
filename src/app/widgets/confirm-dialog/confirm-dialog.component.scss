@@ -35,6 +35,9 @@
 
   .mat-dialog-content p {
     color: var(--secondary-color);
+    @media (max-width: 768px) {
+      text-align: center;
+    }
   }
 
   .dialog-edit-buttons {
