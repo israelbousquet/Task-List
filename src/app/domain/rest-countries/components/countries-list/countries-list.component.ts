@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable, startWith } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  Observable,
+  startWith,
+  Subject,
+} from 'rxjs';
 
 import { Country } from '../../interfaces/country';
 import { CountriesService } from '../../services/countries.service';
@@ -11,12 +18,14 @@ import { CountriesService } from '../../services/countries.service';
 })
 export class CountriesListComponent implements OnInit {
   allCountries$: Observable<Array<Country>>;
+  searchInput$ = new Subject<{ search: string; region: string }>();
 
   constructor(private countrieService: CountriesService) {}
 
   ngOnInit() {
     this.countrieService.getAllCountries();
     this.getAllCountries();
+    this.filterCountryOrRegion();
   }
 
   getAllCountries() {
@@ -28,7 +37,11 @@ export class CountriesListComponent implements OnInit {
     );
   }
 
-  filterCountryOrRegion(filters: { search: string; region: string }) {
-    this.countrieService.filtersCountryByNameOrRegion(filters);
+  filterCountryOrRegion() {
+    this.searchInput$
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((filters) =>
+        this.countrieService.filtersCountryByNameOrRegion(filters)
+      );
   }
 }

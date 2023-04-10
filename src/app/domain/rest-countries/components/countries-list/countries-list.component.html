@@ -1,5 +1,5 @@
 <app-countries-search
-  (filters)="filterCountryOrRegion($event)"
+  (filters)="searchInput$.next($event)"
   [country]="allCountries$ | async"
 ></app-countries-search>
 <section class="countries-list-container">
