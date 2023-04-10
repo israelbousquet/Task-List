@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastService } from 'src/app/shared/services/toast.service';
+import { CustomValidators } from 'src/app/validators/customValidators';
 
 @Component({
   selector: 'app-edit-dialog',
@@ -19,7 +20,10 @@ export class EditDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      editName: new FormControl(this.data, [Validators.required]),
+      editName: new FormControl(this.data, [
+        Validators.required,
+        CustomValidators.whitespaceValidator,
+      ]),
     });
   }
 

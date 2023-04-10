@@ -67,8 +67,10 @@ export class CountryDetailComponent implements OnInit {
   }
 
   verifyKeyLanguage() {
-    if (this.keyLanguage in this.country.name.nativeName) {
-      return (this.keyLanguageInNativeName = true);
+    if (this.country.name.nativeName) {
+      if (this.keyLanguage in this.country.name.nativeName) {
+        return (this.keyLanguageInNativeName = true);
+      }
     }
     return (this.keyLanguageInNativeName = false);
   }

@@ -21,7 +21,9 @@
     </div>
     <div class="add-button">
       <button
-        [disabled]="!form.controls.name.value"
+        [disabled]="
+          !form.controls.name.value || !form.controls.name.value.trim()
+        "
         style="cursor: pointer"
         (click)="emitValue()"
       >

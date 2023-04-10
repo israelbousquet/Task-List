@@ -8,4 +8,11 @@ export class CustomValidators {
     }
     return null;
   }
+
+  static whitespaceValidator(control: FormControl) {
+    const value = control.value || '';
+    const isWhitespace = value.trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { whitespace: true };
+  }
 }

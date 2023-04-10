@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CustomValidators } from 'src/app/validators/customValidators';
 
 interface form {
   name: AbstractControl;
@@ -57,7 +58,10 @@ export class AddDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup<form>({
-      name: new FormControl('', [Validators.required]),
+      name: new FormControl('', [
+        Validators.required,
+        CustomValidators.whitespaceValidator,
+      ]),
       icon: new FormControl({ name: 'Home', value: 'home' }),
     });
   }
