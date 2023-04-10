@@ -57,7 +57,7 @@ export class AddDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup<form>({
-      name: new FormControl('', Validators.required),
+      name: new FormControl('', [Validators.required]),
       icon: new FormControl({ name: 'Home', value: 'home' }),
     });
   }
@@ -68,7 +68,7 @@ export class AddDialogComponent implements OnInit {
 
   save() {
     const objFormSave = {
-      name: this.form.controls.name.value,
+      name: this.form.controls.name.value.trim(),
       icon: {
         name: this.form.controls.icon.value.name,
         value: this.form.controls.icon.value.value,

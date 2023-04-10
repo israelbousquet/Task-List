@@ -2,7 +2,13 @@
   <div mat-dialog-content class="fields-container">
     <mat-form-field appearance="fill" class="input-name">
       <mat-label>Digite o novo projeto</mat-label>
-      <input matInput #input maxlength="25" formControlName="name" />
+      <input
+        matInput
+        #input
+        maxlength="25"
+        formControlName="name"
+        appPreventSpaceOnEmptyInput
+      />
       <mat-hint align="end">{{ input.value.length }}/25</mat-hint>
     </mat-form-field>
 

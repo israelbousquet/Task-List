@@ -8,6 +8,7 @@
         maxlength="50"
         formControlName="editName"
         [value]="form.get('editName')?.value"
+        appPreventSpaceOnEmptyInput
       />
       <mat-hint align="end">{{ input.value.length }}/50</mat-hint>
     </mat-form-field>

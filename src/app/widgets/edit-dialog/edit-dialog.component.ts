@@ -19,7 +19,7 @@ export class EditDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      editName: new FormControl(this.data, Validators.required),
+      editName: new FormControl(this.data, [Validators.required]),
     });
   }
 
@@ -28,10 +28,10 @@ export class EditDialogComponent implements OnInit {
   }
 
   save(inputValue: string) {
-    if (inputValue === this.data) {
+    if (inputValue.trim() === this.data.trim()) {
       this.toastService.showToastError('Digite um valor diferente do atual');
       return;
     }
-    this.dialogRef.close(inputValue);
+    this.dialogRef.close(inputValue.trim());
   }
 }

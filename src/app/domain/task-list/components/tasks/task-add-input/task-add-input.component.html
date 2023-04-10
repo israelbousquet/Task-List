@@ -3,10 +3,15 @@
     <div class="add-input">
       <mat-form-field appearance="fill" style="width: 100%">
         <mat-label>{{ textInput }}</mat-label>
-        <input matInput #input formControlName="name" maxlength="50" />
+        <input
+          matInput
+          #input
+          formControlName="name"
+          maxlength="50"
+          appPreventSpaceOnEmptyInput
+        />
         <mat-hint align="end">{{ input.value.length }}/50</mat-hint>
-        <mat-error
-          *ngIf="form.controls.name.touched && form.controls.name.dirty"
+        <mat-error *ngIf="form.controls.name.dirty"
           ><app-error-msg
             [label]="'Este'"
             [control]="form.controls.name"
@@ -16,7 +21,7 @@
     </div>
     <div class="add-button">
       <button
-        [disabled]="form.invalid"
+        [disabled]="!form.controls.name.value"
         style="cursor: pointer"
         (click)="emitValue()"
       >

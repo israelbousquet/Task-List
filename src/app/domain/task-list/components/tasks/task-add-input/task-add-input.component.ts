@@ -16,14 +16,14 @@ export class TaskAddInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.required]),
+      name: new FormControl(''),
     });
   }
 
   emitValue() {
-    this.valueChange.emit(this.form.controls.name.value);
+    this.valueChange.emit(this.form.controls.name.value.trim());
     this.form.reset();
-    this.form.controls.name.clearValidators();
-    this.form.controls.name.updateValueAndValidity();
+    // this.form.controls.name.clearValidators();
+    // this.form.controls.name.updateValueAndValidity();
   }
 }

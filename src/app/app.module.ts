@@ -22,6 +22,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskListDomainModule } from './domain/task-list/task-list.module';
+import { SharedModule } from './shared/shared.module';
 import { AddDialogComponent } from './widgets/add-dialog/add-dialog.component';
 import { ConfirmDialogComponent } from './widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from './widgets/edit-dialog/edit-dialog.component';
@@ -54,6 +55,7 @@ import { EditDialogComponent } from './widgets/edit-dialog/edit-dialog.component
     MatToolbarModule,
     MatSidenavModule,
     MatStepperModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
