@@ -3,19 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { ErrorMsgComponent } from './components/error-msg/error-msg.component';
 import { PreventSpaceOnEmptyInputDirective } from './directives/prevent-space-on-empty-input.directive';
-import { AjustDialogWhenKeyboardActiveDirective } from './directives/ajust-dialog-when-keyboard-active.directive';
 
 @NgModule({
-  declarations: [
-    ErrorMsgComponent,
-    PreventSpaceOnEmptyInputDirective,
-    AjustDialogWhenKeyboardActiveDirective,
-  ],
+  declarations: [ErrorMsgComponent, PreventSpaceOnEmptyInputDirective],
   imports: [CommonModule],
-  exports: [
-    ErrorMsgComponent,
-    PreventSpaceOnEmptyInputDirective,
-    AjustDialogWhenKeyboardActiveDirective,
-  ],
+  exports: [ErrorMsgComponent, PreventSpaceOnEmptyInputDirective],
 })
 export class SharedModule {}
