@@ -63,10 +63,10 @@
   </mat-sidenav-content>
 </mat-sidenav-container> -->
 
-<!-- <mat-drawer-container #drawer class="example-container" autosize opened>
-  <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+<mat-drawer-container #drawer class="example-container" autosize opened>
+  <mat-drawer #drawer class="sidenav-bar" mode="side" opened>
     <mat-icon (click)="showFiller = !showFiller">menu</mat-icon>
-    <ul>
+    <ul class="sidenav-list">
       <li>
         <a mat-list-item href="#">
           <mat-icon>home</mat-icon>
@@ -93,10 +93,10 @@
       </li>
     </ul>
   </mat-drawer>
-  <p>contetnasdfssssssssssssssssssssssssssssssssss f asdf asd fasd f sa f sd</p>
-</mat-drawer-container> -->
+  <router-outlet></router-outlet>
+</mat-drawer-container>
 
-<div>
+<!-- <div>
   <nav class="sidenav-bar">
     <div class="sidenav-content">
       <mat-icon (click)="isExpanded = !isExpanded">menu</mat-icon>
@@ -132,4 +132,4 @@
   <main>
     <router-outlet></router-outlet>
   </main>
-</div>
+</div> -->

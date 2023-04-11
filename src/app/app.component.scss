@@ -1,22 +1,13 @@
 .example-container {
-  width: 500px;
-  height: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.example-sidenav {
+  position: fixed;
 }
 
 .example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.example-sidenav {
-  padding: 20px;
-}
-
-.example-sidenav {
-  padding: 20px;
+  margin-left: 250px; /* ajuste a largura do drawer conforme sua necessidade */
 }
 
 .sidenav-bar {
