@@ -28,6 +28,8 @@ export class AppComponent {
 
   isExpanded = false;
 
+  showFiller = false;
+
   sidenavState() {
     return this.isExpanded ? 'expanded' : 'collapsed';
   }
