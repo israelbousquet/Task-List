@@ -1,3 +1,24 @@
+.example-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
 .sidenav-bar {
   position: fixed;
   left: 0;
@@ -33,6 +54,7 @@
         padding: 10px;
         border-radius: 15px;
         transition: 0.2s ease;
+        cursor: pointer;
 
         mat-icon {
           transition: 0.2s ease;
@@ -58,6 +80,7 @@
         display: flex;
         align-items: center;
         gap: 5px;
+
         span {
           font-size: 1rem;
           color: var(--secondary-color);

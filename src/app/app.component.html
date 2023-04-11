@@ -63,20 +63,37 @@
   </mat-sidenav-content>
 </mat-sidenav-container> -->
 
-<!-- <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
+<!-- <mat-drawer-container #drawer class="example-container" autosize opened>
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+    <mat-icon (click)="showFiller = !showFiller">menu</mat-icon>
+    <ul>
+      <li>
+        <a mat-list-item href="#">
+          <mat-icon>home</mat-icon>
+          <span *ngIf="showFiller">Início</span>
+        </a>
+      </li>
+      <li>
+        <a mat-list-item href="#">
+          <mat-icon>home</mat-icon>
+          <span *ngIf="showFiller">Início</span>
+        </a>
+      </li>
+      <li>
+        <a mat-list-item href="#">
+          <mat-icon>home</mat-icon>
+          <span *ngIf="showFiller">Início</span>
+        </a>
+      </li>
+      <li>
+        <a mat-list-item href="#">
+          <mat-icon>home</mat-icon>
+          <span *ngIf="showFiller">Início</span>
+        </a>
+      </li>
+    </ul>
   </mat-drawer>
-
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button>
-  </div>
+  <p>contetnasdfssssssssssssssssssssssssssssssssss f asdf asd fasd f sa f sd</p>
 </mat-drawer-container> -->
 
 <div>
@@ -85,8 +102,12 @@
       <mat-icon (click)="isExpanded = !isExpanded">menu</mat-icon>
 
       <ul class="sidenav-list">
-        <li *ngFor="let link of links" [@sidenavAnimation]="sidenavState()">
-          <a routerLink="{{ link.routerLink }}">
+        <li
+          *ngFor="let link of links"
+          [@sidenavAnimation]="sidenavState()"
+          routerLink="{{ link.routerLink }}"
+        >
+          <a>
             <mat-icon>{{ link.icon }}</mat-icon>
             <span class="showRight" *ngIf="isExpanded">{{ link.name }}</span>
           </a>

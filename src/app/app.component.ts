@@ -68,7 +68,7 @@ export class AppComponent {
 
   links: any[] = [
     {
-      name: 'Indicadores',
+      name: 'Home',
       icon: 'home',
       routerLink: '/',
     },
