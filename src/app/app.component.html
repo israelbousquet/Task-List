@@ -105,10 +105,10 @@
       <mat-icon (click)="isExpanded = !isExpanded">menu</mat-icon>
 
       <ul class="sidenav-list">
-        <li *ngFor="let link of links">
+        <li *ngFor="let link of links" [@sidenavAnimation]="sidenavState()">
           <a routerLink="{{ link.routerLink }}">
             <mat-icon>{{ link.icon }}</mat-icon>
-            <span *ngIf="isExpanded">{{ link.name }}</span>
+            <span class="showRight" *ngIf="isExpanded">{{ link.name }}</span>
           </a>
         </li>
       </ul>

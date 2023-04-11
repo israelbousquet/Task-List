@@ -1,17 +1,36 @@
 import { Component } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { LocalStorageService } from './shared/services/local-storage.service';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('sidenavAnimation', [
+      state('collapsed', style({ width: '45px' })),
+      state('expanded', style({ width: '150px' })),
+      transition('collapsed <=> expanded', animate('300ms ease-in-out')),
+      transition('expanded => void', animate('300ms ease-in-out')),
+    ]),
+  ],
 })
 export class AppComponent {
   nameMode: string = 'nightlight_round';
   title = 'task-list';
 
   isExpanded = false;
+
+  sidenavState() {
+    return this.isExpanded ? 'expanded' : 'collapsed';
+  }
 
   constructor(private localStorage: LocalStorageService) {}
 

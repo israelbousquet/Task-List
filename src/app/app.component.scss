@@ -18,6 +18,10 @@
     align-items: flex-start;
     gap: 25px;
 
+    mat-icon {
+      color: var(--secondary-color);
+    }
+
     .sidenav-list {
       display: flex;
       flex-direction: column;
