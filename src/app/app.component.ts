@@ -8,10 +8,10 @@ import { LocalStorageService } from './shared/services/local-storage.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isChecked: boolean = false;
   nameMode: string = 'nightlight_round';
   title = 'task-list';
-  isMenuOpen = false;
+
+  isExpanded = false;
 
   constructor(private localStorage: LocalStorageService) {}
 
@@ -20,28 +20,46 @@ export class AppComponent {
   }
 
   toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
+    this.isExpanded = !this.isExpanded;
   }
 
-  changed(event: MatSlideToggleChange) {
-    this.nameMode = event.checked ? 'light_mode' : 'nightlight_round';
-    if (event.checked) {
-      document.body.classList.add('ligthMode');
-    } else {
-      document.body.classList.remove('ligthMode');
-    }
+  darkMode() {
+    this.nameMode = 'nightlight_round';
+    document.body.classList.remove('ligthMode');
+    this.localStorage.set('colorMode', this.nameMode);
+  }
+
+  lightMode() {
+    this.nameMode = 'light_mode';
+    document.body.classList.add('ligthMode');
     this.localStorage.set('colorMode', this.nameMode);
   }
 
   getModeFromLocalStorage() {
     const modeByLocal = this.localStorage.get('colorMode');
     if (modeByLocal === 'light_mode') {
-      this.isChecked = true;
       document.body.classList.add('ligthMode');
     } else {
-      this.isChecked = false;
       document.body.classList.remove('ligthMode');
     }
     this.nameMode = modeByLocal;
   }
+
+  links: any[] = [
+    {
+      name: 'Indicadores',
+      icon: 'home',
+      routerLink: '/',
+    },
+    {
+      name: 'ViaCep',
+      icon: 'pin_drop',
+      routerLink: '/viacep',
+    },
+    {
+      name: 'Countries',
+      icon: 'public',
+      routerLink: '/restcountries',
+    },
+  ];
 }

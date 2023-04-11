@@ -24,14 +24,11 @@
 }
 
 body {
-  min-height: 100vh;
+  height: 100vh;
+  position: relative;
   background-color: var(--bg-color);
 }
 
-html,
-body {
-  height: 100%;
-}
 * {
   font-family: "Nunito Sans", sans-serif;
 }

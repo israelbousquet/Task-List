@@ -1,4 +1,4 @@
-<header class="menu-container">
+<!-- <header class="menu-container">
   <div class="menu container">
     <div class="menu-logo" routerLink="/">
       <h1>Projetos</h1>
@@ -25,6 +25,110 @@
       <mat-icon class="fade">{{ isMenuOpen ? "close" : "menu" }}</mat-icon>
     </div>
   </div>
-</header>
+</header> -->
 
-<router-outlet></router-outlet>
+<!-- <mat-sidenav-container hasBackdrop="false">
+  <mat-sidenav #sidenav mode="over">
+    <ul>
+      <li>
+        <a mat-list-item href="#">
+          <mat-icon>home</mat-icon>
+          <span [hidden]="isExpanded">Início</span>
+        </a>
+      </li>
+      <li>
+        <a mat-list-item href="#">
+          <mat-icon>home</mat-icon>
+          <span [hidden]="isExpanded">Início</span>
+        </a>
+      </li>
+      <li>
+        <a mat-list-item href="#">
+          <mat-icon>home</mat-icon>
+          <span [hidden]="isExpanded">Início</span>
+        </a>
+      </li>
+      <li>
+        <a mat-list-item href="#">
+          <mat-icon>home</mat-icon>
+          <span [hidden]="isExpanded">Início</span>
+        </a>
+      </li>
+    </ul>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <button mat-button (click)="sidenav.toggle()">Abrir/Fechar sidenav</button>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<!-- <mat-drawer-container class="example-container mat-typography" autosize>
+  <mat-drawer #drawer mode="side" disableClose="true" opened="true">
+    <button
+      mat-mini-fab
+      (click)="isExpanded = !isExpanded"
+      color="warn"
+      style="margin: 10px"
+    >
+      <mat-icon aria-label="Menu">menu</mat-icon>
+    </button>
+
+    <mat-nav-list>
+      <mat-list-item>
+        <mat-icon mat-list-icon>person</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Management A</h4>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>assignment</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Management B</h4>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>domain</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Management C</h4>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>folder_shared</mat-icon>
+        <h4 mat-line *ngIf="isExpanded">Management X</h4>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container> -->
+
+<div>
+  <nav class="sidenav-bar">
+    <div class="sidenav-content">
+      <mat-icon (click)="isExpanded = !isExpanded">menu</mat-icon>
+
+      <ul class="sidenav-list">
+        <li *ngFor="let link of links">
+          <a routerLink="{{ link.routerLink }}">
+            <mat-icon>{{ link.icon }}</mat-icon>
+            <span *ngIf="isExpanded">{{ link.name }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sidenav-info">
+      <button [matMenuTriggerFor]="menu">
+        <mat-icon>{{ nameMode }}</mat-icon>
+      </button>
+      <mat-menu
+        #menu="matMenu"
+        yPosition="above"
+        xPosition="after"
+        class="info-options"
+      >
+        <button mat-menu-item (click)="darkMode()">Dark Mode</button>
+        <button mat-menu-item (click)="lightMode()">Light Mode</button>
+      </mat-menu>
+    </div>
+  </nav>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
