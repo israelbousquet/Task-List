@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   debounceTime,
   distinctUntilChanged,
+  distinctUntilKeyChanged,
   map,
   Observable,
   startWith,
@@ -37,10 +38,8 @@ export class CountriesListComponent implements OnInit {
   }
 
   filterCountryOrRegion() {
-    this.searchInput$
-      .pipe(debounceTime(300), distinctUntilChanged())
-      .subscribe((filters) =>
-        this.countrieService.filtersCountryByNameOrRegion(filters)
-      );
+    this.searchInput$.pipe(debounceTime(300)).subscribe((filters) => {
+      this.countrieService.filtersCountryByNameOrRegion(filters);
+    });
   }
 }
