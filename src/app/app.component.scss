@@ -80,37 +80,11 @@
   }
 }
 
-::ng-deep .mat-menu-panel {
-  border-radius: 10px !important;
-  border: 1px solid var(--tertiary-color-dark) !important;
-}
-
-.mat-menu-item {
-  transition: 0.2s ease;
-  &:hover {
-    background-color: var(--tertiary-color);
-  }
-}
-
 ::ng-deep {
   .mat-drawer-content {
     height: 100vh !important;
     background-color: var(--bg-color);
     margin-left: 70px !important;
-  }
-}
-
-::ng-deep .info-options {
-  background: var(--primary-color);
-
-  box-shadow: none !important;
-
-  button {
-    color: var(--secondary-color);
-  }
-
-  .menu-icon {
-    color: var(--secondary-color);
   }
 }
 
