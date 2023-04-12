@@ -122,14 +122,11 @@
 }
 
 @media (max-width: 900px) {
-  .mat-drawer {
+  .sidenav-mobile-menu {
+    width: 100vw;
     height: 100vh;
     position: fixed;
     background-color: var(--bg-color);
-  }
-
-  .sidenav-mobile-menu {
-    width: 100vw;
   }
 
   ::ng-deep {
@@ -234,7 +231,7 @@
     .sidenav-info {
       position: absolute;
       bottom: 0;
-      margin-bottom: 60px;
+      margin-bottom: 20px;
     }
   }
 }
