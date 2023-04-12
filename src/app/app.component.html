@@ -1,135 +1,92 @@
-<!-- <header class="menu-container">
-  <div class="menu container">
-    <div class="menu-logo" routerLink="/">
-      <h1>Projetos</h1>
-    </div>
-    <div class="menu-itens-container">
-      <nav class="menu-itens showRight" [class.is-open]="isMenuOpen">
-        <ul>
-          <li><a routerLink="/viacep" (click)="toggleMenu()">ViaCep</a></li>
-          <li><a routerLink="/" (click)="toggleMenu()">Todo List</a></li>
-          <li>
-            <a routerLink="/restcountries" (click)="toggleMenu()"
-              >Rest Countries</a
-            >
+<ng-container *ngIf="isLargeScreen; else menuMobile">
+  <mat-drawer-container #drawer autosize opened>
+    <mat-drawer #drawer class="sidenav-bar" mode="side" opened>
+      <nav class="sidenav-bar">
+        <div class="sidenav-content">
+          <mat-icon (click)="showFiller = !showFiller">menu</mat-icon>
+
+          <ul class="sidenav-list">
+            <li *ngFor="let link of links" [@sidenavAnimation]="sidenavState()">
+              <a>
+                <mat-icon>{{ link.icon }}</mat-icon>
+                <span class="showRight" *ngIf="showFiller">{{
+                  link.name
+                }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidenav-info">
+          <app-dark-mode></app-dark-mode>
+        </div>
+      </nav>
+    </mat-drawer>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-drawer-container>
+</ng-container>
+
+<ng-template #menuMobile>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over" class="sidenav-mobile-menu">
+      <div class="container">
+        <div class="header">
+          <div class="menu-logo" routerLink="/">
+            <h1>Projetos</h1>
+          </div>
+          <button mat-icon-button (click)="sidenav.close()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+
+        <ul class="sidenav-list">
+          <li
+            *ngFor="let link of links"
+            routerLink="{{ link.routerLink }}"
+            (click)="sidenav.close()"
+          >
+            <a>
+              <mat-icon>{{ link.icon }}</mat-icon>
+              <span class="showRight">{{ link.name }}</span>
+            </a>
           </li>
         </ul>
-      </nav>
-      <div class="toggle">
-        <mat-slide-toggle [(ngModel)]="isChecked" (change)="changed($event)">
-          <mat-icon>{{ nameMode }}</mat-icon>
-        </mat-slide-toggle>
+
+        <div class="sidenav-info">
+          <app-dark-mode></app-dark-mode>
+        </div>
+
+        <!-- <div class="perfil">
+          <div class="perfil-image">
+            <img
+              src="https://media.istockphoto.com/id/1314415203/pt/foto/always-smile.jpg?s=612x612&w=0&k=20&c=gALP0IDYtgUfKDqP97ara9dFKf5kGRlkHSi68vvG3zI="
+              alt=""
+            />
+          </div>
+          <div class="perfil-content">
+            <h3>Israel Bousquet</h3>
+            <span>israelbousquet@gmail.com</span>
+          </div>
+        </div> -->
+      </div>
+    </mat-sidenav>
+
+    <div class="sidenav-mobile-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="menu-logo" routerLink="/">
+            <h1>Projetos</h1>
+          </div>
+          <button mat-icon-button (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
-    <div class="menu-button" (click)="toggleMenu()">
-      <mat-icon class="fade">{{ isMenuOpen ? "close" : "menu" }}</mat-icon>
-    </div>
-  </div>
-</header> -->
 
-<!-- <mat-sidenav-container hasBackdrop="false">
-  <mat-sidenav #sidenav mode="over">
-    <ul>
-      <li>
-        <a mat-list-item href="#">
-          <mat-icon>home</mat-icon>
-          <span [hidden]="isExpanded">Início</span>
-        </a>
-      </li>
-      <li>
-        <a mat-list-item href="#">
-          <mat-icon>home</mat-icon>
-          <span [hidden]="isExpanded">Início</span>
-        </a>
-      </li>
-      <li>
-        <a mat-list-item href="#">
-          <mat-icon>home</mat-icon>
-          <span [hidden]="isExpanded">Início</span>
-        </a>
-      </li>
-      <li>
-        <a mat-list-item href="#">
-          <mat-icon>home</mat-icon>
-          <span [hidden]="isExpanded">Início</span>
-        </a>
-      </li>
-    </ul>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <button mat-button (click)="sidenav.toggle()">Abrir/Fechar sidenav</button>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container> -->
-
-<mat-drawer-container #drawer class="example-container" autosize opened>
-  <mat-drawer #drawer class="sidenav-bar" mode="side" opened>
-    <mat-icon (click)="showFiller = !showFiller">menu</mat-icon>
-    <ul class="sidenav-list">
-      <li>
-        <a mat-list-item href="#">
-          <mat-icon>home</mat-icon>
-          <span *ngIf="showFiller">Início</span>
-        </a>
-      </li>
-      <li>
-        <a mat-list-item href="#">
-          <mat-icon>home</mat-icon>
-          <span *ngIf="showFiller">Início</span>
-        </a>
-      </li>
-      <li>
-        <a mat-list-item href="#">
-          <mat-icon>home</mat-icon>
-          <span *ngIf="showFiller">Início</span>
-        </a>
-      </li>
-      <li>
-        <a mat-list-item href="#">
-          <mat-icon>home</mat-icon>
-          <span *ngIf="showFiller">Início</span>
-        </a>
-      </li>
-    </ul>
-  </mat-drawer>
-  <router-outlet></router-outlet>
-</mat-drawer-container>
-
-<!-- <div>
-  <nav class="sidenav-bar">
-    <div class="sidenav-content">
-      <mat-icon (click)="isExpanded = !isExpanded">menu</mat-icon>
-
-      <ul class="sidenav-list">
-        <li
-          *ngFor="let link of links"
-          [@sidenavAnimation]="sidenavState()"
-          routerLink="{{ link.routerLink }}"
-        >
-          <a>
-            <mat-icon>{{ link.icon }}</mat-icon>
-            <span class="showRight" *ngIf="isExpanded">{{ link.name }}</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="sidenav-info">
-      <button [matMenuTriggerFor]="menu">
-        <mat-icon>{{ nameMode }}</mat-icon>
-      </button>
-      <mat-menu
-        #menu="matMenu"
-        yPosition="above"
-        xPosition="after"
-        class="info-options"
-      >
-        <button mat-menu-item (click)="darkMode()">Dark Mode</button>
-        <button mat-menu-item (click)="lightMode()">Light Mode</button>
-      </mat-menu>
-    </div>
-  </nav>
-  <main>
-    <router-outlet></router-outlet>
-  </main>
-</div> -->
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-container>
+</ng-template>

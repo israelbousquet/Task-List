@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { LocalStorageService } from './shared/services/local-storage.service';
 import {
@@ -7,6 +7,7 @@ import {
   style,
   transition,
   animate,
+  AnimationQueryMetadata,
 } from '@angular/animations';
 
 @Component({
@@ -25,23 +26,26 @@ import {
 export class AppComponent {
   nameMode: string = 'nightlight_round';
   title = 'task-list';
-
-  isExpanded = false;
-
   showFiller = false;
+  innerWidth: number;
+  isLargeScreen: boolean;
 
   sidenavState() {
-    return this.isExpanded ? 'expanded' : 'collapsed';
+    return this.showFiller ? 'expanded' : 'collapsed';
   }
 
   constructor(private localStorage: LocalStorageService) {}
 
   ngOnInit() {
     this.getModeFromLocalStorage();
+    this.innerWidth = window.innerWidth;
+    this.isLargeScreen = this.innerWidth > 900;
   }
 
-  toggleMenu() {
-    this.isExpanded = !this.isExpanded;
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.innerWidth = window.innerWidth;
+    this.isLargeScreen = this.innerWidth > 900;
   }
 
   darkMode() {
