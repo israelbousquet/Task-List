@@ -24,8 +24,6 @@ import {
   ],
 })
 export class AppComponent {
-  nameMode: string = 'nightlight_round';
-  title = 'task-list';
   showFiller = false;
   innerWidth: number;
   isLargeScreen: boolean;
@@ -37,7 +35,6 @@ export class AppComponent {
   constructor(private localStorage: LocalStorageService) {}
 
   ngOnInit() {
-    this.getModeFromLocalStorage();
     this.innerWidth = window.innerWidth;
     this.isLargeScreen = this.innerWidth > 900;
   }
@@ -46,28 +43,6 @@ export class AppComponent {
   onResize(event: any) {
     this.innerWidth = window.innerWidth;
     this.isLargeScreen = this.innerWidth > 900;
-  }
-
-  darkMode() {
-    this.nameMode = 'nightlight_round';
-    document.body.classList.remove('ligthMode');
-    this.localStorage.set('colorMode', this.nameMode);
-  }
-
-  lightMode() {
-    this.nameMode = 'light_mode';
-    document.body.classList.add('ligthMode');
-    this.localStorage.set('colorMode', this.nameMode);
-  }
-
-  getModeFromLocalStorage() {
-    const modeByLocal = this.localStorage.get('colorMode');
-    if (modeByLocal === 'light_mode') {
-      document.body.classList.add('ligthMode');
-    } else {
-      document.body.classList.remove('ligthMode');
-    }
-    this.nameMode = modeByLocal;
   }
 
   links: any[] = [
