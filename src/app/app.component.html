@@ -6,7 +6,11 @@
           <mat-icon (click)="showFiller = !showFiller">menu</mat-icon>
 
           <ul class="sidenav-list">
-            <li *ngFor="let link of links" [@sidenavAnimation]="sidenavState()">
+            <li
+              *ngFor="let link of links"
+              [@sidenavAnimation]="sidenavState()"
+              routerLink="{{ link.routerLink }}"
+            >
               <a>
                 <mat-icon>{{ link.icon }}</mat-icon>
                 <span class="showRight" *ngIf="showFiller">{{
