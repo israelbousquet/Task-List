@@ -7,17 +7,18 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
   styleUrls: ['./dark-mode.component.scss'],
 })
 export class DarkModeComponent implements OnInit {
-  nameMode: string = 'nightlight_round';
+  nameMode: string = 'dark_mode';
   title = 'task-list';
 
   constructor(private localStorage: LocalStorageService) {}
 
   ngOnInit() {
+    this.localStorage.set('colorMode', this.nameMode);
     this.getModeFromLocalStorage();
   }
 
   darkMode() {
-    this.nameMode = 'nightlight_round';
+    this.nameMode = 'dark_mode';
     document.body.classList.remove('ligthMode');
     this.localStorage.set('colorMode', this.nameMode);
   }
