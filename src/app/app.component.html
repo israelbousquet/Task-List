@@ -32,35 +32,38 @@
 
 <ng-template #menuMobile>
   <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="over" class="sidenav-mobile-menu">
-      <div class="container">
-        <div class="header">
-          <div class="menu-logo" routerLink="/">
-            <h1>Projetos</h1>
+    <mat-sidenav #sidenav mode="over" class="sidenav-mobile-menu" opened="true">
+      <div class="content-container container">
+        <div class="sidenav-content">
+          <div class="header">
+            <div class="menu-logo" routerLink="/">
+              <h1>Projetos</h1>
+            </div>
+            <button mat-icon-button (click)="sidenav.close()">
+              <mat-icon>close</mat-icon>
+            </button>
           </div>
-          <button mat-icon-button (click)="sidenav.close()">
-            <mat-icon>close</mat-icon>
-          </button>
-        </div>
 
-        <ul class="sidenav-list">
-          <li *ngFor="let link of links">
-            <a
-              routerLink="{{ link.routerLink }}"
-              routerLinkActive="link-active"
-              (click)="sidenav.close()"
-            >
-              <mat-icon>{{ link.icon }}</mat-icon>
-              <span class="showRight">{{ link.name }}</span>
-            </a>
-          </li>
-        </ul>
+          <ul class="sidenav-list">
+            <li *ngFor="let link of links">
+              <a
+                routerLink="{{ link.routerLink }}"
+                routerLinkActive="link-active"
+                (click)="sidenav.close()"
+              >
+                <mat-icon>{{ link.icon }}</mat-icon>
+                <span class="showRight">{{ link.name }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
 
         <div class="sidenav-info">
           <app-dark-mode></app-dark-mode>
         </div>
+      </div>
 
-        <!-- <div class="perfil">
+      <!-- <div class="perfil">
           <div class="perfil-image">
             <img
               src="https://media.istockphoto.com/id/1314415203/pt/foto/always-smile.jpg?s=612x612&w=0&k=20&c=gALP0IDYtgUfKDqP97ara9dFKf5kGRlkHSi68vvG3zI="
@@ -72,7 +75,6 @@
             <span>israelbousquet@gmail.com</span>
           </div>
         </div> -->
-      </div>
     </mat-sidenav>
 
     <div class="sidenav-mobile-header">
