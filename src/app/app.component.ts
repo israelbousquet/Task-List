@@ -74,7 +74,7 @@ export class AppComponent {
     {
       name: 'Home',
       icon: 'home',
-      routerLink: '/',
+      routerLink: '/home',
     },
     {
       name: 'ViaCep',
