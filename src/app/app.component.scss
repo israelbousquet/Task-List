@@ -7,12 +7,12 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px 10px;
+  padding: 20px 20px;
   flex-direction: column;
   background-color: var(--primary-color);
   z-index: 600;
 
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 20px 0px rgba(9, 2, 71, 0.15);
 
   .sidenav-content {
     display: flex;
@@ -44,7 +44,9 @@
 
       a {
         width: 100%;
-        background-color: var(--tertiary-color);
+        background-color: transparent;
+        display: flex;
+        align-items: center;
         padding: 10px;
         border-radius: 15px;
         transition: background-color 0.2s ease;
@@ -56,6 +58,10 @@
 
         &.link-active {
           background-color: var(--blue-primary-color);
+
+          &:hover {
+            background-color: var(--blue-primary-color);
+          }
 
           span {
             color: #fff;
@@ -77,16 +83,7 @@
         }
 
         &:hover {
-          background-color: var(--blue-primary-color);
-
-          mat-icon {
-            color: #fff;
-          }
-
-          span {
-            font-size: 1rem;
-            color: #fff;
-          }
+          background-color: var(--tertiary-color);
         }
       }
     }

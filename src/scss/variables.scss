@@ -1,13 +1,13 @@
 :root {
-  --primary-color: #2b2d31;
+  --primary-color: #21293a;
   --secondary-color: #fafafa;
-  --secondary-color-transparent: #fafafa70;
-  --tertiary-color: #41434a;
-  --tertiary-color-dark: #212227;
-  --tertiary-color-light: #6b6e7e;
-  --bg-color: #1e1f22;
-  --bg-color-dark: #111214;
-  --blue-primary-color: #5865f2;
+  --secondary-color-transparent: #a0beff77;
+  --tertiary-color: #343c58;
+  --tertiary-color-dark: #2c334b;
+  --tertiary-color-light: #4f5a83;
+  --bg-color: #1c1e27;
+  --bg-color-dark: #15161d;
+  --blue-primary-color: #6758f2;
   --blue-primary-color-light: #0015fc;
   --blue-secondary-color: #292e66;
   --red-primary-color: rgb(252, 77, 77);
@@ -18,13 +18,13 @@
 }
 
 :root .ligthMode {
-  --primary-color: #ffffff;
+  --primary-color: rgb(242, 247, 255);
   --secondary-color: #2e2e5a;
   --secondary-color-transparent: #5865f28f;
-  --tertiary-color: #ecf1ff;
+  --tertiary-color: #e6ecff;
   --tertiary-color-dark: #c0c8df;
   --tertiary-color-light: #bfcbec;
-  --bg-color: #f7f9fc;
+  --bg-color: #ffffff;
   --bg-color-dark: #e9efff;
   --blue-primary-color: #5865f2;
   --blue-primary-color-light: #4e5dff;
