@@ -1,6 +1,14 @@
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+  AnimationQueryMetadata,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-dark-mode',
@@ -8,6 +16,7 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
   styleUrls: ['./dark-mode.component.scss'],
 })
 export class DarkModeComponent implements OnInit {
+  isClicked = false;
   nameMode: string = 'dark_mode';
   isDarkMode: boolean = true;
   title = 'task-list';
@@ -20,6 +29,8 @@ export class DarkModeComponent implements OnInit {
   }
 
   toggleMode() {
+    this.isClicked = !this.isClicked;
+
     this.isDarkMode = !this.isDarkMode;
     if (this.isDarkMode) {
       return this.darkMode();

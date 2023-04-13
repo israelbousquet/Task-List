@@ -2,8 +2,17 @@
   <mat-drawer-container #drawer autosize opened>
     <mat-drawer #drawer class="sidenav-bar" mode="side" opened>
       <nav class="sidenav-bar">
-        <div class="sidenav-content">
-          <mat-icon (click)="showFiller = !showFiller">menu</mat-icon>
+        <div
+          class="sidenav-content"
+          [ngClass]="{ 'sidenav-clicked': showFiller }"
+        >
+          <div class="sidenav-icon">
+            <mat-icon
+              (click)="showFiller = !showFiller; menuClicked()"
+              [@menuAnimation]="showFiller ? 'open' : 'closed'"
+              >{{ iconMenu }}</mat-icon
+            >
+          </div>
 
           <ul class="sidenav-list">
             <li *ngFor="let link of links" [@sidenavAnimation]="sidenavState()">

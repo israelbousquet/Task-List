@@ -21,12 +21,28 @@ import {
       transition('collapsed <=> expanded', animate('300ms ease-in-out')),
       transition('expanded => void', animate('300ms ease-in-out')),
     ]),
+    trigger('menuAnimation', [
+      state(
+        'open',
+        style({
+          transform: 'rotate(90deg)',
+        })
+      ),
+      state(
+        'closed',
+        style({
+          transform: 'rotate(0deg)',
+        })
+      ),
+      transition('open <=> closed', animate('200ms ease-in-out')),
+    ]),
   ],
 })
 export class AppComponent {
   showFiller = false;
   innerWidth: number;
   isLargeScreen: boolean;
+  iconMenu: string = 'menu';
 
   sidenavState() {
     return this.showFiller ? 'expanded' : 'collapsed';
@@ -37,6 +53,13 @@ export class AppComponent {
   ngOnInit() {
     this.innerWidth = window.innerWidth;
     this.isLargeScreen = this.innerWidth > 900;
+  }
+
+  menuClicked() {
+    if (this.showFiller) {
+      return (this.iconMenu = 'close');
+    }
+    return (this.iconMenu = 'menu');
   }
 
   @HostListener('window:resize', ['$event'])

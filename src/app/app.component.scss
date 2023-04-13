@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px 15px;
+  padding: 20px 10px;
   flex-direction: column;
   background-color: var(--primary-color);
   z-index: 600;
@@ -20,8 +20,21 @@
     align-items: flex-start;
     gap: 25px;
 
-    mat-icon {
-      color: var(--secondary-color);
+    &.sidenav-clicked {
+      align-items: flex-start;
+    }
+
+    .sidenav-icon {
+      width: 100%;
+
+      mat-icon {
+        cursor: pointer;
+        color: var(--secondary-color);
+        font-size: 32px;
+        height: 32px;
+        width: 32px;
+        margin-left: 6px;
+      }
     }
 
     .sidenav-list {
@@ -84,7 +97,7 @@
   .mat-drawer-content {
     height: 100vh !important;
     background-color: var(--bg-color);
-    margin-left: 70px !important;
+    margin-left: 65px !important;
   }
 }
 
