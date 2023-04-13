@@ -1,12 +1,5 @@
-<button [matMenuTriggerFor]="menu">
-  <mat-icon class="material-icons-outlined">{{ nameMode }}</mat-icon>
+<button>
+  <mat-icon class="material-icons-outlined" (click)="toggleMode()">{{
+    nameMode
+  }}</mat-icon>
 </button>
-<mat-menu
-  #menu="matMenu"
-  yPosition="above"
-  xPosition="after"
-  class="info-options"
->
-  <button mat-menu-item (click)="darkMode()">Dark Mode</button>
-  <button mat-menu-item (click)="lightMode()">Light Mode</button>
-</mat-menu>

@@ -1,3 +1,4 @@
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
@@ -8,13 +9,22 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 })
 export class DarkModeComponent implements OnInit {
   nameMode: string = 'dark_mode';
+  isDarkMode: boolean = true;
   title = 'task-list';
 
   constructor(private localStorage: LocalStorageService) {}
 
   ngOnInit() {
-    this.localStorage.set('colorMode', this.nameMode);
     this.getModeFromLocalStorage();
+    this.localStorage.set('colorMode', this.nameMode);
+  }
+
+  toggleMode() {
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      return this.darkMode();
+    }
+    return this.lightMode();
   }
 
   darkMode() {
@@ -30,12 +40,15 @@ export class DarkModeComponent implements OnInit {
   }
 
   getModeFromLocalStorage() {
-    const modeByLocal = this.localStorage.get('colorMode');
-    if (modeByLocal === 'light_mode') {
+    const modeInLocalStorage = this.localStorage.get('colorMode');
+
+    if (modeInLocalStorage === 'light_mode') {
+      this.isDarkMode = false;
       document.body.classList.add('ligthMode');
     } else {
+      this.isDarkMode = true;
       document.body.classList.remove('ligthMode');
     }
-    this.nameMode = modeByLocal;
+    this.nameMode = modeInLocalStorage;
   }
 }
