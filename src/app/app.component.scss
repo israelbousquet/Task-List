@@ -109,10 +109,11 @@
 
 @media (max-width: 900px) {
   .sidenav-mobile-menu {
-    width: 100vw;
+    width: 85vw;
     height: 100vh;
     position: fixed;
     background-color: var(--bg-color);
+    border-radius: 0px 15px 15px 0px;
   }
 
   ::ng-deep {
