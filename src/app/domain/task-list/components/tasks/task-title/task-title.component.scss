@@ -85,7 +85,7 @@
         background-color: var(--primary-color);
 
         &:hover {
-          transition: 0.2s ease;
+          transition: background-color 0.2s ease;
           background: var(--red-primary-color);
 
           span {

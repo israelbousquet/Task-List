@@ -64,10 +64,10 @@
           border-radius: 15px;
           gap: 8px;
           cursor: pointer;
-          transition: 0.2s ease;
+          transition: background-color 0.2s ease;
 
           &:hover {
-            background: var(--tertiary-color-light);
+            background-color: var(--tertiary-color-light);
           }
         }
       }

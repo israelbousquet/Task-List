@@ -35,7 +35,7 @@
       color: #ffffff;
       background-color: var(--blue-primary-color);
       border-radius: 4px;
-      transition: 0.25s ease;
+      transition: background-color 0.25s ease;
 
       &[disabled] {
         cursor: not-allowed;

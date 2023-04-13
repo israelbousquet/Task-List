@@ -95,7 +95,7 @@
 }
 
 .mat-menu-item {
-  transition: 0.2s ease;
+  transition: background-color 0.2s ease;
   &:hover {
     background-color: var(--tertiary-color);
   }
