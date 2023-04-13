@@ -1,9 +1,9 @@
 <div class="mode">
   <button (click)="toggleMode()">
-    <ng-container *ngIf="isDarkMode">
+    <ng-container *ngIf="!isDarkMode">
       <mat-icon class="showUp">dark_mode</mat-icon>
     </ng-container>
-    <ng-container *ngIf="!isDarkMode">
+    <ng-container *ngIf="isDarkMode">
       <mat-icon class="showBottom">light_mode</mat-icon>
     </ng-container>
   </button>
