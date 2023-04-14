@@ -1,0 +1,13 @@
+:host {
+  main {
+    height: 100vh;
+
+    .login-container {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+  }
+}

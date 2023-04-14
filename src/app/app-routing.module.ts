@@ -26,6 +26,11 @@ const routes: Routes = [
         (m) => m.RestCountriesModule
       ),
   },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./domain/login/login.module').then((m) => m.LoginModule),
+  },
 ];
 
 @NgModule({

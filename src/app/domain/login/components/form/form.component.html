@@ -1,0 +1,49 @@
+<div class="account-container">
+  <h1>Crie sua conta</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="showUp">
+    <div class="input-box">
+      <mat-form-field appearance="fill">
+        <mat-label>Nome de usuário</mat-label>
+        <input matInput formControlName="userName" readonly />
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error>
+          <app-error-msg
+            [control]="form.controls.userName"
+            [label]="'Nome de usuário'"
+          ></app-error-msg>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="input-box">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" readonly />
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error>
+          <app-error-msg
+            [control]="form.controls.email"
+            [label]="'Email'"
+          ></app-error-msg>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="input-box">
+      <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input matInput formControlName="password" readonly />
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-error>
+          <app-error-msg
+            [control]="form.controls.password"
+            [label]="'Senha'"
+          ></app-error-msg>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <button type="reset" [disabled]="!form.valid">Enviar</button>
+  </form>
+</div>

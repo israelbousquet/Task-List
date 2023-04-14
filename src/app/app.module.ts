@@ -28,7 +28,6 @@ import { SharedModule } from './shared/shared.module';
 import { AddDialogComponent } from './widgets/add-dialog/add-dialog.component';
 import { ConfirmDialogComponent } from './widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from './widgets/edit-dialog/edit-dialog.component';
-import { DarkModeComponent } from './widgets/dark-mode/dark-mode.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +35,6 @@ import { DarkModeComponent } from './widgets/dark-mode/dark-mode.component';
     ConfirmDialogComponent,
     EditDialogComponent,
     AddDialogComponent,
-    DarkModeComponent,
   ],
   imports: [
     BrowserModule,

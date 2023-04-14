@@ -2,7 +2,10 @@
 
 :host {
   main {
-    padding: 150px 0px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .form-container {
       border-radius: 16px;

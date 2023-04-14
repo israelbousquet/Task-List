@@ -1,0 +1,16 @@
+:host {
+  .mode {
+    button {
+      border: 1px solid var(--tertiary-color-light);
+      padding: 10px;
+      color: var(--secondary-color);
+      background-color: transparent;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+    }
+  }
+}

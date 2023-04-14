@@ -1,0 +1,45 @@
+:host {
+  .account-container {
+    h1 {
+      color: var(--secondary-color);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 35px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      gap: 16px;
+
+      mat-form-field {
+        width: 100%;
+      }
+      mat-icon {
+        color: var(--blue-primary-color);
+      }
+
+      button {
+        cursor: pointer;
+        border: none;
+        padding: 12px 0px;
+        color: #ffffff;
+        background-color: var(--blue-primary-color);
+        border-radius: 4px;
+        transition: background-color 0.25s ease;
+
+        &[disabled] {
+          cursor: not-allowed;
+          background-color: var(--blue-secondary-color);
+          &:hover {
+            background-color: var(--blue-secondary-color);
+            transform: scale(1);
+          }
+        }
+        &:hover {
+          transform: scale(1.01);
+        }
+      }
+    }
+  }
+}

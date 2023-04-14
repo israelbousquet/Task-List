@@ -15,4 +15,15 @@ export class CustomValidators {
     const isValid = !isWhitespace;
     return isValid ? null : { whitespace: true };
   }
+
+  static userNameValidator(control: FormControl) {
+    const valueInput = control.value || '';
+    const regexp = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z!@#$%^&*]+$/;
+    const isValid = regexp.test(valueInput);
+
+    if (!isValid) {
+      return { userNameInvalid: true };
+    }
+    return null;
+  }
 }
