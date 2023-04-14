@@ -13,4 +13,8 @@ export class LocalStorageService {
   get(key: string) {
     return JSON.parse(window.localStorage.getItem(key) || '[]');
   }
+
+  remove(key: string) {
+    window.localStorage.removeItem(key);
+  }
 }
