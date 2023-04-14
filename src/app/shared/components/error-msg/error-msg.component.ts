@@ -23,8 +23,10 @@ export class ErrorMsgComponent {
   generateMessageError(label: string, erroKey: string, validatorValue?: any) {
     const message: { [key: string]: any } = {
       required: `${label} é um campo obrigatório`,
+      email: `Email inválido`,
       maxlength: `${label} deve ter no máximo ${validatorValue.requiredLength} caracteres`,
       minlength: `${label} deve ter no mínimo ${validatorValue.requiredLength} caracteres`,
+      passwordInvalid: `${label} deve conter no mínimo uma letra maiúscula, um símbolo e um número`,
     };
 
     return message[erroKey];

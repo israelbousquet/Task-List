@@ -16,13 +16,14 @@ export class CustomValidators {
     return isValid ? null : { whitespace: true };
   }
 
-  static userNameValidator(control: FormControl) {
+  static passwordValidator(control: FormControl) {
     const valueInput = control.value || '';
-    const regexp = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z!@#$%^&*]+$/;
+
+    const regexp = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]+$/;
     const isValid = regexp.test(valueInput);
 
     if (!isValid) {
-      return { userNameInvalid: true };
+      return { passwordInvalid: true };
     }
     return null;
   }

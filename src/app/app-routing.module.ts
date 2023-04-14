@@ -1,3 +1,4 @@
+import { AccountExistsGuard } from './shared/guards/account-exists.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'viacep',
+    canActivate: [AccountExistsGuard],
     loadChildren: () =>
       import('./domain/via-cep/via-cep.module').then((m) => m.ViaCepModule),
   },

@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormGroupDirective,
+} from '@angular/forms';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { CustomValidators } from 'src/app/validators/customValidators';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-form',
@@ -14,20 +21,28 @@ export class FormComponent implements OnInit {
     password: FormControl;
   }>;
 
-  constructor() {}
+  @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
+
+  constructor(private loginService: LoginService) {}
 
   ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
     this.form = new FormGroup({
-      userName: new FormControl('', [
-        Validators.required,
-        CustomValidators.userNameValidator,
-      ]),
+      userName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        CustomValidators.passwordValidator,
+      ]),
     });
   }
 
   onSubmit() {
-    console.log(this.form);
+    this.loginService.saveInLocalStorage(this.form.value);
+    this.formGroupDirective.resetForm();
   }
 }

@@ -9,9 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormComponent } from './components/form/form.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './pages/login/login.component';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
-  declarations: [FormComponent, LoginComponent],
+  declarations: [FormComponent, LoginComponent, AccountComponent],
   imports: [
     CommonModule,
     LoginRoutingModule,
