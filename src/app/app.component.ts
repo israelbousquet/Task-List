@@ -1,3 +1,4 @@
+import { Account } from './interfaces/account';
 import { Component, HostListener } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { LocalStorageService } from './shared/services/local-storage.service';
@@ -9,6 +10,7 @@ import {
   animate,
   AnimationQueryMetadata,
 } from '@angular/animations';
+import { LoginService } from './domain/login/services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -44,11 +46,16 @@ export class AppComponent {
   isLargeScreen: boolean;
   iconMenu: string = 'menu';
 
+  dataAccount: Account;
+
   sidenavState() {
     return this.showFiller ? 'expanded' : 'collapsed';
   }
 
-  constructor(private localStorage: LocalStorageService) {}
+  constructor(
+    private localStorage: LocalStorageService,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;

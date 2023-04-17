@@ -70,21 +70,11 @@
 
         <div class="sidenav-info">
           <app-dark-mode></app-dark-mode>
+          <app-card-perfil
+            (cardPerfilClick)="sidenav.close()"
+          ></app-card-perfil>
         </div>
       </div>
-
-      <!-- <div class="perfil">
-          <div class="perfil-image">
-            <img
-              src="https://media.istockphoto.com/id/1314415203/pt/foto/always-smile.jpg?s=612x612&w=0&k=20&c=gALP0IDYtgUfKDqP97ara9dFKf5kGRlkHSi68vvG3zI="
-              alt=""
-            />
-          </div>
-          <div class="perfil-content">
-            <h3>Israel Bousquet</h3>
-            <span>israelbousquet@gmail.com</span>
-          </div>
-        </div> -->
     </mat-sidenav>
 
     <div class="sidenav-mobile-header">

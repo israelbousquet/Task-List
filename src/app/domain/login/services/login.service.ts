@@ -20,4 +20,9 @@ export class LoginService {
     this.localStorageService.set('account', formValueObj);
     this.toastService.showToastSucess('Conta criada com sucesso');
   }
+
+  getDataFromAccount() {
+    const data = this.localStorageService.get('account');
+    return data;
+  }
 }

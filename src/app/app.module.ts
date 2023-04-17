@@ -28,6 +28,7 @@ import { SharedModule } from './shared/shared.module';
 import { AddDialogComponent } from './widgets/add-dialog/add-dialog.component';
 import { ConfirmDialogComponent } from './widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from './widgets/edit-dialog/edit-dialog.component';
+import { CardPerfilComponent } from './shared/components/card-perfil/card-perfil.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { EditDialogComponent } from './widgets/edit-dialog/edit-dialog.component
     ConfirmDialogComponent,
     EditDialogComponent,
     AddDialogComponent,
+    CardPerfilComponent,
   ],
   imports: [
     BrowserModule,
