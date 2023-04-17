@@ -36,7 +36,6 @@ import { CardPerfilComponent } from './shared/components/card-perfil/card-perfil
     ConfirmDialogComponent,
     EditDialogComponent,
     AddDialogComponent,
-    CardPerfilComponent,
   ],
   imports: [
     BrowserModule,

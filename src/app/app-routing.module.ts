@@ -29,7 +29,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'login',
+    path: 'account',
     loadChildren: () =>
       import('./domain/login/login.module').then((m) => m.LoginModule),
   },

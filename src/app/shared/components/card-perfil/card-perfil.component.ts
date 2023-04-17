@@ -31,7 +31,7 @@ export class CardPerfilComponent implements OnInit {
   }
 
   navigateToLogin() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/account']);
     this.cardPerfilClick.emit();
   }
 }

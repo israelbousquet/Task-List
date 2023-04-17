@@ -1,0 +1,16 @@
+:host {
+  .account-infos-container {
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 500px;
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--secondary-color);
+      }
+    }
+  }
+}

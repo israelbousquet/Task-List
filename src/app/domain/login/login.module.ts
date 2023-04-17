@@ -10,9 +10,10 @@ import { FormComponent } from './components/form/form.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { AccountComponent } from './components/account/account.component';
+import { AccountInfoComponent } from './pages/account-info/account-info.component';
 
 @NgModule({
-  declarations: [FormComponent, LoginComponent, AccountComponent],
+  declarations: [FormComponent, LoginComponent, AccountComponent, AccountInfoComponent],
   imports: [
     CommonModule,
     LoginRoutingModule,

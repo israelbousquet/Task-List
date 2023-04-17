@@ -7,6 +7,7 @@ import { UpdateViewportHeightDirective } from './directives/update-viewport-heig
 import { ProfileComponent } from './components/profile/profile.component';
 import { MatIconModule } from '@angular/material/icon';
 import { DarkModeComponent } from './components/dark-mode/dark-mode.component';
+import { CardPerfilComponent } from './components/card-perfil/card-perfil.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { DarkModeComponent } from './components/dark-mode/dark-mode.component';
     UpdateViewportHeightDirective,
     ProfileComponent,
     DarkModeComponent,
+    CardPerfilComponent,
   ],
   imports: [CommonModule, MatIconModule],
   exports: [
@@ -22,6 +24,7 @@ import { DarkModeComponent } from './components/dark-mode/dark-mode.component';
     PreventSpaceOnEmptyInputDirective,
     DarkModeComponent,
     ProfileComponent,
+    CardPerfilComponent,
   ],
 })
 export class SharedModule {}
