@@ -1,13 +1,13 @@
 <div class="perfil" *ngIf="verifyIfDataAccountIsEmpty(); else accountEmpty">
-  <div class="perfil-image">
+  <div class="perfil-image" (click)="navigateToLogin()">
     <img
       src="https://media.istockphoto.com/id/1314415203/pt/foto/always-smile.jpg?s=612x612&w=0&k=20&c=gALP0IDYtgUfKDqP97ara9dFKf5kGRlkHSi68vvG3zI="
       alt=""
     />
   </div>
-  <div class="perfil-content">
+  <div class="perfil-content" (click)="navigateToLogin()">
     <h3>{{ dataAccount.username }}</h3>
-    <span>{{ dataAccount.email }}</span>
+    <span>Acesse sua conta</span>
   </div>
 </div>
 

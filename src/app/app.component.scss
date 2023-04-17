@@ -112,11 +112,11 @@
 
 @media (max-width: 900px) {
   .sidenav-mobile-menu {
-    width: 85vw;
+    width: 100vw;
     height: 100vh;
     position: fixed;
     background-color: var(--bg-color);
-    border-radius: 0px 15px 15px 0px;
+    // border-radius: 0px 15px 15px 0px;
   }
 
   main {
