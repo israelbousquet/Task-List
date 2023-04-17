@@ -7,6 +7,10 @@
     align-items: center;
     justify-content: center;
 
+    @media (max-width: 900px) {
+      height: 80vh;
+    }
+
     .form-container {
       border-radius: 16px;
 

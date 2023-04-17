@@ -2,6 +2,10 @@
   main {
     height: 100vh;
 
+    @media (max-width: 900px) {
+      height: 80vh;
+    }
+
     .login-container {
       display: flex;
 
