@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,7 +29,6 @@ import { SharedModule } from './shared/shared.module';
 import { AddDialogComponent } from './widgets/add-dialog/add-dialog.component';
 import { ConfirmDialogComponent } from './widgets/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from './widgets/edit-dialog/edit-dialog.component';
-import { CardPerfilComponent } from './shared/components/card-perfil/card-perfil.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +62,7 @@ import { CardPerfilComponent } from './shared/components/card-perfil/card-perfil
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
+    MatStepperModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -11,6 +11,9 @@
     }
 
     .account-container {
+      @media (max-width: 768px) {
+        padding: 0px 25px;
+      }
       h2 {
         font-size: 1.9rem;
         color: var(--secondary-color);
