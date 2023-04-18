@@ -75,7 +75,7 @@
         <ng-container *ngIf="borders">
           <h2>Border Countries:</h2>
           <ng-container *ngFor="let border of borders">
-            <button routerLink="/restcountries/details/{{ border }}">
+            <button (click)="navigateToBorder(border)">
               {{ border }}
             </button>
           </ng-container>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { map, switchMap } from 'rxjs';
 
@@ -20,6 +20,7 @@ export class CountryDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private countriesService: CountriesService
   ) {}
 
@@ -42,6 +43,10 @@ export class CountryDetailComponent implements OnInit {
           this.verifyKeyLanguage();
         },
       });
+  }
+
+  navigateToBorder(border: string) {
+    this.router.navigate([`restcountries/details/${border}`]);
   }
 
   getLanguageArray(languages: { [key: string]: string }) {
