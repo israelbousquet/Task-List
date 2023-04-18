@@ -33,7 +33,7 @@ export class AccountExistsGuard implements CanActivate {
       return true;
     } else {
       this.toast.showToastError('Crie uma conta para acessar o ViaCep');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/account/login']);
       return false;
     }
   }

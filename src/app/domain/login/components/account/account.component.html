@@ -2,15 +2,22 @@
   <ul>
     <li>
       <h4>UserName</h4>
-      <span>israel</span>
+      <span>{{ dataAccount.username }}</span>
     </li>
     <li>
       <h4>Email</h4>
-      <span>israelbousquet@gmail.com</span>
+      <span>{{ dataAccount.email }}</span>
     </li>
     <li>
       <h4>Password</h4>
-      <span>********</span>
+      <span>{{ dataAccount.password }}</span>
     </li>
   </ul>
+
+  <div class="actions">
+    <!-- <button class="saveAccount" (click)="editAccount()">Editar conta</button> -->
+    <button class="deleteAccount" (click)="deleteAccount()">
+      excluir conta
+    </button>
+  </div>
 </div>

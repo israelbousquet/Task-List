@@ -1,15 +1,72 @@
 :host {
   .account-infos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
     ul {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+
       width: 500px;
+
+      @media (max-width: 768px) {
+        width: auto;
+      }
       li {
         display: flex;
         justify-content: space-between;
         align-items: center;
         color: var(--secondary-color);
+        padding: 20px 0px;
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          align-items: flex-start;
+          color: var(--secondary-color-transparent);
+          span {
+            color: var(--secondary-color);
+          }
+        }
+
+        & ~ li {
+          border-top: 1px solid var(--secondary-color-transparent);
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 15px;
+
+      button {
+        cursor: pointer;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        text-align: center;
+      }
+
+      .saveAccount {
+        background-color: var(--tertiary-color);
+        border: 1px solid var(--tertiary-color-light);
+        color: var(--secondary-color);
+        transition: background-color 0.25s ease;
+
+        &:hover {
+          background-color: var(--tertiary-color-light);
+        }
+      }
+
+      .deleteAccount {
+        color: var(--red-primary-color);
+        border: 1px solid var(--red-primary-color);
+        background-color: transparent;
+        transition: background-color 0.25s ease;
+
+        &:hover {
+          color: #ffffff;
+          background-color: var(--red-primary-color);
+        }
       }
     }
   }

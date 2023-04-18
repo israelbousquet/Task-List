@@ -5,10 +5,10 @@ import {
   Validators,
   FormGroupDirective,
 } from '@angular/forms';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+
 import { CustomValidators } from 'src/app/validators/customValidators';
 import { LoginService } from '../../services/login.service';
-import { ToastService } from 'src/app/shared/services/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -24,25 +24,10 @@ export class FormComponent implements OnInit {
 
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
 
-  constructor(
-    private loginService: LoginService,
-    private localService: LocalStorageService,
-    private toast: ToastService
-  ) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit() {
     this.initForm();
-  }
-
-  deleteAccount() {
-    const accountLocal = this.localService.get('account');
-
-    if (accountLocal && Object.keys(accountLocal).length) {
-      this.localService.remove('account');
-      this.toast.showToastSucess('Conta removida com sucesso');
-      return;
-    }
-    return this.toast.showToastError('Não existe uma conta');
   }
 
   initForm() {
@@ -59,6 +44,7 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     this.loginService.saveInLocalStorage(this.form.value);
+    this.router.navigate(['/account']);
     this.formGroupDirective.resetForm();
   }
 }
