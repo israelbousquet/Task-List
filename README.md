@@ -1,4 +1,4 @@
-# Link: https://israelbousquet.github.io/task-list
+Link: https://israelbousquet.github.io/Task-List/
 
 # TaskList
 
